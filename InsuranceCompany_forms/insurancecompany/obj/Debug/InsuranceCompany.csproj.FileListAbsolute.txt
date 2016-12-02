@@ -77,6 +77,3 @@ C:\Users\Maria\Desktop\InsuranceCompany_forms\InsuranceCompany\obj\Debug\Insuran
 C:\Users\Maria\Desktop\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCompany.ShowAllDocuments.resources
 C:\Users\Maria\Desktop\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCompany.ShowAllPoliceCategories.resources
 C:\Users\Maria\Desktop\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCompany.csproj.GenerateResource.Cache
-C:\Users\Maria\Desktop\Insurance-company\InsuranceCompany_forms\InsuranceCompany\bin\Debug\InsuranceCompany.exe.config
-C:\Users\Maria\Desktop\Insurance-company\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCompany.exe
-C:\Users\Maria\Desktop\Insurance-company\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCompany.pdb
