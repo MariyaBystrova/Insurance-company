@@ -37,6 +37,7 @@
             this.legalMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.individualMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.insurerMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,11 +118,21 @@
             this.insurerMenu.Text = "Страховщик";
             this.insurerMenu.Click += new System.EventHandler(this.insurerMenu_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(202, 167);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Страховая компания";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(532, 351);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.insurer);
             this.Controls.Add(this.client);
@@ -144,6 +155,7 @@
         private System.Windows.Forms.ToolStripMenuItem legalMenu;
         private System.Windows.Forms.ToolStripMenuItem individualMenu;
         private System.Windows.Forms.ToolStripMenuItem insurerMenu;
+        private System.Windows.Forms.Label label1;
     }
 }
 
