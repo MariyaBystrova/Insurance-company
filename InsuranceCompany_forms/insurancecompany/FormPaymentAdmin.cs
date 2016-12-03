@@ -38,7 +38,7 @@ namespace InsuranceCompany
 
         private void showAllClientsInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClients cw = new ShowAllClients();
+            ShowAllClientInfo cw = new ShowAllClientInfo();
             cw.Show();
             this.Close();
         }
@@ -66,7 +66,7 @@ namespace InsuranceCompany
 
         private void getClientInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClients cw = new ShowAllClients();
+            ShowAllClientInfo cw = new ShowAllClientInfo();
             cw.Show();
             this.Close();
         }
@@ -74,6 +74,20 @@ namespace InsuranceCompany
         private void FormPaymentAdmin_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void registerClientButton_Click(object sender, EventArgs e)
+        {
+            RegisterClient cw = new RegisterClient();
+            cw.Show();
+            this.Close();
+        }
+
+        private void registerPolice_Click(object sender, EventArgs e)
+        {
+            RegisterPolice cw = new RegisterPolice();
+            cw.Show();
+            this.Close();
         }
 
     }

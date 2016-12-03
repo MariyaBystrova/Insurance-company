@@ -10,30 +10,29 @@ using System.Windows.Forms;
 
 namespace InsuranceCompany
 {
-    public partial class ClientWelcome : Form
+    public partial class LegalClientInfo : Form
     {
-        public ClientWelcome()
+        public LegalClientInfo()
         {
             InitializeComponent();
         }
 
-        private void formNewPolice_Click(object sender, EventArgs e)
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
-            FormNewPolice fnp = new FormNewPolice();
-            fnp.Show();
+
         }
 
         private void getClientInfo_Click(object sender, EventArgs e)
         {
-            ClientInfo ci = new ClientInfo();
+            LegalClientInfo ci = new LegalClientInfo();
             ci.Show();
             this.Close();
         }
-
         private void formPaymentRequest_Click(object sender, EventArgs e)
         {
-            FormPaymentRequest fpr = new FormPaymentRequest();
+            LegalClientFormPaymentRequest fpr = new LegalClientFormPaymentRequest();
             fpr.Show();
+            this.Close();
         }
     }
 }
