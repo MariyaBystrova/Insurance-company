@@ -120,7 +120,7 @@ namespace InsuranceCompany
         {
             InsuranceCase insuranceCase = new InsuranceCase();
             insuranceCase.setInsuranceCaseName(insuranceCaseNameInput.Text);
-            insuranceCase.setpaymentProcent(paymentProcentInput.Value);
+            insuranceCase.setPaymentProcent(paymentProcentInput.Value);
             RegisterNewInsuranceCaseCommand command = new RegisterNewInsuranceCaseCommand();
             command.registerNewInsuranceCase(insuranceCase);
         }

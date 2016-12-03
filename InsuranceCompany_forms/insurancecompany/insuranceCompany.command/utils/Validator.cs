@@ -11,7 +11,7 @@ namespace InsuranceCompany.insuranceCompany.command.utils
             {
                 result = false;
             }
-            if (insuranceCase.getpaymentProcent() == 0)
+            if (insuranceCase.getPaymentProcent() == 0)
             {
                 result = false;
             }

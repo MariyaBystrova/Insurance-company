@@ -23,11 +23,11 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
                 conn.Open();
                 cmd.Connection = conn;
 
-                cmd.CommandText = "INSERT INTO `insurance_company`.`insurance_case`(`payment_procent`,`insurance_case_name`) VALUES (?paymentProcent, ?insuranceCaseName);";
+                cmd.CommandText = "INSERT INTO `insurance_company`.`insurance_case` (`payment_procent`, `case_name`, `ins_category_id`) VALUES (?paymentProcent, ?caseName, ?insCategoryId); ";
                 cmd.Prepare();
-
-                cmd.Parameters.AddWithValue("paymentProcent", insuranceCase.getpaymentProcent());
-                cmd.Parameters.AddWithValue("insuranceCaseName", insuranceCase.getInsuranceCaseName());
+                cmd.Parameters.AddWithValue("paymentProcent", insuranceCase.getPaymentProcent());
+                cmd.Parameters.AddWithValue("caseName", insuranceCase.getInsuranceCaseName());
+                cmd.Parameters.AddWithValue("insCategoryId", 1);
                int queryResult = cmd.ExecuteNonQuery();
                 if (queryResult != -1) {
                     result = false;
@@ -52,15 +52,17 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
                 conn.Open();
                 cmd.Connection = conn;
 
-                cmd.CommandText = "SELECT `insurance_case`.`insurance_case_name`, `insurance_case`.`payment_procent` FROM `insurance_company`.`insurance_case`; ";
+                cmd.CommandText = "SELECT 	icase.ins_case_id, icase.payment_procent, icase.case_name, icategory.ins_category_name FROM insurance_case as icase JOIN insurance_category as icategory ON icase.ins_category_id = icategory.ins_category_id; ";
                 reader = cmd.ExecuteReader();
                 while (reader.HasRows)
                 {
                     while (reader.Read())
                     {
                         InsuranceCase insuranceCase = new InsuranceCase();
-                        insuranceCase.setInsuranceCaseName(reader.GetString(0));
-                        insuranceCase.setpaymentProcent(reader.GetDecimal(1));
+                        insuranceCase.setInsuranceCaseId(reader.GetInt32(0));
+                        insuranceCase.setPaymentProcent(reader.GetDecimal(1));
+                        insuranceCase.setInsuranceCaseName(reader.GetString(2));
+                        insuranceCase.setInsuranceCategoryName(reader.GetString(3));
                         caseList.Add(insuranceCase);
                         
                     }
@@ -71,7 +73,6 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
             {
                 Debug.WriteLine(ex.Message);
             }
-
             return caseList;
         }
     }
