@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.registerPolice = new System.Windows.Forms.Button();
             this.registerNewInsuranceCase = new System.Windows.Forms.Button();
+            this.registerClientButton = new System.Windows.Forms.Button();
             this.registerNewPoliceCategory = new System.Windows.Forms.Button();
             this.showAllPoliceCategoriesAndCases = new System.Windows.Forms.Button();
             this.showAllClientsInfo = new System.Windows.Forms.Button();
@@ -40,13 +43,15 @@
             this.reisterNewPoliceCategoryBox = new System.Windows.Forms.GroupBox();
             this.policeCategoryName = new System.Windows.Forms.Label();
             this.submit = new System.Windows.Forms.Button();
-            this.insuranceCaseNameInput = new System.Windows.Forms.TextBox();
+            this.policeCategoryNameInput = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.reisterNewPoliceCategoryBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -63,7 +68,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.reisterNewPoliceCategoryBox);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(496, 318);
+            this.splitContainer1.Size = new System.Drawing.Size(496, 417);
             this.splitContainer1.SplitterDistance = 164;
             this.splitContainer1.TabIndex = 10;
             // 
@@ -71,7 +76,9 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.registerPolice, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.registerNewInsuranceCase, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.registerClientButton, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.registerNewPoliceCategory, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.showAllPoliceCategoriesAndCases, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.showAllClientsInfo, 0, 2);
@@ -80,7 +87,7 @@
             this.tableLayoutPanel1.Controls.Add(this.getClientInfo, 0, 6);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -88,27 +95,49 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(149, 312);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(158, 407);
             this.tableLayoutPanel1.TabIndex = 8;
+            // 
+            // registerPolice
+            // 
+            this.registerPolice.Location = new System.Drawing.Point(3, 359);
+            this.registerPolice.Name = "registerPolice";
+            this.registerPolice.Size = new System.Drawing.Size(153, 45);
+            this.registerPolice.TabIndex = 14;
+            this.registerPolice.Text = "Оформление полиса";
+            this.registerPolice.UseVisualStyleBackColor = true;
+            this.registerPolice.Click += new System.EventHandler(this.registerPolice_Click);
             // 
             // registerNewInsuranceCase
             // 
             this.registerNewInsuranceCase.Location = new System.Drawing.Point(2, 2);
             this.registerNewInsuranceCase.Margin = new System.Windows.Forms.Padding(2);
             this.registerNewInsuranceCase.Name = "registerNewInsuranceCase";
-            this.registerNewInsuranceCase.Size = new System.Drawing.Size(145, 38);
+            this.registerNewInsuranceCase.Size = new System.Drawing.Size(154, 38);
             this.registerNewInsuranceCase.TabIndex = 0;
             this.registerNewInsuranceCase.Tag = "registerNewInsuranceCase";
             this.registerNewInsuranceCase.Text = "Зарегистрировать новый страховой случай";
             this.registerNewInsuranceCase.UseVisualStyleBackColor = true;
             this.registerNewInsuranceCase.Click += new System.EventHandler(this.registerNewInsuranceCase_Click);
             // 
+            // registerClientButton
+            // 
+            this.registerClientButton.Location = new System.Drawing.Point(3, 317);
+            this.registerClientButton.Name = "registerClientButton";
+            this.registerClientButton.Size = new System.Drawing.Size(153, 36);
+            this.registerClientButton.TabIndex = 13;
+            this.registerClientButton.Text = "Зарегистрировать клиента";
+            this.registerClientButton.UseVisualStyleBackColor = true;
+            this.registerClientButton.Click += new System.EventHandler(this.registerClientButton_Click);
+            // 
             // registerNewPoliceCategory
             // 
             this.registerNewPoliceCategory.Location = new System.Drawing.Point(2, 44);
             this.registerNewPoliceCategory.Margin = new System.Windows.Forms.Padding(2);
             this.registerNewPoliceCategory.Name = "registerNewPoliceCategory";
-            this.registerNewPoliceCategory.Size = new System.Drawing.Size(145, 38);
+            this.registerNewPoliceCategory.Size = new System.Drawing.Size(154, 38);
             this.registerNewPoliceCategory.TabIndex = 1;
             this.registerNewPoliceCategory.Tag = "registerNewPoliceCategory";
             this.registerNewPoliceCategory.Text = "Зарегистрировать новую категорию полиса";
@@ -120,7 +149,7 @@
             this.showAllPoliceCategoriesAndCases.Location = new System.Drawing.Point(2, 168);
             this.showAllPoliceCategoriesAndCases.Margin = new System.Windows.Forms.Padding(2);
             this.showAllPoliceCategoriesAndCases.Name = "showAllPoliceCategoriesAndCases";
-            this.showAllPoliceCategoriesAndCases.Size = new System.Drawing.Size(145, 48);
+            this.showAllPoliceCategoriesAndCases.Size = new System.Drawing.Size(154, 48);
             this.showAllPoliceCategoriesAndCases.TabIndex = 4;
             this.showAllPoliceCategoriesAndCases.Tag = "showAllPoliceCategoriesAndCases";
             this.showAllPoliceCategoriesAndCases.Text = "Показать все категории полисов и их страховые случаи";
@@ -132,7 +161,7 @@
             this.showAllClientsInfo.Location = new System.Drawing.Point(2, 86);
             this.showAllClientsInfo.Margin = new System.Windows.Forms.Padding(2);
             this.showAllClientsInfo.Name = "showAllClientsInfo";
-            this.showAllClientsInfo.Size = new System.Drawing.Size(145, 36);
+            this.showAllClientsInfo.Size = new System.Drawing.Size(154, 36);
             this.showAllClientsInfo.TabIndex = 2;
             this.showAllClientsInfo.Tag = "showAllClientsInfo";
             this.showAllClientsInfo.Text = "Показать информацию о клиентах и полисах";
@@ -144,7 +173,7 @@
             this.showAllClientPayments.Location = new System.Drawing.Point(2, 126);
             this.showAllClientPayments.Margin = new System.Windows.Forms.Padding(2);
             this.showAllClientPayments.Name = "showAllClientPayments";
-            this.showAllClientPayments.Size = new System.Drawing.Size(145, 38);
+            this.showAllClientPayments.Size = new System.Drawing.Size(154, 38);
             this.showAllClientPayments.TabIndex = 3;
             this.showAllClientPayments.Tag = "showAllClientPayments";
             this.showAllClientPayments.Text = "Показать все выплаты клиента";
@@ -156,7 +185,7 @@
             this.formPayment.Location = new System.Drawing.Point(2, 220);
             this.formPayment.Margin = new System.Windows.Forms.Padding(2);
             this.formPayment.Name = "formPayment";
-            this.formPayment.Size = new System.Drawing.Size(145, 37);
+            this.formPayment.Size = new System.Drawing.Size(154, 37);
             this.formPayment.TabIndex = 5;
             this.formPayment.Tag = "formPayment";
             this.formPayment.Text = "Оформить выплату";
@@ -168,7 +197,7 @@
             this.getClientInfo.Location = new System.Drawing.Point(2, 261);
             this.getClientInfo.Margin = new System.Windows.Forms.Padding(2);
             this.getClientInfo.Name = "getClientInfo";
-            this.getClientInfo.Size = new System.Drawing.Size(145, 51);
+            this.getClientInfo.Size = new System.Drawing.Size(154, 51);
             this.getClientInfo.TabIndex = 6;
             this.getClientInfo.Tag = "getClientInfo";
             this.getClientInfo.Text = "Показать всю информацию по клиенту";
@@ -179,7 +208,7 @@
             // 
             this.reisterNewPoliceCategoryBox.Controls.Add(this.policeCategoryName);
             this.reisterNewPoliceCategoryBox.Controls.Add(this.submit);
-            this.reisterNewPoliceCategoryBox.Controls.Add(this.insuranceCaseNameInput);
+            this.reisterNewPoliceCategoryBox.Controls.Add(this.policeCategoryNameInput);
             this.reisterNewPoliceCategoryBox.Location = new System.Drawing.Point(12, 5);
             this.reisterNewPoliceCategoryBox.Name = "reisterNewPoliceCategoryBox";
             this.reisterNewPoliceCategoryBox.Size = new System.Drawing.Size(294, 141);
@@ -190,41 +219,46 @@
             // policeCategoryName
             // 
             this.policeCategoryName.AutoSize = true;
-            this.policeCategoryName.Location = new System.Drawing.Point(19, 25);
+            this.policeCategoryName.Location = new System.Drawing.Point(43, 28);
             this.policeCategoryName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.policeCategoryName.Name = "policeCategoryName";
             this.policeCategoryName.Size = new System.Drawing.Size(154, 13);
             this.policeCategoryName.TabIndex = 5;
-            this.policeCategoryName.Tag = "insuranceCaseName";
+            this.policeCategoryName.Tag = "policeCategoryName";
             this.policeCategoryName.Text = "Название категории полиса:";
             // 
             // submit
             // 
-            this.submit.Location = new System.Drawing.Point(225, 90);
+            this.submit.Location = new System.Drawing.Point(110, 84);
             this.submit.Margin = new System.Windows.Forms.Padding(2);
             this.submit.Name = "submit";
-            this.submit.Size = new System.Drawing.Size(59, 22);
+            this.submit.Size = new System.Drawing.Size(87, 22);
             this.submit.TabIndex = 9;
             this.submit.Tag = "submit";
-            this.submit.Text = "Submit";
+            this.submit.Text = "Отправить";
             this.submit.UseVisualStyleBackColor = true;
             // 
-            // insuranceCaseNameInput
+            // policeCategoryNameInput
             // 
-            this.insuranceCaseNameInput.Location = new System.Drawing.Point(22, 42);
-            this.insuranceCaseNameInput.Margin = new System.Windows.Forms.Padding(2);
-            this.insuranceCaseNameInput.Name = "insuranceCaseNameInput";
-            this.insuranceCaseNameInput.Size = new System.Drawing.Size(151, 20);
-            this.insuranceCaseNameInput.TabIndex = 6;
+            this.policeCategoryNameInput.Location = new System.Drawing.Point(46, 46);
+            this.policeCategoryNameInput.Margin = new System.Windows.Forms.Padding(2);
+            this.policeCategoryNameInput.Name = "policeCategoryNameInput";
+            this.policeCategoryNameInput.Size = new System.Drawing.Size(151, 20);
+            this.policeCategoryNameInput.TabIndex = 6;
+            this.policeCategoryNameInput.TextChanged += new System.EventHandler(this.policeCategoryNameInput_TextChanged);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // FormNewPoliceCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 342);
+            this.ClientSize = new System.Drawing.Size(539, 434);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FormNewPoliceCategory";
-            this.Text = "FormNewPoliceCategory";
+            this.Text = "Страховщик: регистрация категории полиса";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -232,6 +266,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.reisterNewPoliceCategoryBox.ResumeLayout(false);
             this.reisterNewPoliceCategoryBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -250,7 +285,10 @@
         private System.Windows.Forms.GroupBox reisterNewPoliceCategoryBox;
         private System.Windows.Forms.Label policeCategoryName;
         private System.Windows.Forms.Button submit;
-        private System.Windows.Forms.TextBox insuranceCaseNameInput;
+        private System.Windows.Forms.TextBox policeCategoryNameInput;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button registerPolice;
+        private System.Windows.Forms.Button registerClientButton;
 
     }
 }

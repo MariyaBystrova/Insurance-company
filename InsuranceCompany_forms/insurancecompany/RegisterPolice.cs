@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace InsuranceCompany
 {
-    public partial class FormNewPoliceCategory : Form
+    public partial class RegisterPolice : Form
     {
-        public FormNewPoliceCategory()
+        public RegisterPolice()
         {
             InitializeComponent();
+          
+            groupBoxIndividual.Visible = false;
+            groupBoxLegal.Visible = false;
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -22,7 +25,7 @@ namespace InsuranceCompany
 
         }
 
-        private void registerNewInsuranceCase_Click(object sender, EventArgs e)
+        private void RegisterNewInsuranceCase_Click(object sender, EventArgs e)
         {
             FormNewInsuranceCase cw = new FormNewInsuranceCase();
             cw.Show();
@@ -34,6 +37,11 @@ namespace InsuranceCompany
             FormNewPoliceCategory cw = new FormNewPoliceCategory();
             cw.Show();
             this.Close();
+        }
+
+        private void InsurerWelcome_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void showAllClientsInfo_Click(object sender, EventArgs e)
@@ -71,27 +79,15 @@ namespace InsuranceCompany
             this.Close();
         }
 
-        private void policeCategoryNameInput_TextChanged(object sender, EventArgs e)
+        private void showAllClientPayments_Click_1(object sender, EventArgs e)
         {
-            policeCategoryNameInput.Validating += policeCategoryNameInput_Validating;
+
         }
 
-        private void policeCategoryNameInput_Validating(object sender, CancelEventArgs e)
+        private void showAllPoliceCategoriesAndCases_Click_1(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(policeCategoryNameInput.Text))
-            {
-                errorProvider1.SetError(policeCategoryNameInput, "Не указано название!");
-            }
-            else if (policeCategoryNameInput.Text.Length < 4)
-            {
-                errorProvider1.SetError(policeCategoryNameInput, "Слишком короткое название!");
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
-        }
 
+        }
         private void registerClientButton_Click(object sender, EventArgs e)
         {
             RegisterClient cw = new RegisterClient();
@@ -99,7 +95,40 @@ namespace InsuranceCompany
             this.Close();
         }
 
-        private void registerPolice_Click(object sender, EventArgs e)
+        private void formPolice_Click(object sender, EventArgs e)
+        {
+            RegisterPolice cw = new RegisterPolice();
+            cw.Show();
+            this.Close();
+        }
+
+        private void clientType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            groupBoxIndividual.Visible = false;
+            groupBoxLegal.Visible = false;
+            if (clientType.SelectedItem.Equals("legal"))
+            {
+                groupBoxLegal.Visible = true;
+            }
+            if (clientType.SelectedItem.Equals("individual"))
+            {
+                groupBoxIndividual.Visible = true;
+            }
+        }
+
+        private void groupBoxIndividual_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void registerClient_Click(object sender, EventArgs e)
+        {
+            RegisterClient cw = new RegisterClient();
+            cw.Show();
+            this.Close();
+        }
+
+        private void registerPoliceMenu_Click(object sender, EventArgs e)
         {
             RegisterPolice cw = new RegisterPolice();
             cw.Show();

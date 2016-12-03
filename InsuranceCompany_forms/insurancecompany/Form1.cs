@@ -19,7 +19,7 @@ namespace InsuranceCompany
 
         private void client_Click(object sender, EventArgs e)
         {
-            ClientWelcome cw = new ClientWelcome();
+            LegalClientWelcome cw = new LegalClientWelcome();
             cw.Show();
       
         }
@@ -37,7 +37,8 @@ namespace InsuranceCompany
 
         private void legalMenu_Click(object sender, EventArgs e)
         {
-
+            LegalClientWelcome cw = new LegalClientWelcome();
+            cw.Show();
         }
 
         private void clientMenu_Click_1(object sender, EventArgs e)
@@ -54,6 +55,12 @@ namespace InsuranceCompany
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void individualMenu_Click(object sender, EventArgs e)
+        {
+            IndividualClientWelcome cw = new IndividualClientWelcome();
+            cw.Show();
         }
 
     }

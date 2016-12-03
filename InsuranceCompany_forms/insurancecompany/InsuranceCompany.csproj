@@ -32,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 5.0.9\Binaries\.NET 2.0\MySql.Data.dll</HintPath>
@@ -49,18 +51,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientInfo.cs">
+    <Compile Include="IndividualClientFormPayment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientInfo.Designer.cs">
-      <DependentUpon>ClientInfo.cs</DependentUpon>
+    <Compile Include="IndividualClientFormPayment.Designer.cs">
+      <DependentUpon>IndividualClientFormPayment.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientWelcome.cs">
+    <Compile Include="IndividualClientInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndividualClientInfo.Designer.cs">
+      <DependentUpon>IndividualClientInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndividualClientWelcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndividualClientWelcome.Designer.cs">
+      <DependentUpon>IndividualClientWelcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LegalClientInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LegalClientInfo.Designer.cs">
+      <DependentUpon>LegalClientInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LegalClientWelcome.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="ClientWelcome.Designer.cs">
-      <DependentUpon>ClientWelcome.cs</DependentUpon>
+    <Compile Include="LegalClientWelcome.Designer.cs">
+      <DependentUpon>LegalClientWelcome.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="entity\InsuranceCase.cs" />
@@ -98,25 +118,31 @@
     <Compile Include="InsurerWelcome.Designer.cs">
       <DependentUpon>InsurerWelcome.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNewPolice.cs">
+    <Compile Include="LegalClientFormPaymentRequest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNewPolice.Designer.cs">
-      <DependentUpon>FormNewPolice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormPaymentRequest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPaymentRequest.Designer.cs">
-      <DependentUpon>FormPaymentRequest.cs</DependentUpon>
+    <Compile Include="LegalClientFormPaymentRequest.Designer.cs">
+      <DependentUpon>LegalClientFormPaymentRequest.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShowAllClients.cs">
+    <Compile Include="RegisterClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowAllClients.Designer.cs">
-      <DependentUpon>ShowAllClients.cs</DependentUpon>
+    <Compile Include="RegisterClient.Designer.cs">
+      <DependentUpon>RegisterClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterPolice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterPolice.Designer.cs">
+      <DependentUpon>RegisterPolice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowAllClientInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowAllClientInfo.Designer.cs">
+      <DependentUpon>ShowAllClientInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowAllClientsPayments.cs">
       <SubType>Form</SubType>
@@ -124,23 +150,26 @@
     <Compile Include="ShowAllClientsPayments.Designer.cs">
       <DependentUpon>ShowAllClientsPayments.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowAllDocuments.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShowAllDocuments.Designer.cs">
-      <DependentUpon>ShowAllDocuments.cs</DependentUpon>
-    </Compile>
     <Compile Include="ShowAllPoliceCategories.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ShowAllPoliceCategories.Designer.cs">
       <DependentUpon>ShowAllPoliceCategories.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ClientInfo.resx">
-      <DependentUpon>ClientInfo.cs</DependentUpon>
+    <EmbeddedResource Include="IndividualClientFormPayment.resx">
+      <DependentUpon>IndividualClientFormPayment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientWelcome.resx">
-      <DependentUpon>ClientWelcome.cs</DependentUpon>
+    <EmbeddedResource Include="IndividualClientInfo.resx">
+      <DependentUpon>IndividualClientInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndividualClientWelcome.resx">
+      <DependentUpon>IndividualClientWelcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LegalClientInfo.resx">
+      <DependentUpon>LegalClientInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LegalClientWelcome.resx">
+      <DependentUpon>LegalClientWelcome.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -158,11 +187,8 @@
     <EmbeddedResource Include="InsurerWelcome.resx">
       <DependentUpon>InsurerWelcome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNewPolice.resx">
-      <DependentUpon>FormNewPolice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPaymentRequest.resx">
-      <DependentUpon>FormPaymentRequest.cs</DependentUpon>
+    <EmbeddedResource Include="LegalClientFormPaymentRequest.resx">
+      <DependentUpon>LegalClientFormPaymentRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -173,14 +199,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ShowAllClients.resx">
-      <DependentUpon>ShowAllClients.cs</DependentUpon>
+    <EmbeddedResource Include="RegisterClient.resx">
+      <DependentUpon>RegisterClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterPolice.resx">
+      <DependentUpon>RegisterPolice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowAllClientInfo.resx">
+      <DependentUpon>ShowAllClientInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowAllClientsPayments.resx">
       <DependentUpon>ShowAllClientsPayments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShowAllDocuments.resx">
-      <DependentUpon>ShowAllDocuments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowAllPoliceCategories.resx">
       <DependentUpon>ShowAllPoliceCategories.cs</DependentUpon>

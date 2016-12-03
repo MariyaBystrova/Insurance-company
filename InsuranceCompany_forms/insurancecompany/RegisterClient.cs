@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace InsuranceCompany
 {
-    public partial class ShowAllClients : Form
+    public partial class RegisterClient : Form
     {
-        public ShowAllClients()
+        public RegisterClient()
         {
             InitializeComponent();
+            groupBoxIndividual.Visible = false;
+            groupBoxLegal.Visible = false;
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -22,12 +24,33 @@ namespace InsuranceCompany
 
         }
 
-        private void ShowAllClients_Load(object sender, EventArgs e)
+        private void RegisterClient_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void registerNewInsuranceCase_Click(object sender, EventArgs e)
+        private void clientType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            groupBoxIndividual.Visible = false;
+            groupBoxLegal.Visible = false;
+            if (clientType.SelectedItem.Equals("legal"))
+            {
+                groupBoxLegal.Visible = true;
+            }
+            if (clientType.SelectedItem.Equals("individual"))
+            {
+                groupBoxIndividual.Visible = true;
+            }
+        }
+
+        private void registerClientButton_Click(object sender, EventArgs e)
+        {
+            RegisterClient cw = new RegisterClient();
+            cw.Show();
+            this.Close();
+        }
+
+        private void RegisterNewInsuranceCase_Click(object sender, EventArgs e)
         {
             FormNewInsuranceCase cw = new FormNewInsuranceCase();
             cw.Show();
@@ -41,9 +64,14 @@ namespace InsuranceCompany
             this.Close();
         }
 
+        private void InsurerWelcome_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void showAllClientsInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClients cw = new ShowAllClients();
+            ShowAllClientInfo cw = new ShowAllClientInfo();
             cw.Show();
             this.Close();
         }
@@ -71,7 +99,21 @@ namespace InsuranceCompany
 
         private void getClientInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClients cw = new ShowAllClients();
+            ShowAllClientInfo cw = new ShowAllClientInfo();
+            cw.Show();
+            this.Close();
+        }
+
+        private void formPolice_Click(object sender, EventArgs e)
+        {
+            RegisterPolice cw = new RegisterPolice();
+            cw.Show();
+            this.Close();
+        }
+
+        private void registerNewInsuranceCase_Click_1(object sender, EventArgs e)
+        {
+            FormNewInsuranceCase cw = new FormNewInsuranceCase();
             cw.Show();
             this.Close();
         }

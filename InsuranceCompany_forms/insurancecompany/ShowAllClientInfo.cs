@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace InsuranceCompany
 {
-    public partial class ShowAllDocuments : Form
+    public partial class ShowAllClientInfo : Form
     {
-        public ShowAllDocuments()
+        public ShowAllClientInfo()
         {
             InitializeComponent();
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ShowAllClients_Load(object sender, EventArgs e)
         {
 
         }
@@ -38,7 +43,7 @@ namespace InsuranceCompany
 
         private void showAllClientsInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClients cw = new ShowAllClients();
+            ShowAllClientInfo cw = new ShowAllClientInfo();
             cw.Show();
             this.Close();
         }
@@ -66,9 +71,24 @@ namespace InsuranceCompany
 
         private void getClientInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClients cw = new ShowAllClients();
+            ShowAllClientInfo cw = new ShowAllClientInfo();
             cw.Show();
             this.Close();
         }
+
+        private void registerClientButton_Click(object sender, EventArgs e)
+        {
+            RegisterClient cw = new RegisterClient();
+            cw.Show();
+            this.Close();
+        }
+
+        private void registerPolice_Click(object sender, EventArgs e)
+        {
+            RegisterPolice cw = new RegisterPolice();
+            cw.Show();
+            this.Close();
+        }
+
     }
 }

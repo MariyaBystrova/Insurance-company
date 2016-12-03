@@ -30,21 +30,24 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.registerPolice = new System.Windows.Forms.Button();
             this.registerNewInsuranceCase = new System.Windows.Forms.Button();
+            this.registerClientButton = new System.Windows.Forms.Button();
             this.registerNewPoliceCategory = new System.Windows.Forms.Button();
             this.showAllPoliceCategoriesAndCases = new System.Windows.Forms.Button();
             this.showAllClientsInfo = new System.Windows.Forms.Button();
             this.showAllClientPayments = new System.Windows.Forms.Button();
             this.formPayment = new System.Windows.Forms.Button();
             this.getClientInfo = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.clientType = new System.Windows.Forms.ComboBox();
             this.name = new System.Windows.Forms.ComboBox();
-            this.data = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -59,19 +62,21 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.data);
+            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Panel2.Controls.Add(this.clientType);
             this.splitContainer1.Panel2.Controls.Add(this.name);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(476, 310);
-            this.splitContainer1.SplitterDistance = 157;
+            this.splitContainer1.Size = new System.Drawing.Size(472, 392);
+            this.splitContainer1.SplitterDistance = 155;
             this.splitContainer1.TabIndex = 11;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.registerPolice, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.registerNewInsuranceCase, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.registerClientButton, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.registerNewPoliceCategory, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.showAllPoliceCategoriesAndCases, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.showAllClientsInfo, 0, 2);
@@ -80,7 +85,7 @@
             this.tableLayoutPanel1.Controls.Add(this.getClientInfo, 0, 6);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -88,8 +93,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(149, 304);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(149, 386);
             this.tableLayoutPanel1.TabIndex = 8;
+            // 
+            // registerPolice
+            // 
+            this.registerPolice.Location = new System.Drawing.Point(3, 346);
+            this.registerPolice.Name = "registerPolice";
+            this.registerPolice.Size = new System.Drawing.Size(144, 36);
+            this.registerPolice.TabIndex = 4;
+            this.registerPolice.Text = "Оформление полиса";
+            this.registerPolice.UseVisualStyleBackColor = true;
+            this.registerPolice.Click += new System.EventHandler(this.registerPolice_Click);
             // 
             // registerNewInsuranceCase
             // 
@@ -103,6 +120,16 @@
             this.registerNewInsuranceCase.UseVisualStyleBackColor = true;
             this.registerNewInsuranceCase.Click += new System.EventHandler(this.registerNewInsuranceCase_Click);
             // 
+            // registerClientButton
+            // 
+            this.registerClientButton.Location = new System.Drawing.Point(3, 304);
+            this.registerClientButton.Name = "registerClientButton";
+            this.registerClientButton.Size = new System.Drawing.Size(144, 36);
+            this.registerClientButton.TabIndex = 3;
+            this.registerClientButton.Text = "Зарегистрировать клиента";
+            this.registerClientButton.UseVisualStyleBackColor = true;
+            this.registerClientButton.Click += new System.EventHandler(this.registerClientButton_Click);
+            // 
             // registerNewPoliceCategory
             // 
             this.registerNewPoliceCategory.Location = new System.Drawing.Point(2, 44);
@@ -113,6 +140,7 @@
             this.registerNewPoliceCategory.Tag = "registerNewPoliceCategory";
             this.registerNewPoliceCategory.Text = "Зарегистрировать новую категорию полиса";
             this.registerNewPoliceCategory.UseVisualStyleBackColor = true;
+            this.registerNewPoliceCategory.Click += new System.EventHandler(this.registerNewPoliceCategory_Click);
             // 
             // showAllPoliceCategoriesAndCases
             // 
@@ -136,6 +164,7 @@
             this.showAllClientsInfo.Tag = "showAllClientsInfo";
             this.showAllClientsInfo.Text = "Показать информацию о клиентах и полисах";
             this.showAllClientsInfo.UseVisualStyleBackColor = true;
+            this.showAllClientsInfo.Click += new System.EventHandler(this.showAllClientsInfo_Click);
             // 
             // showAllClientPayments
             // 
@@ -173,6 +202,14 @@
             this.getClientInfo.UseVisualStyleBackColor = true;
             this.getClientInfo.Click += new System.EventHandler(this.getClientInfo_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 33);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(308, 352);
+            this.dataGridView1.TabIndex = 2;
+            // 
             // clientType
             // 
             this.clientType.AccessibleRole = System.Windows.Forms.AccessibleRole.DropList;
@@ -198,28 +235,20 @@
             this.name.TabIndex = 0;
             this.name.SelectedIndexChanged += new System.EventHandler(this.name_SelectedIndexChanged);
             // 
-            // data
-            // 
-            this.data.FormattingEnabled = true;
-            this.data.Location = new System.Drawing.Point(3, 47);
-            this.data.Name = "data";
-            this.data.Size = new System.Drawing.Size(309, 251);
-            this.data.TabIndex = 2;
-            this.data.SelectedIndexChanged += new System.EventHandler(this.data_SelectedIndexChanged);
-            // 
             // ShowAllClientsPayments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 334);
+            this.ClientSize = new System.Drawing.Size(491, 406);
             this.Controls.Add(this.splitContainer1);
             this.Name = "ShowAllClientsPayments";
-            this.Text = "ShowAllClientsPayments";
+            this.Text = "Страховщик: выплаты клиента";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -237,6 +266,8 @@
         private System.Windows.Forms.Button getClientInfo;
         private System.Windows.Forms.ComboBox name;
         private System.Windows.Forms.ComboBox clientType;
-        private System.Windows.Forms.ListBox data;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button registerPolice;
+        private System.Windows.Forms.Button registerClientButton;
     }
 }

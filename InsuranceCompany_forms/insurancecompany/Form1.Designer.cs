@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.client = new System.Windows.Forms.Button();
-            this.insurer = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.chooseUser = new System.Windows.Forms.ToolStripDropDownButton();
             this.clientMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,28 +38,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // client
-            // 
-            this.client.Location = new System.Drawing.Point(104, 67);
-            this.client.Name = "client";
-            this.client.Size = new System.Drawing.Size(300, 80);
-            this.client.TabIndex = 0;
-            this.client.Tag = "client";
-            this.client.Text = "Client";
-            this.client.UseVisualStyleBackColor = true;
-            this.client.Click += new System.EventHandler(this.client_Click);
-            // 
-            // insurer
-            // 
-            this.insurer.Location = new System.Drawing.Point(104, 186);
-            this.insurer.Name = "insurer";
-            this.insurer.Size = new System.Drawing.Size(300, 80);
-            this.insurer.TabIndex = 1;
-            this.insurer.Tag = "insurer";
-            this.insurer.Text = "Insurer";
-            this.insurer.UseVisualStyleBackColor = true;
-            this.insurer.Click += new System.EventHandler(this.insurer_Click);
             // 
             // toolStrip1
             // 
@@ -110,6 +86,7 @@
             this.individualMenu.Name = "individualMenu";
             this.individualMenu.Size = new System.Drawing.Size(182, 22);
             this.individualMenu.Text = "Физическое лицо";
+            this.individualMenu.Click += new System.EventHandler(this.individualMenu_Click);
             // 
             // insurerMenu
             // 
@@ -121,9 +98,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(202, 167);
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(130, 133);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.Size = new System.Drawing.Size(279, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "Страховая компания";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -135,10 +113,8 @@
             this.ClientSize = new System.Drawing.Size(532, 351);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.insurer);
-            this.Controls.Add(this.client);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Страховая компания";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -148,8 +124,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button client;
-        private System.Windows.Forms.Button insurer;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton chooseUser;
         private System.Windows.Forms.ToolStripMenuItem clientMenu;
