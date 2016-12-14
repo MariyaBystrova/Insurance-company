@@ -9,7 +9,7 @@ namespace InsuranceCompany.entity
     class LegalPerson
     {
         private String companyName;
-        private int uniqueNumber;
+        private String uniqueNumber;
         private String directorName;
         private String directorSecondName;
         private String directorSurname;
@@ -21,7 +21,7 @@ namespace InsuranceCompany.entity
 
         public LegalPerson() { }
 
-        public LegalPerson(String companyName, int uniqueNumber, String directorName, String directorSecondName, String directorSurname, String accountantName, String accountantSecondName, String accountantSurname, String companyAddress, String companyPhoneNumber)
+        public LegalPerson(String companyName, String uniqueNumber, String directorName, String directorSecondName, String directorSurname, String accountantName, String accountantSecondName, String accountantSurname, String companyAddress, String companyPhoneNumber)
         {
             this.companyName = companyName;
             this.uniqueNumber = uniqueNumber;
@@ -90,7 +90,7 @@ namespace InsuranceCompany.entity
             set { companyName = value; }
         }
         
-        public int UniqueNumber
+        public String UniqueNumber
         {
             get { return uniqueNumber; }
             set { uniqueNumber = value; }

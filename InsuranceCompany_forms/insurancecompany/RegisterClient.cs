@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InsuranceCompany.entity;
+using InsuranceCompany.insuranceCompany.command;
 
 namespace InsuranceCompany
 {
@@ -172,6 +174,20 @@ namespace InsuranceCompany
 
         private void submitLegalPerson_Click(object sender, EventArgs e)
         {
+            LegalPerson legalPerson = new LegalPerson();
+            legalPerson.CompanyName = companyNameInput.Text;
+            legalPerson.UniqueNumber = taxUniqueNumberInput.Text;
+            legalPerson.DirectorName = directorNameInput.Text;
+            legalPerson.DirectorSecondName = directorSecondNameInput.Text;
+            legalPerson.DirectorSurname = directorSurnameInput.Text;
+            legalPerson.AccountantName = accountantNameInput.Text;
+            legalPerson.AccountantSecondName = accountantSecondNameInput.Text;
+            legalPerson.AccountantSurname = accountantSurnameInput.Text;
+            legalPerson.CompanyAddress = companyAddressInput.Text;
+            legalPerson.CompanyPhoneNumber = companyPhoneNumberInput.Text;
+
+            RegisterNewLegalPersonCommand command = new RegisterNewLegalPersonCommand();
+            bool result = command.registerNewLegalPerson(legalPerson);
 
         }
 
@@ -244,7 +260,28 @@ namespace InsuranceCompany
 
         private void submitIndividual_Click(object sender, EventArgs e)
         {
+            Individual individualPerson = new Individual();
+            individualPerson.Name = nameInput.Text;
+            individualPerson.SecondName = secondNameInput.Text;
+            individualPerson.Surname = surnameInput.Text;
+            individualPerson.BirthDate = dateOfBirthInput.Value;
 
+            if (male.Checked)
+            {
+                individualPerson.Sex = male.Text;
+            }
+            else { 
+                individualPerson.Sex = female.Text;
+            }
+            individualPerson.Photo = photoPathInput.Text;
+            individualPerson.DrivingExperience = (int)drivingExperienceInput.Value;
+            individualPerson.Address = addressInput.Text;
+            individualPerson.PhoneNumber = phoneNumberInput.Text;
+
+            RegisterNewIndividualPersonCommand command = new RegisterNewIndividualPersonCommand();
+            command.registerIndividualPerson(individualPerson);
+            
+           
         }
 
     }

@@ -4,21 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InsuranceCompany.entity;
 
 namespace InsuranceCompany.insuranceCompany.command
 {
     class RegisterNewLegalPersonCommand
     {
-        public bool registerNewLegalPerson(RegisterNewLegalPersonCommand legalPerson)
+        public bool registerNewLegalPerson(LegalPerson legalPerson)
         {
             bool result = true;
-            //if (!Validator.validateNewInsuranceCategoryInfo(categoryName))
-            //{
-            //    throw new ArgumentException();
-            //}
 
             InsurerDAO insurerDAO = new InsurerDAO();
-          //  result = insurerDAO.registerNewInsuranceCategory(categoryName);
+            result = insurerDAO.registerLegalPerson(legalPerson);
 
             return result;
         }
