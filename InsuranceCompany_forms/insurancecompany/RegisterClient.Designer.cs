@@ -262,6 +262,7 @@
             this.clientType.Name = "clientType";
             this.clientType.Size = new System.Drawing.Size(121, 21);
             this.clientType.TabIndex = 0;
+            this.clientType.Text = "Выберите клиента";
             this.clientType.SelectedIndexChanged += new System.EventHandler(this.clientType_SelectedIndexChanged);
             // 
             // groupBoxLegal

@@ -138,7 +138,9 @@ namespace InsuranceCompany
 //legal person
         private void registerLegalPersonLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            RegisterClient cw = new RegisterClient();
+            cw.Show();
+            //groupBoxLegal.Visible = true;
         }
 
         private void insurerComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,7 +227,9 @@ namespace InsuranceCompany
 
         private void registerIndividuaLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            RegisterClient cw = new RegisterClient();
+            cw.Show();
+            //groupBoxIndividual.Visible = true;
         }
 
        
