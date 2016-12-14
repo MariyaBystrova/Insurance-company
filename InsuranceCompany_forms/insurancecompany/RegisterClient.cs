@@ -33,11 +33,11 @@ namespace InsuranceCompany
         {
             groupBoxIndividual.Visible = false;
             groupBoxLegal.Visible = false;
-            if (clientType.SelectedItem.Equals("legal"))
+            if (clientType.SelectedItem.Equals("юр. лицо"))
             {
                 groupBoxLegal.Visible = true;
             }
-            if (clientType.SelectedItem.Equals("individual"))
+            if (clientType.SelectedItem.Equals("физ. лицо"))
             {
                 groupBoxIndividual.Visible = true;
             }
@@ -118,48 +118,134 @@ namespace InsuranceCompany
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+
+//LegalPersonForm
+        private void companyNameInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void taxUniqueNumberInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void directorNameInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void directorSecondNameInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void directorSurnameInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void accountantNameInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void accountantSecondNameInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void accountantSurnameInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void companyAddressInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void companyPhoneNumberInput_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         private void submitLegalPerson_Click(object sender, EventArgs e)
         {
-            //companyName
-            //textBox2
-            //directorName
-            //textBox1
 
         }
 
-        private void companyName_TextChanged(object sender, EventArgs e)
+//
+
+
+//Individual
+
+        private void nameInput_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void secondNameInput_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void directorName_TextChanged(object sender, EventArgs e)
+        private void surnameInput_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void dateOfBirthInput_ValueChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void male_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void clientName_TextChanged(object sender, EventArgs e)
+        private void female_CheckedChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void photoPathInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void findPhotoButton_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = openFileDialog1.FileName;
+            // читаем файл в строку
+            //  string fileText = System.IO.File.ReadAllText(filename);
+            photoPathInput.Text = filename;
+            //MessageBox.Show("Файл открыт");
+        }
+
+        private void drivingExperienceInput_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addressInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void phoneNumberInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void submitIndividual_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

@@ -106,11 +106,11 @@ namespace InsuranceCompany
         {
             groupBoxIndividual.Visible = false;
             groupBoxLegal.Visible = false;
-            if (clientType.SelectedItem.Equals("legal"))
+            if (clientType.SelectedItem.Equals("юр. лицо"))
             {
                 groupBoxLegal.Visible = true;
             }
-            if (clientType.SelectedItem.Equals("individual"))
+            if (clientType.SelectedItem.Equals("физ. лицо"))
             {
                 groupBoxIndividual.Visible = true;
             }
@@ -134,5 +134,100 @@ namespace InsuranceCompany
             cw.Show();
             this.Close();
         }
+
+//legal person
+        private void registerLegalPersonLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void insurerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void policeCategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void companyComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void policeCoastNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void policeAmountNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void startDateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void endDateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void submitLegal_Click(object sender, EventArgs e)
+        {
+
+        }
+//
+
+//individual
+        private void insurerIdIndividualComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void policeCategoryIndividualComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fslNameIndividualComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void policeCoastIndividualNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void policeAmountIndividualNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void startDateIndividualDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void endDateIndividualDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonIndividual_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void registerIndividuaLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+       
     }
 }
