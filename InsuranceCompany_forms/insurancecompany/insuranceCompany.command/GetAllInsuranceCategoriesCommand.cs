@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace InsuranceCompany.insuranceCompany.command
 {
-    class GetAllInsuranceCasesCommand
-    {
-        public List<InsuranceCase> getAllInsuranceCases()
+    class GetAllInsuranceCategoriesCommand{
+    
+          public List<InsuranceCategory> getAllInsuranceCategories()
         {
-            List<InsuranceCase> caseList = new List<InsuranceCase>();
+            List<InsuranceCategory> categoryList = new List<InsuranceCategory>();
             InsurerDAO insurerDAO = new InsurerDAO();
-            caseList = insurerDAO.getAllInsuranceCases();
-            return caseList;
+            categoryList = insurerDAO.getAllPoliceCategories();
+            return categoryList;
         }
     }
 }

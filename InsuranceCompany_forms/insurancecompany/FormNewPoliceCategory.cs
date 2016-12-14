@@ -1,4 +1,7 @@
-﻿using System;
+﻿using InsuranceCompany.entity;
+using InsuranceCompany.insuranceCompany.command;
+using InsuranceCompany.insuranceCompany.DAO.impl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -104,6 +107,13 @@ namespace InsuranceCompany
             RegisterPolice cw = new RegisterPolice();
             cw.Show();
             this.Close();
+        }
+
+        private void submit_Click(object sender, EventArgs e)
+        {
+            String categoryName = policeCategoryNameInput.Text;
+            RegisterNewInsuranceCategoryCommand command = new RegisterNewInsuranceCategoryCommand();
+            command.registerNewInsuranceCategory(categoryName);
         }
     }
 }

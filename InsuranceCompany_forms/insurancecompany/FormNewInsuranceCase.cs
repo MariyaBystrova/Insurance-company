@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using InsuranceCompany.entity;
 using System.Diagnostics;
 using InsuranceCompany.insuranceCompany.command;
+using InsuranceCompany.insuranceCompany.DAO.impl;
 
 namespace InsuranceCompany
 {
@@ -18,6 +19,11 @@ namespace InsuranceCompany
         public FormNewInsuranceCase()
         {
             InitializeComponent();
+            GetAllInsuranceCategoriesCommand command = new GetAllInsuranceCategoriesCommand();
+           List<InsuranceCategory> categoryList = command.getAllInsuranceCategories();
+          
+               insurancePoliceDropDown.Items.AddRange(categoryList.ToArray());
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -119,10 +125,22 @@ namespace InsuranceCompany
         private void submit_Click(object sender, EventArgs e)
         {
             InsuranceCase insuranceCase = new InsuranceCase();
-            insuranceCase.setInsuranceCaseName(insuranceCaseNameInput.Text);
-            insuranceCase.setPaymentProcent(paymentProcentInput.Value);
+            insuranceCase.InsuranceCaseName = insuranceCaseNameInput.Text;
+            insuranceCase.PaymentProcent = paymentProcentInput.Value;
+           
+            
+                InsuranceCategory category = (InsuranceCategory)insurancePoliceDropDown.SelectedItem;
+                insuranceCase.InsuranceCategory = category;
+               
+           
+            
             RegisterNewInsuranceCaseCommand command = new RegisterNewInsuranceCaseCommand();
             command.registerNewInsuranceCase(insuranceCase);
+
+            insuranceCaseNameInput.Clear();
+            insurancePoliceDropDown.ResetText();
+            paymentProcentInput.ResetText();
+
         }
 
         private void paymentProcentInput_ValueChanged(object sender, EventArgs e)
@@ -145,6 +163,11 @@ namespace InsuranceCompany
         }
 
         private void reisterNewInsuranseCaseBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void insurancePoliceDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

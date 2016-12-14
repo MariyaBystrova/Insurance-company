@@ -53,6 +53,7 @@ namespace InsuranceCompany
         private void showAllPoliceCategoriesAndCases_Click(object sender, EventArgs e)
         {
             ShowAllPoliceCategories cw = new ShowAllPoliceCategories();
+          
             cw.Show();
             this.Close();
         }

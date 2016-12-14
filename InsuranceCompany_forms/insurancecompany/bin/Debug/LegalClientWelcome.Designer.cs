@@ -42,7 +42,8 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(12, 12);
+            this.splitContainer1.Location = new System.Drawing.Point(18, 18);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -54,8 +55,9 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(480, 305);
-            this.splitContainer1.SplitterDistance = 158;
+            this.splitContainer1.Size = new System.Drawing.Size(720, 469);
+            this.splitContainer1.SplitterDistance = 236;
+            this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 10;
             // 
             // tableLayoutPanel1
@@ -64,21 +66,23 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.getClientInfo, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.formPaymentRequest, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 5);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(151, 98);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(226, 151);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // getClientInfo
             // 
-            this.getClientInfo.Location = new System.Drawing.Point(3, 3);
+            this.getClientInfo.Location = new System.Drawing.Point(4, 5);
+            this.getClientInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.getClientInfo.Name = "getClientInfo";
-            this.getClientInfo.Size = new System.Drawing.Size(145, 43);
+            this.getClientInfo.Size = new System.Drawing.Size(218, 66);
             this.getClientInfo.TabIndex = 0;
             this.getClientInfo.Tag = "getClientInfo";
             this.getClientInfo.Text = "Показать всю информацию по клиенту";
@@ -87,9 +91,10 @@
             // 
             // formPaymentRequest
             // 
-            this.formPaymentRequest.Location = new System.Drawing.Point(3, 52);
+            this.formPaymentRequest.Location = new System.Drawing.Point(4, 81);
+            this.formPaymentRequest.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.formPaymentRequest.Name = "formPaymentRequest";
-            this.formPaymentRequest.Size = new System.Drawing.Size(145, 41);
+            this.formPaymentRequest.Size = new System.Drawing.Size(218, 63);
             this.formPaymentRequest.TabIndex = 2;
             this.formPaymentRequest.Tag = "formPaymentRequest";
             this.formPaymentRequest.Text = "Оформить обращение за выплатой";
@@ -100,19 +105,22 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(24, 129);
+            this.label1.Location = new System.Drawing.Point(36, 198);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(270, 20);
+            this.label1.Size = new System.Drawing.Size(417, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Выберите необходимую операцию";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LegalClientWelcome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(505, 330);
+            this.ClientSize = new System.Drawing.Size(758, 508);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LegalClientWelcome";
             this.Text = "Юр. лицо: начальная страница";
             this.splitContainer1.Panel1.ResumeLayout(false);

@@ -51,6 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="entity\Client.cs" />
+    <Compile Include="entity\Individual.cs" />
+    <Compile Include="entity\InsuranceCategory.cs" />
+    <Compile Include="entity\InsurancePolicy.cs" />
+    <Compile Include="entity\Insurer.cs" />
+    <Compile Include="entity\LegalPerson.cs" />
+    <Compile Include="entity\PolicyPayment.cs" />
     <Compile Include="IndividualClientFormPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +76,9 @@
     <Compile Include="IndividualClientWelcome.Designer.cs">
       <DependentUpon>IndividualClientWelcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="insuranceCompany.command\GetAllInsuranceCategoriesCommand.cs" />
+    <Compile Include="insuranceCompany.command\RegisterNewInsuranceCategoryCommand.cs" />
+    <Compile Include="insuranceCompany.command\RegisterNewLegalPersonCommand.cs" />
     <Compile Include="LegalClientInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,7 +118,7 @@
     <Compile Include="FormPaymentAdmin.Designer.cs">
       <DependentUpon>FormPaymentAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="insuranceCompany.command\getAllInsuranceCasesCommand.cs" />
+    <Compile Include="insuranceCompany.command\GetAllInsuranceCasesCommand.cs" />
     <Compile Include="insuranceCompany.command\RegisterNewInsuranceCaseCommand.cs" />
     <Compile Include="insuranceCompany.command\utils\Validator.cs" />
     <Compile Include="insuranceCompany.DAO.impl\InsurerDAO.cs" />

@@ -44,7 +44,8 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(12, 12);
+            this.splitContainer1.Location = new System.Drawing.Point(18, 18);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -57,8 +58,9 @@
             this.splitContainer1.Panel2.Controls.Add(this.name);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(480, 305);
-            this.splitContainer1.SplitterDistance = 158;
+            this.splitContainer1.Size = new System.Drawing.Size(720, 469);
+            this.splitContainer1.SplitterDistance = 236;
+            this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 12;
             // 
             // tableLayoutPanel1
@@ -67,20 +69,22 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.formPaymentRequest, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.getClientInfo, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 5);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(151, 96);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(226, 148);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // formPaymentRequest
             // 
-            this.formPaymentRequest.Location = new System.Drawing.Point(3, 52);
+            this.formPaymentRequest.Location = new System.Drawing.Point(4, 81);
+            this.formPaymentRequest.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.formPaymentRequest.Name = "formPaymentRequest";
-            this.formPaymentRequest.Size = new System.Drawing.Size(145, 41);
+            this.formPaymentRequest.Size = new System.Drawing.Size(218, 62);
             this.formPaymentRequest.TabIndex = 2;
             this.formPaymentRequest.Tag = "formPaymentRequest";
             this.formPaymentRequest.Text = "Оформить обращение за выплатой";
@@ -89,9 +93,10 @@
             // 
             // getClientInfo
             // 
-            this.getClientInfo.Location = new System.Drawing.Point(3, 3);
+            this.getClientInfo.Location = new System.Drawing.Point(4, 5);
+            this.getClientInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.getClientInfo.Name = "getClientInfo";
-            this.getClientInfo.Size = new System.Drawing.Size(145, 43);
+            this.getClientInfo.Size = new System.Drawing.Size(218, 66);
             this.getClientInfo.TabIndex = 0;
             this.getClientInfo.Tag = "getClientInfo";
             this.getClientInfo.Text = "Показать всю информацию по клиенту";
@@ -104,25 +109,29 @@
             this.name.Items.AddRange(new object[] {
             "dsds",
             "sa"});
-            this.name.Location = new System.Drawing.Point(6, 6);
+            this.name.Location = new System.Drawing.Point(9, 9);
+            this.name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(145, 21);
+            this.name.Size = new System.Drawing.Size(216, 28);
             this.name.TabIndex = 5;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 33);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 51);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(309, 270);
+            this.dataGridView1.Size = new System.Drawing.Size(464, 415);
             this.dataGridView1.TabIndex = 4;
             // 
             // IndividualClientInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 329);
+            this.ClientSize = new System.Drawing.Size(754, 506);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "IndividualClientInfo";
             this.Text = "Физ. лицо: показать всю информацию";
             this.splitContainer1.Panel1.ResumeLayout(false);

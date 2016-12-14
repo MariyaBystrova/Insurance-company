@@ -51,15 +51,15 @@
             this.policeNumber.AutoSize = true;
             this.policeNumber.Location = new System.Drawing.Point(27, 36);
             this.policeNumber.Name = "policeNumber";
-            this.policeNumber.Size = new System.Drawing.Size(98, 13);
+            this.policeNumber.Size = new System.Drawing.Size(145, 20);
             this.policeNumber.TabIndex = 6;
             this.policeNumber.Text = "Страховой номер:";
             // 
             // policeNumberInput
             // 
-            this.policeNumberInput.Location = new System.Drawing.Point(145, 33);
+            this.policeNumberInput.Location = new System.Drawing.Point(183, 36);
             this.policeNumberInput.Name = "policeNumberInput";
-            this.policeNumberInput.Size = new System.Drawing.Size(100, 20);
+            this.policeNumberInput.Size = new System.Drawing.Size(131, 26);
             this.policeNumberInput.TabIndex = 7;
             this.policeNumberInput.Tag = "policeNumber";
             // 
@@ -68,15 +68,15 @@
             this.InsuranseCase.AutoSize = true;
             this.InsuranseCase.Location = new System.Drawing.Point(27, 75);
             this.InsuranseCase.Name = "InsuranseCase";
-            this.InsuranseCase.Size = new System.Drawing.Size(100, 13);
+            this.InsuranseCase.Size = new System.Drawing.Size(150, 20);
             this.InsuranseCase.TabIndex = 8;
             this.InsuranseCase.Text = "Страховой случай:";
             // 
             // submitPaymentRequest
             // 
-            this.submitPaymentRequest.Location = new System.Drawing.Point(170, 120);
+            this.submitPaymentRequest.Location = new System.Drawing.Point(214, 126);
             this.submitPaymentRequest.Name = "submitPaymentRequest";
-            this.submitPaymentRequest.Size = new System.Drawing.Size(75, 23);
+            this.submitPaymentRequest.Size = new System.Drawing.Size(100, 32);
             this.submitPaymentRequest.TabIndex = 10;
             this.submitPaymentRequest.Tag = "submitPaymentRequest";
             this.submitPaymentRequest.Text = "Оформить";
@@ -96,8 +96,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBoxFormPayment);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(480, 305);
-            this.splitContainer1.SplitterDistance = 158;
+            this.splitContainer1.Size = new System.Drawing.Size(574, 417);
+            this.splitContainer1.SplitterDistance = 188;
             this.splitContainer1.TabIndex = 11;
             // 
             // tableLayoutPanel1
@@ -112,14 +112,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(151, 98);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(181, 153);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // getClientInfo
             // 
             this.getClientInfo.Location = new System.Drawing.Point(3, 3);
             this.getClientInfo.Name = "getClientInfo";
-            this.getClientInfo.Size = new System.Drawing.Size(145, 43);
+            this.getClientInfo.Size = new System.Drawing.Size(175, 72);
             this.getClientInfo.TabIndex = 0;
             this.getClientInfo.Tag = "getClientInfo";
             this.getClientInfo.Text = "Показать всю информацию по клиенту";
@@ -128,9 +128,9 @@
             // 
             // formPaymentRequest
             // 
-            this.formPaymentRequest.Location = new System.Drawing.Point(3, 52);
+            this.formPaymentRequest.Location = new System.Drawing.Point(3, 81);
             this.formPaymentRequest.Name = "formPaymentRequest";
-            this.formPaymentRequest.Size = new System.Drawing.Size(145, 41);
+            this.formPaymentRequest.Size = new System.Drawing.Size(175, 68);
             this.formPaymentRequest.TabIndex = 2;
             this.formPaymentRequest.Tag = "formPaymentRequest";
             this.formPaymentRequest.Text = "Оформить обращение за выплатой";
@@ -146,7 +146,7 @@
             this.groupBoxFormPayment.Controls.Add(this.InsuranseCase);
             this.groupBoxFormPayment.Location = new System.Drawing.Point(20, 22);
             this.groupBoxFormPayment.Name = "groupBoxFormPayment";
-            this.groupBoxFormPayment.Size = new System.Drawing.Size(278, 191);
+            this.groupBoxFormPayment.Size = new System.Drawing.Size(347, 230);
             this.groupBoxFormPayment.TabIndex = 0;
             this.groupBoxFormPayment.TabStop = false;
             this.groupBoxFormPayment.Text = "Обращение за выплатой";
@@ -154,15 +154,16 @@
             // insuranseCaseInput
             // 
             this.insuranseCaseInput.FormattingEnabled = true;
-            this.insuranseCaseInput.Location = new System.Drawing.Point(145, 72);
+            this.insuranseCaseInput.Location = new System.Drawing.Point(183, 75);
             this.insuranseCaseInput.Name = "insuranseCaseInput";
-            this.insuranseCaseInput.Size = new System.Drawing.Size(100, 21);
+            this.insuranseCaseInput.Size = new System.Drawing.Size(131, 28);
             this.insuranseCaseInput.TabIndex = 11;
             // 
             // LegalClientFormPaymentRequest
             // 
-            this.ClientSize = new System.Drawing.Size(499, 327);
+            this.ClientSize = new System.Drawing.Size(598, 441);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LegalClientFormPaymentRequest";
             this.Text = "Юр. лицо: оформление обращения за выплатой";
             this.Load += new System.EventHandler(this.FormPaymentRequest_Load);

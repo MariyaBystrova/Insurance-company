@@ -117,5 +117,49 @@ namespace InsuranceCompany
             cw.Show();
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void submitLegalPerson_Click(object sender, EventArgs e)
+        {
+            //companyName
+            //textBox2
+            //directorName
+            //textBox1
+
+        }
+
+        private void companyName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void directorName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clientName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
