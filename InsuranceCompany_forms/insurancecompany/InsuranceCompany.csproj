@@ -82,11 +82,14 @@
     <Compile Include="IndividualClientWelcome.Designer.cs">
       <DependentUpon>IndividualClientWelcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="insuranceCompany.command\GetAllIndividualClients.cs" />
     <Compile Include="insuranceCompany.command\GetAllInsuranceCategoriesCommand.cs" />
+    <Compile Include="insuranceCompany.command\GetAllInsurers.cs" />
     <Compile Include="insuranceCompany.command\GetAllLegalClientsInfo.cs" />
     <Compile Include="insuranceCompany.command\RegisterNewIndividualPersonCommand.cs" />
     <Compile Include="insuranceCompany.command\RegisterNewInsuranceCategoryCommand.cs" />
     <Compile Include="insuranceCompany.command\RegisterNewLegalPersonCommand.cs" />
+    <Compile Include="insuranceCompany.command\RegisterNewPolice.cs" />
     <Compile Include="LegalClientInfo.cs">
       <SubType>Form</SubType>
     </Compile>

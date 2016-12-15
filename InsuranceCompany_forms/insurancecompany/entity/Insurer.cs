@@ -13,6 +13,7 @@ namespace InsuranceCompany.entity
         private String secondName;
         private String surname;
         private String phoneNumber;
+        private String ssn;
         private String address;
 
         public Insurer() { }
@@ -35,6 +36,12 @@ namespace InsuranceCompany.entity
             this.phoneNumber = phoneNumber;
             this.address = address;
         }
+
+        public override string ToString()
+        {
+            return surname +" " + name+ " "+secondName;
+        }
+       
 
         public int Id
         {
@@ -64,6 +71,12 @@ namespace InsuranceCompany.entity
         {
             get { return phoneNumber; }
             set { phoneNumber = value; }
+        }
+
+        public String Ssn
+        {
+            get { return ssn; }
+            set { ssn = value; }
         }
 
         public String Address

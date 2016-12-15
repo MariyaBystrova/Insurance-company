@@ -19,10 +19,10 @@ namespace InsuranceCompany
         public FormNewInsuranceCase()
         {
             InitializeComponent();
+            
             GetAllInsuranceCategoriesCommand command = new GetAllInsuranceCategoriesCommand();
-           List<InsuranceCategory> categoryList = command.getAllInsuranceCategories();
-          
-               insurancePoliceDropDown.Items.AddRange(categoryList.ToArray());
+            List<InsuranceCategory> categoryList = command.getAllInsuranceCategories();
+            insurancePoliceDropDown.Items.AddRange(categoryList.ToArray());
            
         }
 
@@ -129,17 +129,26 @@ namespace InsuranceCompany
             insuranceCase.PaymentProcent = paymentProcentInput.Value;
            
             
-                InsuranceCategory category = (InsuranceCategory)insurancePoliceDropDown.SelectedItem;
-                insuranceCase.InsuranceCategory = category;
+            InsuranceCategory category = (InsuranceCategory)insurancePoliceDropDown.SelectedItem;
+            insuranceCase.InsuranceCategory = category;
                
            
             
             RegisterNewInsuranceCaseCommand command = new RegisterNewInsuranceCaseCommand();
-            command.registerNewInsuranceCase(insuranceCase);
+            bool result = command.registerNewInsuranceCase(insuranceCase);
 
-            insuranceCaseNameInput.Clear();
-            insurancePoliceDropDown.ResetText();
-            paymentProcentInput.ResetText();
+            if (result == true)
+            {
+                insuranceCaseNameInput.Clear();
+                insurancePoliceDropDown.ResetText();
+                paymentProcentInput.ResetText();
+                resultLabel.Text = "Новый страховой случай успешно зарегистрирован.";
+            }
+            if (result == false)
+            {
+                resultLabel.Text = "Не удалось зарегистрировать новый страховой случай.";
+            }
+            
 
         }
 

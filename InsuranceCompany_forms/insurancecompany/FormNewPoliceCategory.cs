@@ -113,7 +113,21 @@ namespace InsuranceCompany
         {
             String categoryName = policeCategoryNameInput.Text;
             RegisterNewInsuranceCategoryCommand command = new RegisterNewInsuranceCategoryCommand();
-            command.registerNewInsuranceCategory(categoryName);
+            bool result = command.registerNewInsuranceCategory(categoryName);
+            if (result==true)
+            {
+                policeCategoryNameInput.Clear();
+                resultLabel.Text = "Новая категория полиса успешно зарегистрирована.";
+            }
+            if(result==false)
+            {
+                resultLabel.Text = "Не удалось зарегистрировать новую категорию полиса.";
+            }
+        }
+
+        private void resultLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

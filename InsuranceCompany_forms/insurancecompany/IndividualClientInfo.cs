@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InsuranceCompany.insuranceCompany.DAO.impl;
+using InsuranceCompany.insuranceCompany.command;
+using InsuranceCompany.entity;
 
 namespace InsuranceCompany
 {
@@ -15,6 +18,10 @@ namespace InsuranceCompany
         public IndividualClientInfo()
         {
             InitializeComponent();
+
+            GetAllIndividualClients command = new GetAllIndividualClients();
+            List<Individual> individualList = command.getAllLegalPersonInfo();
+            name.Items.AddRange(individualList.ToArray());
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -34,6 +41,11 @@ namespace InsuranceCompany
             IndividualClientFormPayment cw = new IndividualClientFormPayment();
             cw.Show();
             this.Close();
+        }
+
+        private void name_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           // name.SelectedItem.Equals();
         }
     }
 }

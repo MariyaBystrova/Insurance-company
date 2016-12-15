@@ -8,14 +8,15 @@ using InsuranceCompany.insuranceCompany.DAO.impl;
 
 namespace InsuranceCompany.insuranceCompany.command
 {
-    class GetAllLegalClientsInfo
+    class GetAllInsurers
     {
-        public List<LegalPerson> getAllLegalPersonInfo()
+        public List<Insurer> getAllInsurers()
         {
-            List<LegalPerson> legalPersonList = null;
+            List<Insurer> insurerList = null;
             InsurerDAO insurerDAO = new InsurerDAO();
-            legalPersonList = insurerDAO.getAllLegalPersonInfo();
-            return legalPersonList;
+            insurerList = insurerDAO.getAllInsurersInfo();
+
+            return insurerList;
         }
     }
 }

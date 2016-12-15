@@ -207,23 +207,23 @@
             this.clientType.AccessibleRole = System.Windows.Forms.AccessibleRole.DropList;
             this.clientType.FormattingEnabled = true;
             this.clientType.Items.AddRange(new object[] {
-            "legal client",
-            "individual client"});
+            "юр. лицо",
+            "физ. лицо"});
             this.clientType.Location = new System.Drawing.Point(3, 5);
             this.clientType.Name = "clientType";
             this.clientType.Size = new System.Drawing.Size(146, 21);
             this.clientType.TabIndex = 3;
+            this.clientType.Text = "Выберите тип клиента";
+            this.clientType.SelectedIndexChanged += new System.EventHandler(this.clientType_SelectedIndexChanged);
             // 
             // name
             // 
             this.name.FormattingEnabled = true;
-            this.name.Items.AddRange(new object[] {
-            "dsds",
-            "sa"});
             this.name.Location = new System.Drawing.Point(164, 5);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(145, 21);
             this.name.TabIndex = 2;
+            this.name.SelectedIndexChanged += new System.EventHandler(this.name_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
@@ -240,6 +240,7 @@
             this.ClientSize = new System.Drawing.Size(493, 407);
             this.Controls.Add(this.splitContainer1);
             this.Name = "ShowAllClientInfo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Страховщик: вся информация по клиенту";
             this.Load += new System.EventHandler(this.ShowAllClients_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);

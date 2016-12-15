@@ -18,22 +18,28 @@ namespace InsuranceCompany
 
         private BindingList<InsuranceCase> caseList;
 
-        /*  public List<InsuranceCase> getCaseList() {
-              return this.caseList;
-          }
-          public void setCaseList(List<InsuranceCase> caseList) {
-              this.caseList = caseList;
-          }*/
         public ShowAllPoliceCategories()
         {
             InitializeComponent();
-            /*
+
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Dock = DockStyle.Fill;
+
             GetAllInsuranceCasesCommand command = new GetAllInsuranceCasesCommand();
             caseList = new BindingList<InsuranceCase>(command.getAllInsuranceCases());
-            dataGridView1.DataSource = command.getAllInsuranceCases();*/
-         
-           // dataGridView1.DataSource = caseList;
-           //  caseList = new List<InsuranceCase>();
+
+            dataGridView1.Columns.Add("CategoryName", "Категория");
+            dataGridView1.Columns.Add("Name", "Название");
+            dataGridView1.Columns.Add("PaymentProcent", "Процент выплат");
+            foreach (InsuranceCase cs in caseList)
+            {
+                int rowNumber = dataGridView1.Rows.Add();
+
+                dataGridView1.Rows[rowNumber].Cells["CategoryName"].Value = cs.InsuranceCategory.Name;
+                dataGridView1.Rows[rowNumber].Cells["Name"].Value = cs.InsuranceCaseName;
+                dataGridView1.Rows[rowNumber].Cells["PaymentProcent"].Value = cs.PaymentProcent;
+            }
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -111,31 +117,31 @@ namespace InsuranceCompany
           
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        //private void button1_Click(object sender, EventArgs e)
+        //{
 
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Dock = DockStyle.Fill;
+            //dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //dataGridView1.MultiSelect = false;
+            //dataGridView1.Dock = DockStyle.Fill;
 
-            GetAllInsuranceCasesCommand command = new GetAllInsuranceCasesCommand();
-            caseList = new BindingList<InsuranceCase>(command.getAllInsuranceCases());
+            //GetAllInsuranceCasesCommand command = new GetAllInsuranceCasesCommand();
+            //caseList = new BindingList<InsuranceCase>(command.getAllInsuranceCases());
 
-            dataGridView1.Columns.Add("CategoryName", "Категория");
-            dataGridView1.Columns.Add("Name", "Название");
-            dataGridView1.Columns.Add("PaymentProcent", "Процент выплат");
-            foreach (InsuranceCase cs in caseList)
-            {
-                int rowNumber = dataGridView1.Rows.Add();
+            //dataGridView1.Columns.Add("CategoryName", "Категория");
+            //dataGridView1.Columns.Add("Name", "Название");
+            //dataGridView1.Columns.Add("PaymentProcent", "Процент выплат");
+            //foreach (InsuranceCase cs in caseList)
+            //{
+            //    int rowNumber = dataGridView1.Rows.Add();
 
-                dataGridView1.Rows[rowNumber].Cells["CategoryName"].Value = cs.InsuranceCategory.Name;
-                dataGridView1.Rows[rowNumber].Cells["Name"].Value = cs.InsuranceCaseName;
-                dataGridView1.Rows[rowNumber].Cells["PaymentProcent"].Value = cs.PaymentProcent;
-            }
+            //    dataGridView1.Rows[rowNumber].Cells["CategoryName"].Value = cs.InsuranceCategory.Name;
+            //    dataGridView1.Rows[rowNumber].Cells["Name"].Value = cs.InsuranceCaseName;
+            //    dataGridView1.Rows[rowNumber].Cells["PaymentProcent"].Value = cs.PaymentProcent;
+            //}
 
-            button1.Visible = false;
+            //button1.Visible = false;
 
-        }
+        //}
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

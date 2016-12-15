@@ -1,4 +1,6 @@
 ﻿using InsuranceCompany.insuranceCompany.DAO.impl;
+using InsuranceCompany.insuranceCompany.command;
+using InsuranceCompany.entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -89,6 +91,32 @@ namespace InsuranceCompany
             RegisterPolice cw = new RegisterPolice();
             cw.Show();
             this.Close();
+        }
+
+        private void clientType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (clientType.SelectedItem.Equals("юр. лицо"))
+            {
+                name.Text = "Выберите компанию";
+                name.Items.Clear();
+                GetAllLegalClientsInfo command = new GetAllLegalClientsInfo();
+                List<LegalPerson> legalPersonList = command.getAllLegalPersonInfo();
+                name.Items.AddRange(legalPersonList.ToArray());
+            }
+            if (clientType.SelectedItem.Equals("физ. лицо"))
+            {
+                name.Text = "Выберите ФИО";
+                name.Items.Clear();
+                GetAllIndividualClients command = new GetAllIndividualClients();
+                List<Individual> individualList = command.getAllLegalPersonInfo();
+                name.Items.AddRange(individualList.ToArray());
+            }
+        }
+
+        private void name_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+               
         }
 
     }

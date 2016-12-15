@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace InsuranceCompany.entity
 {
-    class LegalPerson
+    class LegalPerson : Client
     {
+        private int id;
         private String companyName;
         private String uniqueNumber;
         private String directorName;
@@ -34,6 +35,17 @@ namespace InsuranceCompany.entity
             this.companyAddress = companyAddress;
             this.companyPhoneNumber = companyPhoneNumber;
 
+        }
+
+        public override string ToString()
+        {
+            return companyName;
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
         }
 
         public String CompanyPhoneNumber
@@ -95,6 +107,6 @@ namespace InsuranceCompany.entity
             get { return uniqueNumber; }
             set { uniqueNumber = value; }
         }
-        
+
     }
 }

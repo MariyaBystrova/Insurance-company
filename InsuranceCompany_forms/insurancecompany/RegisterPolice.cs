@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using InsuranceCompany.insuranceCompany.DAO.impl;
+using InsuranceCompany.insuranceCompany.command;
+using InsuranceCompany.entity;
 
 namespace InsuranceCompany
 {
@@ -109,10 +112,41 @@ namespace InsuranceCompany
             if (clientType.SelectedItem.Equals("юр. лицо"))
             {
                 groupBoxLegal.Visible = true;
+                
+                //add all legal client's companies to dropdown
+                GetAllLegalClientsInfo command1 = new GetAllLegalClientsInfo();
+                List<LegalPerson> legalPersonList = command1.getAllLegalPersonInfo();
+                companyComboBox.Items.AddRange(legalPersonList.ToArray());
+
+                //add all police categories
+                GetAllInsuranceCategoriesCommand command2 = new GetAllInsuranceCategoriesCommand();
+                List<InsuranceCategory> categoryList = command2.getAllInsuranceCategories();
+                policeCategoryComboBox.Items.AddRange(categoryList.ToArray());
+
+                //add insurer names to dropdown
+                GetAllInsurers command3 = new GetAllInsurers();
+                List<Insurer> insurerList = command3.getAllInsurers();
+                insurerComboBox.Items.AddRange(insurerList.ToArray());
+                
             }
             if (clientType.SelectedItem.Equals("физ. лицо"))
             {
                 groupBoxIndividual.Visible = true;
+
+                //add all individual clients fsl to dropdown
+                GetAllIndividualClients command1 = new GetAllIndividualClients();
+                List<Individual> individualList = command1.getAllLegalPersonInfo();
+                fslNameIndividualComboBox.Items.AddRange(individualList.ToArray());
+
+                //add all police categories
+                GetAllInsuranceCategoriesCommand command2 = new GetAllInsuranceCategoriesCommand();
+                List<InsuranceCategory> categoryList = command2.getAllInsuranceCategories();
+                policeCategoryIndividualComboBox.Items.AddRange(categoryList.ToArray());
+
+                //add insurer names to dropdown
+                GetAllInsurers command3 = new GetAllInsurers();
+                List<Insurer> insurerList = command3.getAllInsurers();
+                insurerIdIndividualComboBox.Items.AddRange(insurerList.ToArray());
             }
         }
 
@@ -180,7 +214,19 @@ namespace InsuranceCompany
 
         private void submitLegal_Click(object sender, EventArgs e)
         {
+            InsurancePolicy policy = new InsurancePolicy();
+            LegalPerson client = new LegalPerson();
+            client = (LegalPerson)companyComboBox.SelectedItem;
+            policy.Client = client;
+            policy.Insurer = (Insurer)insurerComboBox.SelectedItem;
+            policy.Category = (InsuranceCategory)policeCategoryComboBox.SelectedItem;
+            policy.Cost = policeCoastNumericUpDown.Value;
+            policy.Amount = policeAmountNumericUpDown.Value;
+            policy.SignDate = startDateDateTimePicker.Value;
+            policy.ExpirationDate = endDateDateTimePicker.Value;
 
+            RegisterNewPolice command = new RegisterNewPolice();
+            bool result = command.registerNewPolice(policy);
         }
 //
 
@@ -222,7 +268,19 @@ namespace InsuranceCompany
 
         private void buttonIndividual_Click(object sender, EventArgs e)
         {
+            InsurancePolicy policy = new InsurancePolicy();
+            Individual client = new Individual();
+            client = (Individual)fslNameIndividualComboBox.SelectedItem;
+            policy.Client = client;
+            policy.Insurer = (Insurer)insurerIdIndividualComboBox.SelectedItem;
+            policy.Category = (InsuranceCategory)policeCategoryIndividualComboBox.SelectedItem;
+            policy.Cost = policeCoastIndividualNumericUpDown.Value;
+            policy.Amount = policeAmountIndividualNumericUpDown.Value;
+            policy.SignDate = startDateIndividualDateTimePicker.Value;
+            policy.ExpirationDate = endDateIndividualDateTimePicker.Value;
 
+            RegisterNewPolice command = new RegisterNewPolice();
+            bool result = command.registerNewPolice(policy);
         }
 
         private void registerIndividuaLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

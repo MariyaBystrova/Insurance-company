@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace InsuranceCompany.entity
 {
-    class Individual
+    class Individual : Client
     {
+        private int id;
         private String name;
         private String secondName;
         private String surname;
         private DateTime birthDate;
         private String sex;
         private String photo;
-        private int drivingExperience;
+        private decimal drivingExperience;
         private String address;
         private String phoneNumber;
 
         public Individual() { }
 
-        public Individual(String name, String secondName, String surname, DateTime birthDate, String sex, String photo, int drivingExperience, String address, String phoneNumber)
+        public Individual(String name, String secondName, String surname, DateTime birthDate, String sex, String photo, decimal drivingExperience, String address, String phoneNumber)
         {
             this.name = name;
             this.secondName = secondName;
@@ -31,6 +32,17 @@ namespace InsuranceCompany.entity
             this.drivingExperience = drivingExperience;
             this.address = address;
             this.phoneNumber = phoneNumber;
+        }
+
+        public override string ToString()
+        {
+            return surname + " " + name + " " + secondName;
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
         }
 
         public String PhoneNumber
@@ -45,7 +57,7 @@ namespace InsuranceCompany.entity
             set { address = value; }
         }
 
-        public int DrivingExperience
+        public decimal DrivingExperience
         {
             get { return drivingExperience; }
             set { drivingExperience = value; }
@@ -86,5 +98,6 @@ namespace InsuranceCompany.entity
             get { return name; }
             set { name = value; }
         }
+
     }
 }

@@ -7,13 +7,14 @@ using System.Collections.Generic;
 
 namespace InsuranceCompany.insuranceCompany.DAO.impl
 {
+    //insert into insurers (first_name, second_name, surname, ssn, phone_number) values ('Игорь', 'Викторович', 'Борода', '121315', '+375296765567');
     class InsurerDAO
     {
-        private readonly static String conString = "server=localhost;database=insurance_company;uid=root;pwd=3946833Andrey;";
+        private readonly static String conString = "server=localhost;database=insurance_company;uid=root;pwd=marusya;";
 
         public bool registerNewInsuranceCase(InsuranceCase insuranceCase)
         {
-            bool result = true;
+            bool result = false;
             MySqlConnection conn = null; ;
             MySqlCommand cmd = null;
             try
@@ -32,7 +33,7 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
                 int queryResult = cmd.ExecuteNonQuery();
                 if (queryResult != -1)
                 {
-                    result = false;
+                    result = true;
                 }
             }
             catch (MySqlException ex)
@@ -110,7 +111,7 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
 
         public bool registerNewInsuranceCategory(String categoryName)
         {
-            bool result = true;
+            bool result = false;
             MySqlConnection conn = null; ;
             MySqlCommand cmd = null;
             try
@@ -127,7 +128,7 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
                 int queryResult = cmd.ExecuteNonQuery();
                 if (queryResult != -1)
                 {
-                    result = false;
+                    result = true;
                 }
             }
             catch (MySqlException ex)
@@ -202,7 +203,7 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
 
         public bool registerLegalPerson(LegalPerson legalPerson)
         {
-            bool result = true;
+            bool result = false;
             MySqlConnection conn = null; ;
             MySqlCommand cmd = null;
             try
@@ -229,7 +230,7 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
                 int queryResult = cmd.ExecuteNonQuery();
                 if (queryResult != -1)
                 {
-                    result = false;
+                    result = true;
                 }
             }
             catch (MySqlException ex)
@@ -251,7 +252,7 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
         }
 
         public bool registerIndividualPerson(Individual individualPerson) {
-            bool result = true;
+            bool result = false;
             MySqlConnection conn = null; ;
             MySqlCommand cmd = null;
             try
@@ -277,7 +278,7 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
                 int queryResult = cmd.ExecuteNonQuery();
                 if (queryResult != -1)
                 {
-                    result = false;
+                    result = true;
                 }
             }
             catch (MySqlException ex)
@@ -319,6 +320,7 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
                     while (reader.Read())
                     {
                         LegalPerson legalPerson = new LegalPerson();
+                        legalPerson.Id = reader.GetInt32(0);
                         legalPerson.CompanyName = reader.GetString(1);
                         legalPerson.UniqueNumber = reader.GetString(2);
                         legalPerson.DirectorName = reader.GetString(3);
@@ -355,6 +357,221 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
                 }
             }
             return legalPersonList;
+        }
+
+
+        public List<Individual> getAllIndividualInfo()
+        {
+            List<Individual> individualList = new List<Individual>();
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "select `ind_client_id`, `first_name`, `second_name`, `surname`, `birth_date`, `sex`, `driving_experience`, `address`, `phone_number`, `photo_link` from individual_clients;";
+                reader = cmd.ExecuteReader();
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Individual ind = new Individual();
+                        ind.Id = reader.GetInt32(0);
+                        ind.Name = reader.GetString(1);
+                        ind.SecondName = reader.GetString(2);
+                        ind.Surname = reader.GetString(3);
+                        ind.BirthDate = reader.GetDateTime(4);
+                        ind.Sex = reader.GetString(5);
+                        ind.DrivingExperience = reader.GetDecimal(6);
+                        ind.Address = reader.GetString(7);
+                        ind.PhoneNumber = reader.GetString(8);
+                        ind.Photo = reader.GetString(9);
+                      
+                        individualList.Add(ind);
+                    }
+                    reader.NextResult();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+            return individualList;
+        }
+
+
+        public List<Insurer> getAllInsurersInfo()
+        {
+            List<Insurer> insurerList = new List<Insurer>();
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "select insurer_id, first_name, second_name, surname, ssn, phone_number, address from insurers;";
+                reader = cmd.ExecuteReader();
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Insurer insurer = new Insurer();
+                        insurer.Id = reader.GetInt32(0);
+                        insurer.Name = reader.GetString(1);
+                        insurer.SecondName = reader.GetString(2);
+                        insurer.Surname = reader.GetString(3);
+                        insurer.Ssn = reader.GetString(4);
+                        insurer.PhoneNumber = reader.GetString(5);
+                        insurer.Address = reader.GetString(6);
+
+                        insurerList.Add(insurer);
+                    }
+                    reader.NextResult();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+            return insurerList;
+        }
+
+        public bool registerPolicyForLegalPerson(InsurancePolicy policy)
+        {
+            bool result = false;
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "insert into insurance_police (ins_category_id, ind_client_id, police_cost, police_money_amount, police_sign_date, police_expiration_date, insurer_id, legal_client_id) values (?categoryId, NULL, ?policyCost, ?policyAmount, ?policySignDate, ?policyExpirationDate, ?insurerId, ?legalClientId);";
+                cmd.Prepare();
+                
+                cmd.Parameters.AddWithValue("categoryId", policy.Category.Id);
+                cmd.Parameters.AddWithValue("policyCost", policy.Cost);
+                cmd.Parameters.AddWithValue("policyAmount", policy.Amount);
+                cmd.Parameters.AddWithValue("policySignDate", policy.SignDate);
+                cmd.Parameters.AddWithValue("policyExpirationDate", policy.ExpirationDate);
+                cmd.Parameters.AddWithValue("insurerId", policy.Insurer.Id);
+                cmd.Parameters.AddWithValue("legalClientId", ((LegalPerson)policy.Client).Id);
+
+                int queryResult = cmd.ExecuteNonQuery();
+                if (queryResult != -1)
+                {
+                    result = true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+            }
+            return result;
+        }
+
+
+        public bool registerPolicyForIndividual(InsurancePolicy policy)
+        {
+            bool result = false;
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "insert into insurance_police (ins_category_id, ind_client_id, police_cost, police_money_amount, police_sign_date, police_expiration_date, insurer_id, legal_client_id) values (?categoryId, ?individualClientId, ?policyCost, ?policyAmount, ?policySignDate, ?policyExpirationDate, ?insurerId, NULL);";
+                cmd.Prepare();
+
+                cmd.Parameters.AddWithValue("categoryId", policy.Category.Id);
+                cmd.Parameters.AddWithValue("individualClientId", ((Individual)policy.Client).Id);
+                cmd.Parameters.AddWithValue("policyCost", policy.Cost);
+                cmd.Parameters.AddWithValue("policyAmount", policy.Amount);
+                cmd.Parameters.AddWithValue("policySignDate", policy.SignDate);
+                cmd.Parameters.AddWithValue("policyExpirationDate", policy.ExpirationDate);
+                cmd.Parameters.AddWithValue("insurerId", policy.Insurer.Id);
+                
+
+                int queryResult = cmd.ExecuteNonQuery();
+                if (queryResult != -1)
+                {
+                    result = true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+            }
+            return result;
         }
     }
 }

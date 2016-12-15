@@ -10,7 +10,7 @@ namespace InsuranceCompany.insuranceCompany.command
 {
     class GetAllInsuranceCategoriesCommand{
     
-          public List<InsuranceCategory> getAllInsuranceCategories()
+        public List<InsuranceCategory> getAllInsuranceCategories()
         {
             List<InsuranceCategory> categoryList = new List<InsuranceCategory>();
             InsurerDAO insurerDAO = new InsurerDAO();

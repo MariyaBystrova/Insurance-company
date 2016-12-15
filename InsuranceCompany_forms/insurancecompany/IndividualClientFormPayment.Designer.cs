@@ -166,6 +166,7 @@
             this.ClientSize = new System.Drawing.Size(501, 328);
             this.Controls.Add(this.splitContainer1);
             this.Name = "IndividualClientFormPayment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Физ. лицо: оформление обращения за выплатой";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

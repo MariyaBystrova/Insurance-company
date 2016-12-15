@@ -51,7 +51,7 @@
             this.policeNumber.AutoSize = true;
             this.policeNumber.Location = new System.Drawing.Point(27, 36);
             this.policeNumber.Name = "policeNumber";
-            this.policeNumber.Size = new System.Drawing.Size(145, 20);
+            this.policeNumber.Size = new System.Drawing.Size(98, 13);
             this.policeNumber.TabIndex = 6;
             this.policeNumber.Text = "Страховой номер:";
             // 
@@ -59,7 +59,7 @@
             // 
             this.policeNumberInput.Location = new System.Drawing.Point(183, 36);
             this.policeNumberInput.Name = "policeNumberInput";
-            this.policeNumberInput.Size = new System.Drawing.Size(131, 26);
+            this.policeNumberInput.Size = new System.Drawing.Size(131, 20);
             this.policeNumberInput.TabIndex = 7;
             this.policeNumberInput.Tag = "policeNumber";
             // 
@@ -68,7 +68,7 @@
             this.InsuranseCase.AutoSize = true;
             this.InsuranseCase.Location = new System.Drawing.Point(27, 75);
             this.InsuranseCase.Name = "InsuranseCase";
-            this.InsuranseCase.Size = new System.Drawing.Size(150, 20);
+            this.InsuranseCase.Size = new System.Drawing.Size(100, 13);
             this.InsuranseCase.TabIndex = 8;
             this.InsuranseCase.Text = "Страховой случай:";
             // 
@@ -156,7 +156,7 @@
             this.insuranseCaseInput.FormattingEnabled = true;
             this.insuranseCaseInput.Location = new System.Drawing.Point(183, 75);
             this.insuranseCaseInput.Name = "insuranseCaseInput";
-            this.insuranseCaseInput.Size = new System.Drawing.Size(131, 28);
+            this.insuranseCaseInput.Size = new System.Drawing.Size(131, 21);
             this.insuranseCaseInput.TabIndex = 11;
             // 
             // LegalClientFormPaymentRequest
@@ -165,6 +165,7 @@
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LegalClientFormPaymentRequest";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Юр. лицо: оформление обращения за выплатой";
             this.Load += new System.EventHandler(this.FormPaymentRequest_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);

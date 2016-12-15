@@ -10,12 +10,12 @@ namespace InsuranceCompany.entity
     {
         private int policyId;
         private InsuranceCategory category;
-        private int cost;
-        private int amount;
+        private decimal cost;
+        private decimal amount;
         private DateTime signDate;
         private DateTime expirationDate;
         private Client client;
-        private List<InsuranceCase> insuranceCaseList;
+        private List<InsuranceCase> insuranceCaseList; ////////
         private Insurer insurer;
 
         public InsurancePolicy() { }
@@ -64,13 +64,13 @@ namespace InsuranceCompany.entity
             set { client = value; }
         }
 
-        public int Cost
+        public decimal Cost
         {
             get { return cost; }
             set { cost = value; }
         }
 
-        public int Amount
+        public decimal Amount
         {
             get { return amount; }
             set { amount = value; }

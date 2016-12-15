@@ -10,12 +10,13 @@ namespace InsuranceCompany.insuranceCompany.command
 {
     class RegisterNewIndividualPersonCommand
     {
-      public bool registerIndividualPerson(Individual individualPerson){
-         bool result = true;
-         InsurerDAO insurerDAO = new InsurerDAO();
-         result = insurerDAO.registerIndividualPerson(individualPerson);  
+        public bool registerIndividualPerson(Individual individualPerson)
+        {
+            bool result = true;
+            InsurerDAO insurerDAO = new InsurerDAO();
+            result = insurerDAO.registerIndividualPerson(individualPerson);  
 
-        return result;
-    }
+            return result;
+        }
     }
 }

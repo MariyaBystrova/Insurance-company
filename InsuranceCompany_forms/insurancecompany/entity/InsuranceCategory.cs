@@ -18,10 +18,16 @@ namespace InsuranceCompany.entity
         {
             this.name = name;
         }
+
         public InsuranceCategory(int id, String name)
         {
             this.id = id;
             this.name = name;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
 
         public int MaxPoliceCost
@@ -42,30 +48,5 @@ namespace InsuranceCompany.entity
             get { return name; }
         }
 
-        public override string ToString()
-        {
-            return  Name;
-        }
-       
-
-        //public int getId()
-        //{
-        //    return id;
-        //}
-
-        //public void setId(int id)
-        //{
-        //    this.id = id;
-        //}
-
-        //public String getName()
-        //{
-        //    return name;
-        //}
-
-        //public void setName(String name)
-        //{
-        //    this.name = name;
-        //}
     }
 }
