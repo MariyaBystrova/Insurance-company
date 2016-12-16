@@ -30,9 +30,7 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.registerPoliceMenu = new System.Windows.Forms.Button();
-            this.formPolice = new System.Windows.Forms.Button();
-            this.registerClient = new System.Windows.Forms.Button();
+            this.registerNewInsuranceCase = new System.Windows.Forms.Button();
             this.registerClientButton = new System.Windows.Forms.Button();
             this.registerNewPoliceCategory = new System.Windows.Forms.Button();
             this.showAllPoliceCategoriesAndCases = new System.Windows.Forms.Button();
@@ -40,7 +38,9 @@
             this.showAllClientPayments = new System.Windows.Forms.Button();
             this.formPayment = new System.Windows.Forms.Button();
             this.getClientInfo = new System.Windows.Forms.Button();
+            this.formPolice = new System.Windows.Forms.Button();
             this.groupBoxLegal = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.companyComboBox = new System.Windows.Forms.ComboBox();
             this.registerLegalPersonLink = new System.Windows.Forms.LinkLabel();
             this.submitLegal = new System.Windows.Forms.Button();
@@ -59,6 +59,7 @@
             this.insurer = new System.Windows.Forms.Label();
             this.clientType = new System.Windows.Forms.ComboBox();
             this.groupBoxIndividual = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.fslNameIndividualComboBox = new System.Windows.Forms.ComboBox();
             this.registerIndividuaLink = new System.Windows.Forms.LinkLabel();
             this.buttonIndividual = new System.Windows.Forms.Button();
@@ -90,7 +91,7 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(12, 12);
+            this.splitContainer1.Location = new System.Drawing.Point(12, 9);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -100,10 +101,11 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.groupBoxIndividual);
             this.splitContainer1.Panel2.Controls.Add(this.groupBoxLegal);
             this.splitContainer1.Panel2.Controls.Add(this.clientType);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(480, 430);
+            this.splitContainer1.Size = new System.Drawing.Size(608, 422);
             this.splitContainer1.SplitterDistance = 157;
             this.splitContainer1.TabIndex = 10;
             // 
@@ -111,17 +113,16 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.registerPoliceMenu, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.formPolice, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.registerClient, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.registerClientButton, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.registerNewPoliceCategory, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.showAllPoliceCategoriesAndCases, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.showAllClientsInfo, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.showAllClientPayments, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.formPayment, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.getClientInfo, 0, 5);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.registerNewInsuranceCase, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.registerClientButton, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.registerNewPoliceCategory, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.showAllPoliceCategoriesAndCases, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.showAllClientsInfo, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.showAllClientPayments, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.formPayment, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.getClientInfo, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.formPolice, 0, 9);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 11;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -134,45 +135,26 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(152, 424);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(152, 411);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
-            // registerPoliceMenu
+            // registerNewInsuranceCase
             // 
-            this.registerPoliceMenu.Location = new System.Drawing.Point(3, 384);
-            this.registerPoliceMenu.Name = "registerPoliceMenu";
-            this.registerPoliceMenu.Size = new System.Drawing.Size(144, 36);
-            this.registerPoliceMenu.TabIndex = 14;
-            this.registerPoliceMenu.Text = "Оформление полиса";
-            this.registerPoliceMenu.UseVisualStyleBackColor = true;
-            this.registerPoliceMenu.Click += new System.EventHandler(this.registerPoliceMenu_Click);
-            // 
-            // formPolice
-            // 
-            this.formPolice.Location = new System.Drawing.Point(3, 302);
-            this.formPolice.Name = "formPolice";
-            this.formPolice.Size = new System.Drawing.Size(144, 35);
-            this.formPolice.TabIndex = 2;
-            this.formPolice.Text = "Оформление полиса";
-            this.formPolice.UseVisualStyleBackColor = true;
-            this.formPolice.Click += new System.EventHandler(this.formPolice_Click);
-            // 
-            // registerClient
-            // 
-            this.registerClient.Location = new System.Drawing.Point(3, 343);
-            this.registerClient.Name = "registerClient";
-            this.registerClient.Size = new System.Drawing.Size(144, 35);
-            this.registerClient.TabIndex = 13;
-            this.registerClient.Text = "Зарегистрировать клиента";
-            this.registerClient.UseVisualStyleBackColor = true;
-            this.registerClient.Click += new System.EventHandler(this.registerClient_Click);
+            this.registerNewInsuranceCase.Location = new System.Drawing.Point(2, 2);
+            this.registerNewInsuranceCase.Margin = new System.Windows.Forms.Padding(2);
+            this.registerNewInsuranceCase.Name = "registerNewInsuranceCase";
+            this.registerNewInsuranceCase.Size = new System.Drawing.Size(147, 44);
+            this.registerNewInsuranceCase.TabIndex = 13;
+            this.registerNewInsuranceCase.Tag = "registerNewInsuranceCase";
+            this.registerNewInsuranceCase.Text = "Зарегистрировать новый страховой случай";
+            this.registerNewInsuranceCase.UseVisualStyleBackColor = true;
             // 
             // registerClientButton
             // 
-            this.registerClientButton.Location = new System.Drawing.Point(3, 261);
+            this.registerClientButton.Location = new System.Drawing.Point(3, 329);
             this.registerClientButton.Name = "registerClientButton";
-            this.registerClientButton.Size = new System.Drawing.Size(144, 35);
+            this.registerClientButton.Size = new System.Drawing.Size(144, 38);
             this.registerClientButton.TabIndex = 1;
             this.registerClientButton.Text = "Зарегистрировать клиента";
             this.registerClientButton.UseVisualStyleBackColor = true;
@@ -180,10 +162,10 @@
             // 
             // registerNewPoliceCategory
             // 
-            this.registerNewPoliceCategory.Location = new System.Drawing.Point(2, 2);
+            this.registerNewPoliceCategory.Location = new System.Drawing.Point(2, 50);
             this.registerNewPoliceCategory.Margin = new System.Windows.Forms.Padding(2);
             this.registerNewPoliceCategory.Name = "registerNewPoliceCategory";
-            this.registerNewPoliceCategory.Size = new System.Drawing.Size(145, 38);
+            this.registerNewPoliceCategory.Size = new System.Drawing.Size(145, 43);
             this.registerNewPoliceCategory.TabIndex = 1;
             this.registerNewPoliceCategory.Tag = "registerNewPoliceCategory";
             this.registerNewPoliceCategory.Text = "Зарегистрировать новую категорию полиса";
@@ -192,10 +174,10 @@
             // 
             // showAllPoliceCategoriesAndCases
             // 
-            this.showAllPoliceCategoriesAndCases.Location = new System.Drawing.Point(2, 126);
+            this.showAllPoliceCategoriesAndCases.Location = new System.Drawing.Point(2, 194);
             this.showAllPoliceCategoriesAndCases.Margin = new System.Windows.Forms.Padding(2);
             this.showAllPoliceCategoriesAndCases.Name = "showAllPoliceCategoriesAndCases";
-            this.showAllPoliceCategoriesAndCases.Size = new System.Drawing.Size(145, 49);
+            this.showAllPoliceCategoriesAndCases.Size = new System.Drawing.Size(145, 52);
             this.showAllPoliceCategoriesAndCases.TabIndex = 4;
             this.showAllPoliceCategoriesAndCases.Tag = "showAllPoliceCategoriesAndCases";
             this.showAllPoliceCategoriesAndCases.Text = "Показать все категории полисаов и их страховые случаи";
@@ -204,10 +186,10 @@
             // 
             // showAllClientsInfo
             // 
-            this.showAllClientsInfo.Location = new System.Drawing.Point(2, 44);
+            this.showAllClientsInfo.Location = new System.Drawing.Point(2, 97);
             this.showAllClientsInfo.Margin = new System.Windows.Forms.Padding(2);
             this.showAllClientsInfo.Name = "showAllClientsInfo";
-            this.showAllClientsInfo.Size = new System.Drawing.Size(145, 36);
+            this.showAllClientsInfo.Size = new System.Drawing.Size(145, 48);
             this.showAllClientsInfo.TabIndex = 2;
             this.showAllClientsInfo.Tag = "showAllClientsInfo";
             this.showAllClientsInfo.Text = "Показать всю информацию о клиентах и полисах";
@@ -216,10 +198,10 @@
             // 
             // showAllClientPayments
             // 
-            this.showAllClientPayments.Location = new System.Drawing.Point(2, 84);
+            this.showAllClientPayments.Location = new System.Drawing.Point(2, 149);
             this.showAllClientPayments.Margin = new System.Windows.Forms.Padding(2);
             this.showAllClientPayments.Name = "showAllClientPayments";
-            this.showAllClientPayments.Size = new System.Drawing.Size(145, 38);
+            this.showAllClientPayments.Size = new System.Drawing.Size(145, 41);
             this.showAllClientPayments.TabIndex = 3;
             this.showAllClientPayments.Tag = "showAllClientPayments";
             this.showAllClientPayments.Text = "Показать все выплаты клиента";
@@ -228,10 +210,10 @@
             // 
             // formPayment
             // 
-            this.formPayment.Location = new System.Drawing.Point(2, 179);
+            this.formPayment.Location = new System.Drawing.Point(2, 250);
             this.formPayment.Margin = new System.Windows.Forms.Padding(2);
             this.formPayment.Name = "formPayment";
-            this.formPayment.Size = new System.Drawing.Size(145, 37);
+            this.formPayment.Size = new System.Drawing.Size(145, 31);
             this.formPayment.TabIndex = 5;
             this.formPayment.Tag = "formPayment";
             this.formPayment.Text = "Оформить выплату";
@@ -240,18 +222,29 @@
             // 
             // getClientInfo
             // 
-            this.getClientInfo.Location = new System.Drawing.Point(2, 220);
+            this.getClientInfo.Location = new System.Drawing.Point(2, 285);
             this.getClientInfo.Margin = new System.Windows.Forms.Padding(2);
             this.getClientInfo.Name = "getClientInfo";
-            this.getClientInfo.Size = new System.Drawing.Size(145, 36);
+            this.getClientInfo.Size = new System.Drawing.Size(145, 39);
             this.getClientInfo.TabIndex = 6;
             this.getClientInfo.Tag = "getClientInfo";
             this.getClientInfo.Text = "Показать всю информацию по клиенту";
             this.getClientInfo.UseVisualStyleBackColor = true;
             this.getClientInfo.Click += new System.EventHandler(this.getClientInfo_Click);
             // 
+            // formPolice
+            // 
+            this.formPolice.Location = new System.Drawing.Point(3, 373);
+            this.formPolice.Name = "formPolice";
+            this.formPolice.Size = new System.Drawing.Size(144, 37);
+            this.formPolice.TabIndex = 2;
+            this.formPolice.Text = "Оформление полиса";
+            this.formPolice.UseVisualStyleBackColor = true;
+            this.formPolice.Click += new System.EventHandler(this.formPolice_Click);
+            // 
             // groupBoxLegal
             // 
+            this.groupBoxLegal.Controls.Add(this.label1);
             this.groupBoxLegal.Controls.Add(this.companyComboBox);
             this.groupBoxLegal.Controls.Add(this.registerLegalPersonLink);
             this.groupBoxLegal.Controls.Add(this.submitLegal);
@@ -268,17 +261,26 @@
             this.groupBoxLegal.Controls.Add(this.nameClient);
             this.groupBoxLegal.Controls.Add(this.policeCategory);
             this.groupBoxLegal.Controls.Add(this.insurer);
-            this.groupBoxLegal.Location = new System.Drawing.Point(3, 73);
+            this.groupBoxLegal.Location = new System.Drawing.Point(69, 61);
             this.groupBoxLegal.Name = "groupBoxLegal";
-            this.groupBoxLegal.Size = new System.Drawing.Size(306, 315);
+            this.groupBoxLegal.Size = new System.Drawing.Size(306, 339);
             this.groupBoxLegal.TabIndex = 2;
             this.groupBoxLegal.TabStop = false;
             this.groupBoxLegal.Text = "Оформление полиса юр. лицу";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Location = new System.Drawing.Point(17, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 16;
+            // 
             // companyComboBox
             // 
             this.companyComboBox.FormattingEnabled = true;
-            this.companyComboBox.Location = new System.Drawing.Point(156, 29);
+            this.companyComboBox.Location = new System.Drawing.Point(148, 46);
             this.companyComboBox.Name = "companyComboBox";
             this.companyComboBox.Size = new System.Drawing.Size(121, 21);
             this.companyComboBox.TabIndex = 9;
@@ -287,7 +289,7 @@
             // registerLegalPersonLink
             // 
             this.registerLegalPersonLink.AutoSize = true;
-            this.registerLegalPersonLink.Location = new System.Drawing.Point(158, 53);
+            this.registerLegalPersonLink.Location = new System.Drawing.Point(150, 70);
             this.registerLegalPersonLink.Name = "registerLegalPersonLink";
             this.registerLegalPersonLink.Size = new System.Drawing.Size(119, 13);
             this.registerLegalPersonLink.TabIndex = 15;
@@ -297,7 +299,7 @@
             // 
             // submitLegal
             // 
-            this.submitLegal.Location = new System.Drawing.Point(166, 256);
+            this.submitLegal.Location = new System.Drawing.Point(158, 273);
             this.submitLegal.Name = "submitLegal";
             this.submitLegal.Size = new System.Drawing.Size(111, 23);
             this.submitLegal.TabIndex = 14;
@@ -308,7 +310,7 @@
             // endDateDateTimePicker
             // 
             this.endDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.endDateDateTimePicker.Location = new System.Drawing.Point(157, 218);
+            this.endDateDateTimePicker.Location = new System.Drawing.Point(149, 235);
             this.endDateDateTimePicker.Name = "endDateDateTimePicker";
             this.endDateDateTimePicker.Size = new System.Drawing.Size(120, 20);
             this.endDateDateTimePicker.TabIndex = 13;
@@ -317,7 +319,7 @@
             // startDateDateTimePicker
             // 
             this.startDateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.startDateDateTimePicker.Location = new System.Drawing.Point(157, 189);
+            this.startDateDateTimePicker.Location = new System.Drawing.Point(149, 206);
             this.startDateDateTimePicker.Name = "startDateDateTimePicker";
             this.startDateDateTimePicker.Size = new System.Drawing.Size(120, 20);
             this.startDateDateTimePicker.TabIndex = 12;
@@ -325,7 +327,7 @@
             // 
             // policeAmountNumericUpDown
             // 
-            this.policeAmountNumericUpDown.Location = new System.Drawing.Point(157, 159);
+            this.policeAmountNumericUpDown.Location = new System.Drawing.Point(149, 176);
             this.policeAmountNumericUpDown.Name = "policeAmountNumericUpDown";
             this.policeAmountNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.policeAmountNumericUpDown.TabIndex = 11;
@@ -333,7 +335,7 @@
             // 
             // policeCoastNumericUpDown
             // 
-            this.policeCoastNumericUpDown.Location = new System.Drawing.Point(157, 129);
+            this.policeCoastNumericUpDown.Location = new System.Drawing.Point(149, 146);
             this.policeCoastNumericUpDown.Name = "policeCoastNumericUpDown";
             this.policeCoastNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.policeCoastNumericUpDown.TabIndex = 10;
@@ -342,7 +344,7 @@
             // policeCategoryComboBox
             // 
             this.policeCategoryComboBox.FormattingEnabled = true;
-            this.policeCategoryComboBox.Location = new System.Drawing.Point(156, 102);
+            this.policeCategoryComboBox.Location = new System.Drawing.Point(148, 119);
             this.policeCategoryComboBox.Name = "policeCategoryComboBox";
             this.policeCategoryComboBox.Size = new System.Drawing.Size(121, 21);
             this.policeCategoryComboBox.TabIndex = 8;
@@ -351,7 +353,7 @@
             // insurerComboBox
             // 
             this.insurerComboBox.FormattingEnabled = true;
-            this.insurerComboBox.Location = new System.Drawing.Point(156, 75);
+            this.insurerComboBox.Location = new System.Drawing.Point(148, 92);
             this.insurerComboBox.Name = "insurerComboBox";
             this.insurerComboBox.Size = new System.Drawing.Size(121, 21);
             this.insurerComboBox.TabIndex = 7;
@@ -360,7 +362,7 @@
             // endDate
             // 
             this.endDate.AutoSize = true;
-            this.endDate.Location = new System.Drawing.Point(47, 223);
+            this.endDate.Location = new System.Drawing.Point(39, 240);
             this.endDate.Name = "endDate";
             this.endDate.Size = new System.Drawing.Size(92, 13);
             this.endDate.TabIndex = 6;
@@ -369,7 +371,7 @@
             // startDate
             // 
             this.startDate.AutoSize = true;
-            this.startDate.Location = new System.Drawing.Point(39, 189);
+            this.startDate.Location = new System.Drawing.Point(31, 206);
             this.startDate.Name = "startDate";
             this.startDate.Size = new System.Drawing.Size(100, 13);
             this.startDate.TabIndex = 5;
@@ -378,7 +380,7 @@
             // policeAmount
             // 
             this.policeAmount.AutoSize = true;
-            this.policeAmount.Location = new System.Drawing.Point(56, 161);
+            this.policeAmount.Location = new System.Drawing.Point(48, 178);
             this.policeAmount.Name = "policeAmount";
             this.policeAmount.Size = new System.Drawing.Size(83, 13);
             this.policeAmount.TabIndex = 4;
@@ -387,7 +389,7 @@
             // policeCoast
             // 
             this.policeCoast.AutoSize = true;
-            this.policeCoast.Location = new System.Drawing.Point(7, 131);
+            this.policeCoast.Location = new System.Drawing.Point(-1, 148);
             this.policeCoast.Name = "policeCoast";
             this.policeCoast.Size = new System.Drawing.Size(132, 13);
             this.policeCoast.TabIndex = 3;
@@ -396,7 +398,7 @@
             // nameClient
             // 
             this.nameClient.AutoSize = true;
-            this.nameClient.Location = new System.Drawing.Point(78, 32);
+            this.nameClient.Location = new System.Drawing.Point(70, 49);
             this.nameClient.Name = "nameClient";
             this.nameClient.Size = new System.Drawing.Size(61, 13);
             this.nameClient.TabIndex = 2;
@@ -405,7 +407,7 @@
             // policeCategory
             // 
             this.policeCategory.AutoSize = true;
-            this.policeCategory.Location = new System.Drawing.Point(37, 105);
+            this.policeCategory.Location = new System.Drawing.Point(29, 122);
             this.policeCategory.Name = "policeCategory";
             this.policeCategory.Size = new System.Drawing.Size(102, 13);
             this.policeCategory.TabIndex = 1;
@@ -414,7 +416,7 @@
             // insurer
             // 
             this.insurer.AutoSize = true;
-            this.insurer.Location = new System.Drawing.Point(67, 78);
+            this.insurer.Location = new System.Drawing.Point(59, 95);
             this.insurer.Name = "insurer";
             this.insurer.Size = new System.Drawing.Size(72, 13);
             this.insurer.TabIndex = 0;
@@ -426,15 +428,16 @@
             this.clientType.Items.AddRange(new object[] {
             "юр. лицо",
             "физ. лицо"});
-            this.clientType.Location = new System.Drawing.Point(18, 22);
+            this.clientType.Location = new System.Drawing.Point(13, 22);
             this.clientType.Name = "clientType";
-            this.clientType.Size = new System.Drawing.Size(121, 21);
+            this.clientType.Size = new System.Drawing.Size(422, 21);
             this.clientType.TabIndex = 1;
             this.clientType.Text = "Выберите клиента";
             this.clientType.SelectedIndexChanged += new System.EventHandler(this.clientType_SelectedIndexChanged);
             // 
             // groupBoxIndividual
             // 
+            this.groupBoxIndividual.Controls.Add(this.label2);
             this.groupBoxIndividual.Controls.Add(this.fslNameIndividualComboBox);
             this.groupBoxIndividual.Controls.Add(this.registerIndividuaLink);
             this.groupBoxIndividual.Controls.Add(this.buttonIndividual);
@@ -451,17 +454,26 @@
             this.groupBoxIndividual.Controls.Add(this.fslNameIndividual);
             this.groupBoxIndividual.Controls.Add(this.policeCategoryIndividual);
             this.groupBoxIndividual.Controls.Add(this.insurerIndividual);
-            this.groupBoxIndividual.Location = new System.Drawing.Point(518, 85);
+            this.groupBoxIndividual.Location = new System.Drawing.Point(69, 67);
             this.groupBoxIndividual.Name = "groupBoxIndividual";
-            this.groupBoxIndividual.Size = new System.Drawing.Size(300, 308);
+            this.groupBoxIndividual.Size = new System.Drawing.Size(300, 327);
             this.groupBoxIndividual.TabIndex = 12;
             this.groupBoxIndividual.TabStop = false;
             this.groupBoxIndividual.Text = "Регистрация полиса физ. лица";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label2.Location = new System.Drawing.Point(27, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 61;
+            // 
             // fslNameIndividualComboBox
             // 
             this.fslNameIndividualComboBox.FormattingEnabled = true;
-            this.fslNameIndividualComboBox.Location = new System.Drawing.Point(167, 24);
+            this.fslNameIndividualComboBox.Location = new System.Drawing.Point(158, 48);
             this.fslNameIndividualComboBox.Name = "fslNameIndividualComboBox";
             this.fslNameIndividualComboBox.Size = new System.Drawing.Size(121, 21);
             this.fslNameIndividualComboBox.TabIndex = 54;
@@ -470,7 +482,7 @@
             // registerIndividuaLink
             // 
             this.registerIndividuaLink.AutoSize = true;
-            this.registerIndividuaLink.Location = new System.Drawing.Point(165, 48);
+            this.registerIndividuaLink.Location = new System.Drawing.Point(156, 72);
             this.registerIndividuaLink.Name = "registerIndividuaLink";
             this.registerIndividuaLink.Size = new System.Drawing.Size(125, 13);
             this.registerIndividuaLink.TabIndex = 60;
@@ -480,7 +492,7 @@
             // 
             // buttonIndividual
             // 
-            this.buttonIndividual.Location = new System.Drawing.Point(177, 250);
+            this.buttonIndividual.Location = new System.Drawing.Point(168, 274);
             this.buttonIndividual.Name = "buttonIndividual";
             this.buttonIndividual.Size = new System.Drawing.Size(111, 23);
             this.buttonIndividual.TabIndex = 59;
@@ -491,7 +503,7 @@
             // endDateIndividualDateTimePicker
             // 
             this.endDateIndividualDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.endDateIndividualDateTimePicker.Location = new System.Drawing.Point(168, 212);
+            this.endDateIndividualDateTimePicker.Location = new System.Drawing.Point(159, 236);
             this.endDateIndividualDateTimePicker.Name = "endDateIndividualDateTimePicker";
             this.endDateIndividualDateTimePicker.Size = new System.Drawing.Size(120, 20);
             this.endDateIndividualDateTimePicker.TabIndex = 58;
@@ -500,7 +512,7 @@
             // startDateIndividualDateTimePicker
             // 
             this.startDateIndividualDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.startDateIndividualDateTimePicker.Location = new System.Drawing.Point(168, 183);
+            this.startDateIndividualDateTimePicker.Location = new System.Drawing.Point(159, 207);
             this.startDateIndividualDateTimePicker.Name = "startDateIndividualDateTimePicker";
             this.startDateIndividualDateTimePicker.Size = new System.Drawing.Size(120, 20);
             this.startDateIndividualDateTimePicker.TabIndex = 57;
@@ -508,7 +520,7 @@
             // 
             // policeAmountIndividualNumericUpDown
             // 
-            this.policeAmountIndividualNumericUpDown.Location = new System.Drawing.Point(168, 153);
+            this.policeAmountIndividualNumericUpDown.Location = new System.Drawing.Point(159, 177);
             this.policeAmountIndividualNumericUpDown.Name = "policeAmountIndividualNumericUpDown";
             this.policeAmountIndividualNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.policeAmountIndividualNumericUpDown.TabIndex = 56;
@@ -516,7 +528,7 @@
             // 
             // policeCoastIndividualNumericUpDown
             // 
-            this.policeCoastIndividualNumericUpDown.Location = new System.Drawing.Point(168, 123);
+            this.policeCoastIndividualNumericUpDown.Location = new System.Drawing.Point(159, 147);
             this.policeCoastIndividualNumericUpDown.Name = "policeCoastIndividualNumericUpDown";
             this.policeCoastIndividualNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.policeCoastIndividualNumericUpDown.TabIndex = 55;
@@ -525,7 +537,7 @@
             // policeCategoryIndividualComboBox
             // 
             this.policeCategoryIndividualComboBox.FormattingEnabled = true;
-            this.policeCategoryIndividualComboBox.Location = new System.Drawing.Point(168, 96);
+            this.policeCategoryIndividualComboBox.Location = new System.Drawing.Point(159, 120);
             this.policeCategoryIndividualComboBox.Name = "policeCategoryIndividualComboBox";
             this.policeCategoryIndividualComboBox.Size = new System.Drawing.Size(121, 21);
             this.policeCategoryIndividualComboBox.TabIndex = 53;
@@ -534,7 +546,7 @@
             // insurerIdIndividualComboBox
             // 
             this.insurerIdIndividualComboBox.FormattingEnabled = true;
-            this.insurerIdIndividualComboBox.Location = new System.Drawing.Point(168, 69);
+            this.insurerIdIndividualComboBox.Location = new System.Drawing.Point(159, 93);
             this.insurerIdIndividualComboBox.Name = "insurerIdIndividualComboBox";
             this.insurerIdIndividualComboBox.Size = new System.Drawing.Size(121, 21);
             this.insurerIdIndividualComboBox.TabIndex = 52;
@@ -543,7 +555,7 @@
             // endDateIndividual
             // 
             this.endDateIndividual.AutoSize = true;
-            this.endDateIndividual.Location = new System.Drawing.Point(58, 217);
+            this.endDateIndividual.Location = new System.Drawing.Point(49, 241);
             this.endDateIndividual.Name = "endDateIndividual";
             this.endDateIndividual.Size = new System.Drawing.Size(92, 13);
             this.endDateIndividual.TabIndex = 51;
@@ -552,7 +564,7 @@
             // startDateIndividual
             // 
             this.startDateIndividual.AutoSize = true;
-            this.startDateIndividual.Location = new System.Drawing.Point(50, 183);
+            this.startDateIndividual.Location = new System.Drawing.Point(41, 207);
             this.startDateIndividual.Name = "startDateIndividual";
             this.startDateIndividual.Size = new System.Drawing.Size(100, 13);
             this.startDateIndividual.TabIndex = 50;
@@ -561,7 +573,7 @@
             // policeAmountIndividual
             // 
             this.policeAmountIndividual.AutoSize = true;
-            this.policeAmountIndividual.Location = new System.Drawing.Point(67, 155);
+            this.policeAmountIndividual.Location = new System.Drawing.Point(58, 179);
             this.policeAmountIndividual.Name = "policeAmountIndividual";
             this.policeAmountIndividual.Size = new System.Drawing.Size(83, 13);
             this.policeAmountIndividual.TabIndex = 49;
@@ -570,7 +582,7 @@
             // policeCoastIndividual
             // 
             this.policeCoastIndividual.AutoSize = true;
-            this.policeCoastIndividual.Location = new System.Drawing.Point(18, 125);
+            this.policeCoastIndividual.Location = new System.Drawing.Point(9, 149);
             this.policeCoastIndividual.Name = "policeCoastIndividual";
             this.policeCoastIndividual.Size = new System.Drawing.Size(132, 13);
             this.policeCoastIndividual.TabIndex = 48;
@@ -579,7 +591,7 @@
             // fslNameIndividual
             // 
             this.fslNameIndividual.AutoSize = true;
-            this.fslNameIndividual.Location = new System.Drawing.Point(113, 27);
+            this.fslNameIndividual.Location = new System.Drawing.Point(104, 51);
             this.fslNameIndividual.Name = "fslNameIndividual";
             this.fslNameIndividual.Size = new System.Drawing.Size(37, 13);
             this.fslNameIndividual.TabIndex = 47;
@@ -588,7 +600,7 @@
             // policeCategoryIndividual
             // 
             this.policeCategoryIndividual.AutoSize = true;
-            this.policeCategoryIndividual.Location = new System.Drawing.Point(49, 99);
+            this.policeCategoryIndividual.Location = new System.Drawing.Point(40, 123);
             this.policeCategoryIndividual.Name = "policeCategoryIndividual";
             this.policeCategoryIndividual.Size = new System.Drawing.Size(102, 13);
             this.policeCategoryIndividual.TabIndex = 46;
@@ -597,7 +609,7 @@
             // insurerIndividual
             // 
             this.insurerIndividual.AutoSize = true;
-            this.insurerIndividual.Location = new System.Drawing.Point(79, 72);
+            this.insurerIndividual.Location = new System.Drawing.Point(70, 96);
             this.insurerIndividual.Name = "insurerIndividual";
             this.insurerIndividual.Size = new System.Drawing.Size(72, 13);
             this.insurerIndividual.TabIndex = 45;
@@ -607,10 +619,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(830, 476);
-            this.Controls.Add(this.groupBoxIndividual);
+            this.ClientSize = new System.Drawing.Size(629, 438);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "RegisterPolice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Страховщик: оформление полиса";
@@ -676,9 +687,10 @@
         private System.Windows.Forms.Label fslNameIndividual;
         private System.Windows.Forms.Label policeCategoryIndividual;
         private System.Windows.Forms.Label insurerIndividual;
-        private System.Windows.Forms.Button registerPoliceMenu;
-        private System.Windows.Forms.Button registerClient;
         private System.Windows.Forms.LinkLabel registerLegalPersonLink;
         private System.Windows.Forms.LinkLabel registerIndividuaLink;
+        private System.Windows.Forms.Button registerNewInsuranceCase;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

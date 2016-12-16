@@ -46,5 +46,12 @@ namespace InsuranceCompany
         {
 
         }
+
+        private void name_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowRichText cw = new ShowRichText();
+            cw.Client = (LegalPerson)name.SelectedItem;
+            cw.Show();
+        }
     }
 }

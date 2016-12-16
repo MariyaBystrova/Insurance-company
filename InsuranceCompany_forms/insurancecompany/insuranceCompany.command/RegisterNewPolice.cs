@@ -23,7 +23,6 @@ namespace InsuranceCompany.insuranceCompany.command
             {
                 result = insurerDAO.registerPolicyForIndividual(policy);
             }
-            //result = insurerDAO.registerIndividualPerson(individualPerson);
 
             return result;
         }

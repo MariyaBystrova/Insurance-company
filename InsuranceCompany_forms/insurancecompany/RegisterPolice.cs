@@ -49,7 +49,7 @@ namespace InsuranceCompany
 
         private void showAllClientsInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClientInfo cw = new ShowAllClientInfo();
+            ShowAllClientInfoAndPolicies cw = new ShowAllClientInfoAndPolicies();
             cw.Show();
             this.Close();
         }
@@ -214,19 +214,45 @@ namespace InsuranceCompany
 
         private void submitLegal_Click(object sender, EventArgs e)
         {
-            InsurancePolicy policy = new InsurancePolicy();
-            LegalPerson client = new LegalPerson();
-            client = (LegalPerson)companyComboBox.SelectedItem;
-            policy.Client = client;
-            policy.Insurer = (Insurer)insurerComboBox.SelectedItem;
-            policy.Category = (InsuranceCategory)policeCategoryComboBox.SelectedItem;
-            policy.Cost = policeCoastNumericUpDown.Value;
-            policy.Amount = policeAmountNumericUpDown.Value;
-            policy.SignDate = startDateDateTimePicker.Value;
-            policy.ExpirationDate = endDateDateTimePicker.Value;
+            if (companyComboBox.SelectedItem == null || insurerComboBox.SelectedItem == null ||
+               policeCategoryComboBox.SelectedItem == null || String.IsNullOrEmpty(policeCoastNumericUpDown.Text) ||
+               String.IsNullOrEmpty(policeAmountNumericUpDown.Text) || String.IsNullOrEmpty(startDateDateTimePicker.Text) ||
+               String.IsNullOrEmpty(endDateDateTimePicker.Text))
+            {
+                label1.Text = "Проверьте заполнение всех полей.";
+            }
+            else
+            {
+                InsurancePolicy policy = new InsurancePolicy();
+                LegalPerson client = new LegalPerson();
+                client = (LegalPerson)companyComboBox.SelectedItem;
+                policy.Client = client;
+                policy.Insurer = (Insurer)insurerComboBox.SelectedItem;
+                policy.Category = (InsuranceCategory)policeCategoryComboBox.SelectedItem;
+                policy.Cost = policeCoastNumericUpDown.Value;
+                policy.Amount = policeAmountNumericUpDown.Value;
+                policy.SignDate = startDateDateTimePicker.Value;
+                policy.ExpirationDate = endDateDateTimePicker.Value;
 
-            RegisterNewPolice command = new RegisterNewPolice();
-            bool result = command.registerNewPolice(policy);
+                RegisterNewPolice command = new RegisterNewPolice();
+                bool result = command.registerNewPolice(policy);
+                if (result == true)
+                {
+                    companyComboBox.ResetText();
+                    insurerComboBox.ResetText();
+                    policeCategoryComboBox.ResetText();
+                    policeCoastNumericUpDown.ResetText();
+                    policeAmountNumericUpDown.ResetText();
+                    startDateDateTimePicker.ResetText();
+                    endDateDateTimePicker.ResetText();
+
+                    label1.Text = "Полис успешно зарегистрирован.";
+                }
+                if (result == false)
+                {
+                    label1.Text = "Не удалось зарегистрировать полис.";
+                }
+            }
         }
 //
 
@@ -268,26 +294,51 @@ namespace InsuranceCompany
 
         private void buttonIndividual_Click(object sender, EventArgs e)
         {
-            InsurancePolicy policy = new InsurancePolicy();
-            Individual client = new Individual();
-            client = (Individual)fslNameIndividualComboBox.SelectedItem;
-            policy.Client = client;
-            policy.Insurer = (Insurer)insurerIdIndividualComboBox.SelectedItem;
-            policy.Category = (InsuranceCategory)policeCategoryIndividualComboBox.SelectedItem;
-            policy.Cost = policeCoastIndividualNumericUpDown.Value;
-            policy.Amount = policeAmountIndividualNumericUpDown.Value;
-            policy.SignDate = startDateIndividualDateTimePicker.Value;
-            policy.ExpirationDate = endDateIndividualDateTimePicker.Value;
+            if (fslNameIndividualComboBox.SelectedItem == null || insurerIdIndividualComboBox.SelectedItem == null ||
+               policeCategoryIndividualComboBox.SelectedItem == null || String.IsNullOrEmpty(policeCoastIndividualNumericUpDown.Text) ||
+               String.IsNullOrEmpty(policeAmountIndividualNumericUpDown.Text) || String.IsNullOrEmpty(startDateIndividualDateTimePicker.Text) ||
+               String.IsNullOrEmpty(endDateIndividualDateTimePicker.Text))
+            {
+                label2.Text = "Проверьте заполнение всех полей.";
+            }
+            else
+            {
+                InsurancePolicy policy = new InsurancePolicy();
+                Individual client = new Individual();
+                client = (Individual)fslNameIndividualComboBox.SelectedItem;
+                policy.Client = client;
+                policy.Insurer = (Insurer)insurerIdIndividualComboBox.SelectedItem;
+                policy.Category = (InsuranceCategory)policeCategoryIndividualComboBox.SelectedItem;
+                policy.Cost = policeCoastIndividualNumericUpDown.Value;
+                policy.Amount = policeAmountIndividualNumericUpDown.Value;
+                policy.SignDate = startDateIndividualDateTimePicker.Value;
+                policy.ExpirationDate = endDateIndividualDateTimePicker.Value;
 
-            RegisterNewPolice command = new RegisterNewPolice();
-            bool result = command.registerNewPolice(policy);
+                RegisterNewPolice command = new RegisterNewPolice();
+                bool result = command.registerNewPolice(policy);
+                if (result == true)
+                {
+                    fslNameIndividualComboBox.ResetText();
+                    insurerIdIndividualComboBox.ResetText();
+                    policeCategoryIndividualComboBox.ResetText();
+                    policeCoastIndividualNumericUpDown.ResetText();
+                    policeAmountIndividualNumericUpDown.ResetText();
+                    startDateIndividualDateTimePicker.ResetText();
+                    endDateIndividualDateTimePicker.ResetText();
+
+                    label2.Text = "Полис успешно зарегистрирован.";
+                }
+                if (result == false)
+                {
+                    label2.Text = "Не удалось зарегистрировать полис.";
+                }
+            }
         }
 
         private void registerIndividuaLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             RegisterClient cw = new RegisterClient();
             cw.Show();
-            //groupBoxIndividual.Visible = true;
         }
 
        

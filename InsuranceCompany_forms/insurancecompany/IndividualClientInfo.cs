@@ -45,7 +45,9 @@ namespace InsuranceCompany
 
         private void name_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // name.SelectedItem.Equals();
+            ShowRichText cw = new ShowRichText();
+            cw.Individual = (Individual)name.SelectedItem;
+            cw.Show();
         }
     }
 }

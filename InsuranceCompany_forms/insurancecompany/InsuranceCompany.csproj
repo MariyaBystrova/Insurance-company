@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -43,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.IO.Log" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -83,13 +90,25 @@
       <DependentUpon>IndividualClientWelcome.cs</DependentUpon>
     </Compile>
     <Compile Include="insuranceCompany.command\GetAllIndividualClients.cs" />
+    <Compile Include="insuranceCompany.command\GetAllIndividualPaymentRequestsCommand.cs" />
+    <Compile Include="insuranceCompany.command\GetAllIndividualPoliciesCommand.cs" />
+    <Compile Include="insuranceCompany.command\GetAllIndividualPolicyPayments.cs" />
     <Compile Include="insuranceCompany.command\GetAllInsuranceCategoriesCommand.cs" />
     <Compile Include="insuranceCompany.command\GetAllInsurers.cs" />
     <Compile Include="insuranceCompany.command\GetAllLegalClientsInfo.cs" />
+    <Compile Include="insuranceCompany.command\GetAllLegalPaymentRequestsCommand.cs" />
+    <Compile Include="insuranceCompany.command\GetAllLegalPersonPoliciesCommand.cs" />
+    <Compile Include="insuranceCompany.command\GetAllLegalPersonPolicyPayments.cs" />
+    <Compile Include="insuranceCompany.command\GetAllIndividualWithPaymentRequests.cs" />
+    <Compile Include="insuranceCompany.command\GetAllLegalPersonsWithPaymentRequests.cs" />
+    <Compile Include="insuranceCompany.command\RegisterNewIndividualPaymentRequest.cs" />
     <Compile Include="insuranceCompany.command\RegisterNewIndividualPersonCommand.cs" />
     <Compile Include="insuranceCompany.command\RegisterNewInsuranceCategoryCommand.cs" />
+    <Compile Include="insuranceCompany.command\RegisterNewLegalPaymentRequest.cs" />
     <Compile Include="insuranceCompany.command\RegisterNewLegalPersonCommand.cs" />
     <Compile Include="insuranceCompany.command\RegisterNewPolice.cs" />
+    <Compile Include="insuranceCompany.command\RejectPaymentRequestCommand.cs" />
+    <Compile Include="insuranceCompany.command\SubmitPaymentRequestCommand.cs" />
     <Compile Include="LegalClientInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +184,12 @@
     <Compile Include="ShowAllClientInfo.Designer.cs">
       <DependentUpon>ShowAllClientInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowAllClientInfoAndPolicies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowAllClientInfoAndPolicies.Designer.cs">
+      <DependentUpon>ShowAllClientInfoAndPolicies.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowAllClientsPayments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +201,12 @@
     </Compile>
     <Compile Include="ShowAllPoliceCategories.Designer.cs">
       <DependentUpon>ShowAllPoliceCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowRichText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowRichText.Designer.cs">
+      <DependentUpon>ShowRichText.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="IndividualClientFormPayment.resx">
       <DependentUpon>IndividualClientFormPayment.cs</DependentUpon>
@@ -229,11 +260,17 @@
     <EmbeddedResource Include="ShowAllClientInfo.resx">
       <DependentUpon>ShowAllClientInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ShowAllClientInfoAndPolicies.resx">
+      <DependentUpon>ShowAllClientInfoAndPolicies.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShowAllClientsPayments.resx">
       <DependentUpon>ShowAllClientsPayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowAllPoliceCategories.resx">
       <DependentUpon>ShowAllPoliceCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowRichText.resx">
+      <DependentUpon>ShowRichText.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

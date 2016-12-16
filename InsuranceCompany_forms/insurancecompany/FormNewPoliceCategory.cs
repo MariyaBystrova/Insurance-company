@@ -41,7 +41,7 @@ namespace InsuranceCompany
 
         private void showAllClientsInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClientInfo cw = new ShowAllClientInfo();
+            ShowAllClientInfoAndPolicies cw = new ShowAllClientInfoAndPolicies();
             cw.Show();
             this.Close();
         }
@@ -111,17 +111,25 @@ namespace InsuranceCompany
 
         private void submit_Click(object sender, EventArgs e)
         {
-            String categoryName = policeCategoryNameInput.Text;
-            RegisterNewInsuranceCategoryCommand command = new RegisterNewInsuranceCategoryCommand();
-            bool result = command.registerNewInsuranceCategory(categoryName);
-            if (result==true)
+            if (String.IsNullOrEmpty(policeCategoryNameInput.Text))
             {
-                policeCategoryNameInput.Clear();
-                resultLabel.Text = "Новая категория полиса успешно зарегистрирована.";
+                resultLabel.Text = "Проверьте заполнение поля.";
             }
-            if(result==false)
+            else
             {
-                resultLabel.Text = "Не удалось зарегистрировать новую категорию полиса.";
+
+                String categoryName = policeCategoryNameInput.Text;
+                RegisterNewInsuranceCategoryCommand command = new RegisterNewInsuranceCategoryCommand();
+                bool result = command.registerNewInsuranceCategory(categoryName);
+                if (result == true)
+                {
+                    policeCategoryNameInput.Clear();
+                    resultLabel.Text = "Новая категория полиса успешно зарегистрирована.";
+                }
+                if (result == false)
+                {
+                    resultLabel.Text = "Не удалось зарегистрировать новую категорию полиса.";
+                }
             }
         }
 

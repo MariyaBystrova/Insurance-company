@@ -38,6 +38,7 @@
             this.submitPaymentRequest = new System.Windows.Forms.Button();
             this.policeNumber = new System.Windows.Forms.Label();
             this.InsuranseCase = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -103,6 +104,7 @@
             // 
             // groupBoxFormPayment
             // 
+            this.groupBoxFormPayment.Controls.Add(this.label1);
             this.groupBoxFormPayment.Controls.Add(this.insuranseCaseInput);
             this.groupBoxFormPayment.Controls.Add(this.policeNumberInput);
             this.groupBoxFormPayment.Controls.Add(this.submitPaymentRequest);
@@ -114,22 +116,25 @@
             this.groupBoxFormPayment.TabIndex = 0;
             this.groupBoxFormPayment.TabStop = false;
             this.groupBoxFormPayment.Text = "Обращение за выплатой";
+            this.groupBoxFormPayment.Enter += new System.EventHandler(this.groupBoxFormPayment_Enter);
             // 
             // insuranseCaseInput
             // 
             this.insuranseCaseInput.FormattingEnabled = true;
-            this.insuranseCaseInput.Location = new System.Drawing.Point(145, 72);
+            this.insuranseCaseInput.Location = new System.Drawing.Point(145, 84);
             this.insuranseCaseInput.Name = "insuranseCaseInput";
             this.insuranseCaseInput.Size = new System.Drawing.Size(100, 21);
             this.insuranseCaseInput.TabIndex = 11;
+            this.insuranseCaseInput.SelectedIndexChanged += new System.EventHandler(this.insuranseCaseInput_SelectedIndexChanged);
             // 
             // policeNumberInput
             // 
-            this.policeNumberInput.Location = new System.Drawing.Point(145, 33);
+            this.policeNumberInput.Location = new System.Drawing.Point(145, 44);
             this.policeNumberInput.Name = "policeNumberInput";
             this.policeNumberInput.Size = new System.Drawing.Size(100, 20);
             this.policeNumberInput.TabIndex = 7;
             this.policeNumberInput.Tag = "policeNumber";
+            this.policeNumberInput.TextChanged += new System.EventHandler(this.policeNumberInput_TextChanged);
             // 
             // submitPaymentRequest
             // 
@@ -140,11 +145,12 @@
             this.submitPaymentRequest.Tag = "submitPaymentRequest";
             this.submitPaymentRequest.Text = "Оформить";
             this.submitPaymentRequest.UseVisualStyleBackColor = true;
+            this.submitPaymentRequest.Click += new System.EventHandler(this.submitPaymentRequest_Click);
             // 
             // policeNumber
             // 
             this.policeNumber.AutoSize = true;
-            this.policeNumber.Location = new System.Drawing.Point(27, 36);
+            this.policeNumber.Location = new System.Drawing.Point(27, 47);
             this.policeNumber.Name = "policeNumber";
             this.policeNumber.Size = new System.Drawing.Size(98, 13);
             this.policeNumber.TabIndex = 6;
@@ -153,11 +159,20 @@
             // InsuranseCase
             // 
             this.InsuranseCase.AutoSize = true;
-            this.InsuranseCase.Location = new System.Drawing.Point(27, 75);
+            this.InsuranseCase.Location = new System.Drawing.Point(27, 87);
             this.InsuranseCase.Name = "InsuranseCase";
             this.InsuranseCase.Size = new System.Drawing.Size(100, 13);
             this.InsuranseCase.TabIndex = 8;
             this.InsuranseCase.Text = "Страховой случай:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 12;
             // 
             // IndividualClientFormPayment
             // 
@@ -165,6 +180,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 328);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "IndividualClientFormPayment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Физ. лицо: оформление обращения за выплатой";
@@ -191,5 +207,6 @@
         private System.Windows.Forms.Button submitPaymentRequest;
         private System.Windows.Forms.Label policeNumber;
         private System.Windows.Forms.Label InsuranseCase;
+        private System.Windows.Forms.Label label1;
     }
 }

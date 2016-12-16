@@ -8,10 +8,11 @@ namespace InsuranceCompany.entity
 {
     class PolicyPayment
     {
+        private int id;
         private InsurancePolicy policy;
         private InsuranceCase insuranceCase;
         private DateTime paymentApplicationDate;
-        private int paymentAmount;
+        private decimal paymentAmount;
         private DateTime paymentDate;
         private bool paymentRefusal;
 
@@ -27,6 +28,17 @@ namespace InsuranceCompany.entity
             this.paymentRefusal = paymentRefusal;
         }
 
+        public override string ToString()
+        {
+            return policy.PolicyId+ " / "+ policy.Category + " / "+insuranceCase + " / "+ paymentAmount;
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
         public bool PaymentRefusal
         {
             get { return paymentRefusal; }
@@ -39,7 +51,7 @@ namespace InsuranceCompany.entity
             set { paymentDate = value; }
         }
 
-        public int PaymentAmount
+        public decimal PaymentAmount
         {
             get { return paymentAmount; }
             set { paymentAmount = value; }

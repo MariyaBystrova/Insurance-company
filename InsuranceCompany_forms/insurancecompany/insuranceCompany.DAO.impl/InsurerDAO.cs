@@ -331,6 +331,7 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
                         legalPerson.AccountantSurname = reader.GetString(8);
                         legalPerson.CompanyAddress = reader.GetString(9);
                         legalPerson.CompanyPhoneNumber = reader.GetString(10);
+
                         legalPersonList.Add(legalPerson);
 
                     }
@@ -573,6 +574,1011 @@ namespace InsuranceCompany.insuranceCompany.DAO.impl
             }
             return result;
         }
+
+
+        public List<InsurancePolicy> getAllLegalPersonPolicies(LegalPerson legalPerson)
+        {
+            List<InsurancePolicy> legalPolicyList = new List<InsurancePolicy>();
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "SELECT police.ins_police_id, police.ins_category_id, police.police_cost, police.police_money_amount, police.police_sign_date, police.police_expiration_date, police.insurer_id, ins.first_name, ins.second_name, ins.surname, ins.SSN, ins.address, ins.phone_number, category.ins_category_name, category.max_police_cost FROM `insurance_company`.`insurance_police` as police JOIN insurers as ins  ON police.insurer_id = ins.insurer_id JOIN insurance_category as category  ON police.ins_category_id = category.ins_category_id WHERE police.legal_client_id = ?legalClientId;";
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("legalClientId", legalPerson.Id);
+                reader = cmd.ExecuteReader();
+
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        InsurancePolicy policy = new InsurancePolicy();
+                        policy.Client = legalPerson;
+                        policy.PolicyId = reader.GetInt32(0);
+                        policy.Cost = reader.GetInt32(2);
+                        policy.Amount = reader.GetInt32(3);
+                        policy.SignDate = reader.GetDateTime(4);
+                        policy.ExpirationDate = reader.GetDateTime(5);
+
+                        Insurer insurer = new Insurer();
+                        insurer.Id = reader.GetInt32(6);
+                        insurer.Name = reader.GetString(7);
+                        insurer.SecondName = reader.GetString(8);
+                        insurer.Surname = reader.GetString(9);
+                        insurer.Ssn = reader.GetString(10);
+                        insurer.Address = reader.GetString(11);
+                        insurer.PhoneNumber = reader.GetString(12);
+                        policy.Insurer = insurer;
+
+                        InsuranceCategory category = new InsuranceCategory();
+                        category.Id = reader.GetInt32(1);
+                        category.Name = reader.GetString(13);
+                        category.MaxPoliceCost = reader.GetInt32(14);
+                        policy.Category = category;
+
+                        legalPolicyList.Add(policy);
+                    }
+                    reader.NextResult();
+                }
+
+
+                cmd.CommandText = "SELECT `insurance_case`.`ins_case_id`,  `insurance_case`.`payment_procent`, `insurance_case`.`case_name` FROM `insurance_company`.`insurance_case` WHERE insurance_case.ins_category_id = ?categoryId;";
+                cmd.Prepare();
+
+                for (int i = 0; i < legalPolicyList.Count; i++)
+                {
+                    cmd.Parameters.Clear();
+                    reader.Close();
+                    cmd.Parameters.AddWithValue("categoryId", legalPolicyList[i].Category.Id);
+                    reader = cmd.ExecuteReader();
+                    List<InsuranceCase> caseList = new List<InsuranceCase>();
+
+                    while (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            InsuranceCase insuranceCase = new InsuranceCase();
+                            insuranceCase.InsuranceCaseId = reader.GetInt32(0);
+                            insuranceCase.PaymentProcent = reader.GetDecimal(1);
+                            insuranceCase.InsuranceCaseName = reader.GetString(2);
+                            caseList.Add(insuranceCase);
+                        }
+                        reader.NextResult();
+                    }
+                    legalPolicyList[i].InsuranceCaseList = caseList;
+                }
+
+                cmd.CommandText = "select ins_police_id,  SUM(payment_amount) from payments where payment_status=1 and ins_police_id=?policyId group by ins_police_id;";
+                cmd.Prepare();
+
+                for (int i = 0; i < legalPolicyList.Count; i++)
+                {
+                    cmd.Parameters.Clear();
+                    reader.Close();
+                    cmd.Parameters.AddWithValue("policyId", legalPolicyList[i].PolicyId);
+                    reader = cmd.ExecuteReader();
+
+                    decimal sum = 0;
+                    while (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            sum = reader.GetDecimal(1);
+                        }
+                        reader.NextResult();
+                    }
+                    legalPolicyList[i].FullPayments = sum;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+
+            return legalPolicyList;
+
+        }
+
+
+        public List<InsurancePolicy> getAllIndividulPolicies(Individual individualPerson)
+        {
+            List<InsurancePolicy> individualPolicyList = new List<InsurancePolicy>();
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "SELECT police.ins_police_id, police.ins_category_id, police.police_cost, police.police_money_amount, police.police_sign_date, police.police_expiration_date, police.insurer_id, ins.first_name, ins.second_name, ins.surname, ins.SSN, ins.address, ins.phone_number, category.ins_category_name, category.max_police_cost FROM `insurance_company`.`insurance_police` as police JOIN insurers as ins  ON police.insurer_id = ins.insurer_id JOIN insurance_category as category  ON police.ins_category_id = category.ins_category_id WHERE police.ind_client_id = ?individualClientId;";
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("individualClientId", individualPerson.Id);
+                reader = cmd.ExecuteReader();
+
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        InsurancePolicy policy = new InsurancePolicy();
+                        policy.Client = individualPerson;
+                        policy.PolicyId = reader.GetInt32(0);
+                        policy.Cost = reader.GetInt32(2);
+                        policy.Amount = reader.GetInt32(3);
+                        policy.SignDate = reader.GetDateTime(4);
+                        policy.ExpirationDate = reader.GetDateTime(5);
+
+                        Insurer insurer = new Insurer();
+                        insurer.Id = reader.GetInt32(6);
+                        insurer.Name = reader.GetString(7);
+                        insurer.SecondName = reader.GetString(8);
+                        insurer.Surname = reader.GetString(9);
+                        insurer.Ssn = reader.GetString(10);
+                        insurer.Address = reader.GetString(11);
+                        insurer.PhoneNumber = reader.GetString(12);
+                        policy.Insurer = insurer;
+
+                        InsuranceCategory category = new InsuranceCategory();
+                        category.Id = reader.GetInt32(1);
+                        category.Name = reader.GetString(13);
+                        category.MaxPoliceCost = reader.GetInt32(14);
+                        policy.Category = category;
+
+                        individualPolicyList.Add(policy);
+                    }
+                    reader.NextResult();
+                }
+
+
+                cmd.CommandText = "SELECT `insurance_case`.`ins_case_id`,  `insurance_case`.`payment_procent`, `insurance_case`.`case_name` FROM `insurance_company`.`insurance_case` WHERE insurance_case.ins_category_id = ?categoryId;";
+                cmd.Prepare();
+
+                for (int i = 0; i < individualPolicyList.Count; i++)
+                {
+                    cmd.Parameters.Clear();
+                    reader.Close();
+                    cmd.Parameters.AddWithValue("categoryId", individualPolicyList[i].Category.Id);
+                    reader = cmd.ExecuteReader();
+                    List<InsuranceCase> caseList = new List<InsuranceCase>();
+
+                    while (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            InsuranceCase insuranceCase = new InsuranceCase();
+                            insuranceCase.InsuranceCaseId = reader.GetInt32(0);
+                            insuranceCase.PaymentProcent = reader.GetDecimal(1);
+                            insuranceCase.InsuranceCaseName = reader.GetString(2);
+                            caseList.Add(insuranceCase);
+                        }
+                        reader.NextResult();
+                    }
+                    individualPolicyList[i].InsuranceCaseList = caseList;
+                }
+
+                cmd.CommandText = "select ins_police_id, SUM(payment_amount) from payments where payment_status=1 and ins_police_id=?policyId group by ins_police_id;";
+                cmd.Prepare();
+
+                for (int i = 0; i < individualPolicyList.Count; i++)
+                {
+                    cmd.Parameters.Clear();
+                    reader.Close();
+                    cmd.Parameters.AddWithValue("policyId", individualPolicyList[i].PolicyId);
+                    reader = cmd.ExecuteReader();
+
+                    decimal sum = 0;
+                    while (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            sum = reader.GetDecimal(1);
+                        }
+                        reader.NextResult();
+                    }
+                    individualPolicyList[i].FullPayments = sum;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+            return individualPolicyList;
+
+        }
+
+        public bool registerNewLegalPaymentRequest(InsuranceCase insuranceCase, int legalClientId)
+        {
+            bool result = true;
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            List<InsurancePolicy> legalPolicyList = new List<InsurancePolicy>();
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+                LegalPerson legalPerson = new LegalPerson();
+                InsurancePolicy currentPolicy = null;
+                legalPerson.Id = legalClientId;
+                legalPolicyList = getAllLegalPersonPolicies(legalPerson);
+
+                bool permissionFlag = false;
+
+                foreach (InsurancePolicy policy in legalPolicyList)
+                {
+                    foreach (InsuranceCase cs in policy.InsuranceCaseList)
+                    {
+                        if (cs.InsuranceCaseName.Equals(insuranceCase.InsuranceCaseName))
+                        {
+                            permissionFlag = true;
+                            currentPolicy = policy;
+                            break;
+                        }
+                    }
+
+                    if (permissionFlag)
+                    {
+                        break;
+                    }
+                }
+
+                if (!permissionFlag)
+                {
+                    result = false;
+                    return result;
+                }
+
+                cmd.CommandText = "INSERT INTO `insurance_company`.`payments` (`ins_police_id`, `payment_request_date`, `ins_case_id`) VALUES (?policeId, ?paymentRequestDate, ?insCaseId);";
+                cmd.Prepare();
+                DateTime requestDate = DateTime.Now;
+                cmd.Parameters.AddWithValue("policeId", currentPolicy.PolicyId);
+                cmd.Parameters.AddWithValue("paymentRequestDate", requestDate);
+                cmd.Parameters.AddWithValue("insCaseId", insuranceCase.InsuranceCaseId);
+                int queryResult = cmd.ExecuteNonQuery();
+                if (queryResult == -1)
+                {
+                    result = false;
+                    return result;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+            }
+            return result;
+        }
+
+        public bool registerNewIndividualPaymentRequest(InsuranceCase insuranceCase, int individualClientId)
+        {
+
+            bool result = true;
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            List<InsurancePolicy> individualPolicyList = new List<InsurancePolicy>();
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+                Individual individualPerson = new Individual();
+                InsurancePolicy currentPolicy = null;
+                individualPerson.Id = individualClientId;
+                individualPolicyList = getAllIndividulPolicies(individualPerson);
+
+                bool permissionFlag = false;
+
+                foreach (InsurancePolicy policy in individualPolicyList)
+                {
+                    foreach (InsuranceCase cs in policy.InsuranceCaseList)
+                    {
+                        if (cs.InsuranceCaseName.Equals(insuranceCase.InsuranceCaseName))
+                        {
+                            permissionFlag = true;
+                            currentPolicy = policy;
+                            break;
+                        }
+                    }
+
+                    if (permissionFlag)
+                    {
+                        break;
+                    }
+                }
+
+                if (!permissionFlag)
+                {
+                    result = false;
+                    return result;
+                }
+
+                cmd.CommandText = "INSERT INTO `insurance_company`.`payments` (`ins_police_id`, `payment_request_date`, `ins_case_id`) VALUES (?policeId, ?paymentRequestDate, ?insCaseId);";
+                cmd.Prepare();
+                DateTime requestDate = DateTime.Now;
+                cmd.Parameters.AddWithValue("policeId", currentPolicy.PolicyId);
+                cmd.Parameters.AddWithValue("paymentRequestDate", requestDate);
+                cmd.Parameters.AddWithValue("insCaseId", insuranceCase.InsuranceCaseId);
+                int queryResult = cmd.ExecuteNonQuery();
+                if (queryResult == -1)
+                {
+                    result = false;
+                    return result;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+            }
+            return result;
+        }
+
+
+
+
+        public List<PolicyPayment> getAllLegalPersonPolicyPayments(LegalPerson legalPerson)
+        {
+            List<PolicyPayment> list = new List<PolicyPayment>();
+
+            
+
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "select pay.payment_id, pay.ins_police_id, pay.payment_request_date, pay.payment_date, pay.payment_amount, c.ins_category_name, cas.case_name from payments as pay join insurance_police as p on p.ins_police_id=pay.ins_police_id join insurance_category as c on c.ins_category_id = p.ins_category_id join insurance_case as cas on cas.ins_case_id=pay.ins_case_id where pay.payment_status=1 and p.legal_client_id=?clientId;";
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("clientId", legalPerson.Id);
+                reader = cmd.ExecuteReader();
+
+
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        PolicyPayment payment = new PolicyPayment();
+                        payment.Id = reader.GetInt32(0);
+                        InsurancePolicy policy = new InsurancePolicy();
+                        policy.PolicyId = reader.GetInt32(1);
+                        payment.Policy = policy;
+                        payment.PaymentApplicationDate = reader.GetDateTime(2);
+                        payment.PaymentDate = reader.GetDateTime(3);
+                        payment.PaymentAmount = reader.GetDecimal(4);
+                        InsuranceCase cas = new InsuranceCase();
+                        cas.InsuranceCaseName = reader.GetString(5);
+                        payment.InsuranceCase = cas;
+                        InsuranceCategory category = new InsuranceCategory();
+                        category.Name = reader.GetString(6);
+                        payment.Policy.Category = category;
+
+                        list.Add(payment);
+                    }
+                    reader.NextResult();
+                }
+}
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+            }
+
+                return list;
+            
+        }
+
+        public List<PolicyPayment> getAllIndividualPolicyPayments(Individual individualClient)
+        {
+            List<PolicyPayment> list = new List<PolicyPayment>();
+
+
+
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "select pay.payment_id, pay.ins_police_id, pay.payment_request_date, pay.payment_date, pay.payment_amount, c.ins_category_name, cas.case_name from payments as pay join insurance_police as p on p.ins_police_id=pay.ins_police_id join insurance_category as c on c.ins_category_id = p.ins_category_id join insurance_case as cas on cas.ins_case_id=pay.ins_case_id where pay.payment_status=1 and p.ind_client_id=?clientId;";
+                cmd.Prepare();
+                cmd.Parameters.AddWithValue("clientId", individualClient.Id);
+                reader = cmd.ExecuteReader();
+
+
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        PolicyPayment payment = new PolicyPayment();
+                        payment.Id = reader.GetInt32(0);
+                        InsurancePolicy policy = new InsurancePolicy();
+                        policy.PolicyId = reader.GetInt32(1);
+                        payment.Policy = policy;
+                        payment.PaymentApplicationDate = reader.GetDateTime(2);
+                        payment.PaymentDate = reader.GetDateTime(3);
+                        payment.PaymentAmount = reader.GetDecimal(4);
+                        InsuranceCase cas = new InsuranceCase();
+                        cas.InsuranceCaseName = reader.GetString(5);
+                        payment.InsuranceCase = cas;
+                        InsuranceCategory category = new InsuranceCategory();
+                        category.Name = reader.GetString(6);
+                        payment.Policy.Category = category;
+
+                        list.Add(payment);
+                    }
+                    reader.NextResult();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+            }
+
+            return list;
+
+        }
+
+
+        public List<PolicyPayment> getAllIndividualPaymentRequests(Individual individualPerson)
+        {
+            List<PolicyPayment> paymentsList = new List<PolicyPayment>();
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+
+
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT pa.payment_id,  pa.ins_police_id,  pa.payment_request_date, pa.ins_case_id, cs.case_name, cs.payment_procent FROM payments  as pa JOIN insurance_police as pol  ON pa.ins_police_id = pol.ins_police_id  JOIN insurance_case as cs ON pa.ins_case_id = cs.ins_case_id WHERE pa.payment_status IS NULL AND pol.legal_client_id IS NULL AND pol.police_expiration_date > now();";
+                cmd.Prepare();
+                reader = cmd.ExecuteReader();
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        PolicyPayment paymentRequest = new PolicyPayment();
+                        InsurancePolicy policy = new InsurancePolicy();
+                        InsuranceCase insuranceCase = new InsuranceCase();
+
+                        paymentRequest.Id = reader.GetInt32(0);
+                        policy.PolicyId = reader.GetInt32(1);
+                        paymentRequest.PaymentApplicationDate = reader.GetDateTime(2);
+                        insuranceCase.InsuranceCaseId = reader.GetInt32(3);
+                        insuranceCase.InsuranceCaseName = reader.GetString(4);
+                        insuranceCase.PaymentProcent = reader.GetDecimal(5);
+                        paymentRequest.InsuranceCase = insuranceCase;
+                        paymentRequest.Policy = policy;
+
+                        paymentsList.Add(paymentRequest);
+                    }
+                    reader.NextResult();
+                }
+
+                foreach (PolicyPayment payment in paymentsList)
+                {
+                    cmd.CommandText = "SELECT police.ins_police_id, police.ins_category_id, police.police_cost, police.police_money_amount, police.police_sign_date, police.police_expiration_date, police.insurer_id, ins.first_name, ins.second_name, ins.surname, ins.SSN, ins.address, ins.phone_number, category.ins_category_name, category.max_police_cost FROM `insurance_company`.`insurance_police` as police JOIN insurers as ins  ON police.insurer_id = ins.insurer_id JOIN insurance_category as category  ON police.ins_category_id = category.ins_category_id WHERE police.ins_police_id = ?policeId;";
+                    cmd.Parameters.Clear();
+                    reader.Close();
+                    cmd.Prepare();
+                    cmd.Parameters.AddWithValue("policeId", payment.Policy.PolicyId);
+                    reader = cmd.ExecuteReader();
+                    while (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            InsurancePolicy policy = payment.Policy;
+                            policy.Client = individualPerson;
+                            policy.PolicyId = reader.GetInt32(0);
+                            policy.Cost = reader.GetInt32(2);
+                            policy.Amount = reader.GetInt32(3);
+                            policy.SignDate = reader.GetDateTime(4);
+                            policy.ExpirationDate = reader.GetDateTime(5);
+
+                            Insurer insurer = new Insurer();
+                            insurer.Id = reader.GetInt32(6);
+                            insurer.Name = reader.GetString(7);
+                            insurer.SecondName = reader.GetString(8);
+                            insurer.Surname = reader.GetString(9);
+                            insurer.Ssn = reader.GetString(10);
+                            insurer.Address = reader.GetString(11);
+                            insurer.PhoneNumber = reader.GetString(12);
+                            policy.Insurer = insurer;
+
+                            InsuranceCategory category = new InsuranceCategory();
+                            category.Id = reader.GetInt32(1);
+                            category.Name = reader.GetString(13);
+                            category.MaxPoliceCost = reader.GetInt32(14);
+                            policy.Category = category;
+                            payment.InsuranceCase.InsuranceCategory = category;
+                        }
+                        reader.NextResult();
+                    }
+                    cmd.CommandText = "SELECT `insurance_case`.`ins_case_id`,  `insurance_case`.`payment_procent`, `insurance_case`.`case_name` FROM `insurance_company`.`insurance_case` WHERE insurance_case.ins_category_id = ?categoryId;";
+                    cmd.Prepare();
+                    cmd.Parameters.Clear();
+                    reader.Close();
+                    cmd.Parameters.AddWithValue("categoryId", payment.Policy.Category.Id);
+                    reader = cmd.ExecuteReader();
+                    List<InsuranceCase> caseList = new List<InsuranceCase>();
+
+                    while (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            InsuranceCase insuranceCase = new InsuranceCase();
+                            insuranceCase.InsuranceCaseId = reader.GetInt32(0);
+                            insuranceCase.PaymentProcent = reader.GetDecimal(1);
+                            insuranceCase.InsuranceCaseName = reader.GetString(2);
+                            caseList.Add(insuranceCase);
+                        }
+                        reader.NextResult();
+                    }
+                    payment.Policy.InsuranceCaseList = caseList;
+                    payment.PaymentAmount = payment.Policy.Amount * payment.InsuranceCase.PaymentProcent / 100;
+
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+            return paymentsList;
+        }
+
+        public List<PolicyPayment> getAllLegalPaymentRequests(LegalPerson legalPerson)
+        {
+            List<PolicyPayment> paymentsList = new List<PolicyPayment>();
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+
+
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT pa.payment_id,  pa.ins_police_id,  pa.payment_request_date, pa.ins_case_id, cs.case_name, cs.payment_procent FROM payments  as pa JOIN insurance_police as pol  ON pa.ins_police_id = pol.ins_police_id  JOIN insurance_case as cs ON pa.ins_case_id = cs.ins_case_id WHERE pa.payment_status IS NULL AND pol.ind_client_id IS NULL AND pol.police_expiration_date > now();";
+                cmd.Prepare();
+                reader = cmd.ExecuteReader();
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        PolicyPayment paymentRequest = new PolicyPayment();
+                        InsurancePolicy policy = new InsurancePolicy();
+                        InsuranceCase insuranceCase = new InsuranceCase();
+
+                        paymentRequest.Id = reader.GetInt32(0);
+                        policy.PolicyId = reader.GetInt32(1);
+                        paymentRequest.PaymentApplicationDate = reader.GetDateTime(2);
+                        insuranceCase.InsuranceCaseId = reader.GetInt32(3);
+                        insuranceCase.InsuranceCaseName = reader.GetString(4);
+                        insuranceCase.PaymentProcent = reader.GetDecimal(5);
+                        paymentRequest.InsuranceCase = insuranceCase;
+                        paymentRequest.Policy = policy;
+
+                        paymentsList.Add(paymentRequest);
+                    }
+                    reader.NextResult();
+                }
+
+                foreach (PolicyPayment payment in paymentsList)
+                {
+                    cmd.CommandText = "SELECT police.ins_police_id, police.ins_category_id, police.police_cost, police.police_money_amount, police.police_sign_date, police.police_expiration_date, police.insurer_id, ins.first_name, ins.second_name, ins.surname, ins.SSN, ins.address, ins.phone_number, category.ins_category_name, category.max_police_cost FROM `insurance_company`.`insurance_police` as police JOIN insurers as ins  ON police.insurer_id = ins.insurer_id JOIN insurance_category as category  ON police.ins_category_id = category.ins_category_id WHERE police.ins_police_id = ?policeId;";
+                    cmd.Parameters.Clear();
+                    reader.Close();
+                    cmd.Prepare();
+                    cmd.Parameters.AddWithValue("policeId", payment.Policy.PolicyId);
+                    reader = cmd.ExecuteReader();
+                    while (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            InsurancePolicy policy = payment.Policy;
+                            policy.Client = legalPerson;
+                            policy.PolicyId = reader.GetInt32(0);
+                            policy.Cost = reader.GetInt32(2);
+                            policy.Amount = reader.GetInt32(3);
+                            policy.SignDate = reader.GetDateTime(4);
+                            policy.ExpirationDate = reader.GetDateTime(5);
+
+                            Insurer insurer = new Insurer();
+                            insurer.Id = reader.GetInt32(6);
+                            insurer.Name = reader.GetString(7);
+                            insurer.SecondName = reader.GetString(8);
+                            insurer.Surname = reader.GetString(9);
+                            insurer.Ssn = reader.GetString(10);
+                            insurer.Address = reader.GetString(11);
+                            insurer.PhoneNumber = reader.GetString(12);
+                            policy.Insurer = insurer;
+
+                            InsuranceCategory category = new InsuranceCategory();
+                            category.Id = reader.GetInt32(1);
+                            category.Name = reader.GetString(13);
+                            category.MaxPoliceCost = reader.GetInt32(14);
+                            policy.Category = category;
+                            payment.InsuranceCase.InsuranceCategory = category;
+                        }
+                        reader.NextResult();
+                    }
+                    cmd.CommandText = "SELECT `insurance_case`.`ins_case_id`,  `insurance_case`.`payment_procent`, `insurance_case`.`case_name` FROM `insurance_company`.`insurance_case` WHERE insurance_case.ins_category_id = ?categoryId;";
+                    cmd.Prepare();
+                    cmd.Parameters.Clear();
+                    reader.Close();
+                    cmd.Parameters.AddWithValue("categoryId", payment.Policy.Category.Id);
+                    reader = cmd.ExecuteReader();
+                    List<InsuranceCase> caseList = new List<InsuranceCase>();
+
+                    while (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            InsuranceCase insuranceCase = new InsuranceCase();
+                            insuranceCase.InsuranceCaseId = reader.GetInt32(0);
+                            insuranceCase.PaymentProcent = reader.GetDecimal(1);
+                            insuranceCase.InsuranceCaseName = reader.GetString(2);
+                            caseList.Add(insuranceCase);
+                        }
+                        reader.NextResult();
+                    }
+                    payment.Policy.InsuranceCaseList = caseList;
+                    payment.PaymentAmount = payment.Policy.Amount * payment.InsuranceCase.PaymentProcent / 100;
+
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+            }
+            return paymentsList;
+        }
+
+        public bool submitPaymentRequest(PolicyPayment payment)
+        {
+            bool result = true;
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "UPDATE `insurance_company`.`payments` SET `payment_date` = ?paymentDate, `payment_status` = 1, `payment_amount` = ?paymentAmount WHERE `payment_id` = ?paymentId;";
+                cmd.Prepare();
+
+                cmd.Parameters.AddWithValue("paymentDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("paymentAmount", payment.PaymentAmount);
+                cmd.Parameters.AddWithValue("paymentId", payment.Id);
+
+                int queryResult = cmd.ExecuteNonQuery();
+                if (queryResult == -1)
+                {
+                    result = false;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+            }
+            return result;
+        }
+
+        public bool rejectPaymentRequest(PolicyPayment payment)
+        {
+            bool result = true;
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "UPDATE `insurance_company`.`payments` SET  `payment_status` = 0 WHERE `payment_id` = ?paymentId;";
+                cmd.Prepare();
+
+                cmd.Parameters.AddWithValue("paymentId", payment.Id);
+
+                int queryResult = cmd.ExecuteNonQuery();
+                if (queryResult == -1)
+                {
+                    result = false;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+            }
+            return result;
+        }
+
+
+        public List<Individual> getAllIndividualWithPaymentRequests()
+        {
+            List<Individual> list = new List<Individual>();
+
+
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "select distinct pay.payment_id, c.ind_client_id, c.first_name, c.second_name, c.surname, c.birth_date, c.sex, c.driving_experience, c.address, c.phone_number, c.photo_link from payments as pay join insurance_police as p on p.ins_police_id=pay.ins_police_id join individual_clients as c on c.ind_client_id=p.ind_client_id where pay.payment_status is null;";
+                cmd.Prepare();
+                reader = cmd.ExecuteReader();
+
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Individual client = new Individual();
+                        client.Id = reader.GetInt32(1);
+                        client.Name = reader.GetString(2);
+                        client.SecondName = reader.GetString(3);
+                        client.Surname = reader.GetString(4);
+                        client.BirthDate = reader.GetDateTime(5);
+                        client.Sex = reader.GetString(6);
+                        client.DrivingExperience = reader.GetDecimal(7);
+                        client.Address = reader.GetString(8);
+                        client.PhoneNumber = reader.GetString(9);
+                        client.Photo = reader.GetString(10);
+
+                        list.Add(client);
+                    }
+                    reader.NextResult();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+            }
+            return list;
+        }
+
+       // getAllLegalPersonsWithPaymentRequests()
+        public List<LegalPerson> getAllLegalPersonsWithPaymentRequests()
+        {
+            List<LegalPerson> list = new List<LegalPerson>();
+
+
+            MySqlConnection conn = null; ;
+            MySqlCommand cmd = null;
+            MySqlDataReader reader = null;
+
+            try
+            {
+                conn = new MySqlConnection();
+                cmd = new MySqlCommand();
+                conn.ConnectionString = conString;
+                conn.Open();
+                cmd.Connection = conn;
+
+                cmd.CommandText = "select distinct c.legal_client_id, c.company_name, c.taxpayer_number, c.dir_first_name, c.dir_second_name, c.dir_surname, c. acc_first_name, c.acc_second_name, c.acc_surname, c.address from payments as pay join insurance_police as p on p.ins_police_id=pay.ins_police_id join legal_clients as c on c.legal_client_id=p.legal_client_id where pay.payment_status is null;";
+                cmd.Prepare();
+                reader = cmd.ExecuteReader();
+
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        LegalPerson client = new LegalPerson();
+                        client.Id = reader.GetInt32(0);
+                        client.CompanyName = reader.GetString(1);
+                        client.UniqueNumber = reader.GetString(2);
+                        client.DirectorName = reader.GetString(3);
+                        client.DirectorSecondName = reader.GetString(4);
+                        client.DirectorSurname = reader.GetString(5);
+                        client.AccountantName = reader.GetString(6);
+                        client.AccountantSecondName = reader.GetString(7);
+                        client.AccountantSurname = reader.GetString(8);
+                        client.CompanyAddress = reader.GetString(9);
+
+                        list.Add(client);
+                    }
+                    reader.NextResult();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Dispose();
+                }
+            }
+            return list;
+        }
+
     }
 }
 

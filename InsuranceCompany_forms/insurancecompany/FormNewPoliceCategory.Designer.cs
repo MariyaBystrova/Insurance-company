@@ -69,8 +69,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.reisterNewPoliceCategoryBox);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(496, 417);
-            this.splitContainer1.SplitterDistance = 164;
+            this.splitContainer1.Size = new System.Drawing.Size(631, 417);
+            this.splitContainer1.SplitterDistance = 162;
             this.splitContainer1.TabIndex = 10;
             // 
             // tableLayoutPanel1
@@ -211,9 +211,9 @@
             this.reisterNewPoliceCategoryBox.Controls.Add(this.policeCategoryName);
             this.reisterNewPoliceCategoryBox.Controls.Add(this.submit);
             this.reisterNewPoliceCategoryBox.Controls.Add(this.policeCategoryNameInput);
-            this.reisterNewPoliceCategoryBox.Location = new System.Drawing.Point(12, 5);
+            this.reisterNewPoliceCategoryBox.Location = new System.Drawing.Point(53, 29);
             this.reisterNewPoliceCategoryBox.Name = "reisterNewPoliceCategoryBox";
-            this.reisterNewPoliceCategoryBox.Size = new System.Drawing.Size(294, 141);
+            this.reisterNewPoliceCategoryBox.Size = new System.Drawing.Size(365, 265);
             this.reisterNewPoliceCategoryBox.TabIndex = 12;
             this.reisterNewPoliceCategoryBox.TabStop = false;
             this.reisterNewPoliceCategoryBox.Text = "Регистрация новой страховой категории";
@@ -231,7 +231,7 @@
             // policeCategoryName
             // 
             this.policeCategoryName.AutoSize = true;
-            this.policeCategoryName.Location = new System.Drawing.Point(69, 42);
+            this.policeCategoryName.Location = new System.Drawing.Point(23, 72);
             this.policeCategoryName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.policeCategoryName.Name = "policeCategoryName";
             this.policeCategoryName.Size = new System.Drawing.Size(154, 13);
@@ -241,7 +241,7 @@
             // 
             // submit
             // 
-            this.submit.Location = new System.Drawing.Point(136, 98);
+            this.submit.Location = new System.Drawing.Point(256, 126);
             this.submit.Margin = new System.Windows.Forms.Padding(2);
             this.submit.Name = "submit";
             this.submit.Size = new System.Drawing.Size(87, 22);
@@ -253,7 +253,7 @@
             // 
             // policeCategoryNameInput
             // 
-            this.policeCategoryNameInput.Location = new System.Drawing.Point(72, 60);
+            this.policeCategoryNameInput.Location = new System.Drawing.Point(192, 72);
             this.policeCategoryNameInput.Margin = new System.Windows.Forms.Padding(2);
             this.policeCategoryNameInput.Name = "policeCategoryNameInput";
             this.policeCategoryNameInput.Size = new System.Drawing.Size(151, 20);
@@ -268,9 +268,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 434);
+            this.ClientSize = new System.Drawing.Size(655, 434);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormNewPoliceCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Страховщик: регистрация категории полиса";

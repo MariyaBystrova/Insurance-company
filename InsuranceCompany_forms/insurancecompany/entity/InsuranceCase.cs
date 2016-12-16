@@ -19,6 +19,11 @@ namespace InsuranceCompany.entity
             this.insuranceCategory = insuranceCategory;
         }
 
+        public override string ToString()
+        {
+            return InsuranceCaseName;
+        }
+
         public InsuranceCategory InsuranceCategory
         {
             get { return insuranceCategory; }

@@ -38,7 +38,7 @@ namespace InsuranceCompany
 
         private void showAllClientsInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClientInfo cw = new ShowAllClientInfo();
+            ShowAllClientInfoAndPolicies cw = new ShowAllClientInfoAndPolicies();
             cw.Show();
             this.Close();
         }

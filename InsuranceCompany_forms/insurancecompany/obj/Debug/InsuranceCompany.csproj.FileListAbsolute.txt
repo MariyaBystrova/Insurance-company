@@ -208,3 +208,5 @@ D:\Andrey\work\C#\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCom
 D:\Andrey\work\C#\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCompany.ShowAllPoliceCategories.resources
 D:\Andrey\work\C#\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCompany.csproj.GenerateResource.Cache
 D:\Andrey\work\C#\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCompany.csprojResolveAssemblyReference.cache
+C:\Users\Maria\Desktop\Insurance-company\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCompany.ShowRichText.resources
+C:\Users\Maria\Desktop\Insurance-company\InsuranceCompany_forms\InsuranceCompany\obj\Debug\InsuranceCompany.ShowAllClientInfoAndPolicies.resources

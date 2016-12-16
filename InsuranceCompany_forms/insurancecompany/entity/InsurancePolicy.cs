@@ -15,8 +15,9 @@ namespace InsuranceCompany.entity
         private DateTime signDate;
         private DateTime expirationDate;
         private Client client;
-        private List<InsuranceCase> insuranceCaseList; ////////
+        private List<InsuranceCase> insuranceCaseList;
         private Insurer insurer;
+        private decimal fullPayments;
 
         public InsurancePolicy() { }
 
@@ -99,6 +100,13 @@ namespace InsuranceCompany.entity
             get { return insurer; }
             set { insurer = value; }
         }
+
+        public decimal FullPayments
+        {
+            get { return fullPayments; }
+            set { fullPayments = value; }
+        }
+
 
     }
 }

@@ -66,8 +66,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.clientType);
             this.splitContainer1.Panel2.Controls.Add(this.name);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(472, 392);
-            this.splitContainer1.SplitterDistance = 154;
+            this.splitContainer1.Size = new System.Drawing.Size(609, 392);
+            this.splitContainer1.SplitterDistance = 157;
             this.splitContainer1.TabIndex = 11;
             // 
             // tableLayoutPanel1
@@ -111,7 +111,7 @@
             // registerNewInsuranceCase
             // 
             this.registerNewInsuranceCase.Location = new System.Drawing.Point(2, 2);
-            this.registerNewInsuranceCase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registerNewInsuranceCase.Margin = new System.Windows.Forms.Padding(2);
             this.registerNewInsuranceCase.Name = "registerNewInsuranceCase";
             this.registerNewInsuranceCase.Size = new System.Drawing.Size(145, 38);
             this.registerNewInsuranceCase.TabIndex = 0;
@@ -133,7 +133,7 @@
             // registerNewPoliceCategory
             // 
             this.registerNewPoliceCategory.Location = new System.Drawing.Point(2, 44);
-            this.registerNewPoliceCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registerNewPoliceCategory.Margin = new System.Windows.Forms.Padding(2);
             this.registerNewPoliceCategory.Name = "registerNewPoliceCategory";
             this.registerNewPoliceCategory.Size = new System.Drawing.Size(145, 38);
             this.registerNewPoliceCategory.TabIndex = 1;
@@ -145,7 +145,7 @@
             // showAllPoliceCategoriesAndCases
             // 
             this.showAllPoliceCategoriesAndCases.Location = new System.Drawing.Point(2, 168);
-            this.showAllPoliceCategoriesAndCases.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.showAllPoliceCategoriesAndCases.Margin = new System.Windows.Forms.Padding(2);
             this.showAllPoliceCategoriesAndCases.Name = "showAllPoliceCategoriesAndCases";
             this.showAllPoliceCategoriesAndCases.Size = new System.Drawing.Size(145, 50);
             this.showAllPoliceCategoriesAndCases.TabIndex = 4;
@@ -157,7 +157,7 @@
             // showAllClientsInfo
             // 
             this.showAllClientsInfo.Location = new System.Drawing.Point(2, 86);
-            this.showAllClientsInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.showAllClientsInfo.Margin = new System.Windows.Forms.Padding(2);
             this.showAllClientsInfo.Name = "showAllClientsInfo";
             this.showAllClientsInfo.Size = new System.Drawing.Size(145, 36);
             this.showAllClientsInfo.TabIndex = 2;
@@ -169,7 +169,7 @@
             // showAllClientPayments
             // 
             this.showAllClientPayments.Location = new System.Drawing.Point(2, 126);
-            this.showAllClientPayments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.showAllClientPayments.Margin = new System.Windows.Forms.Padding(2);
             this.showAllClientPayments.Name = "showAllClientPayments";
             this.showAllClientPayments.Size = new System.Drawing.Size(145, 38);
             this.showAllClientPayments.TabIndex = 3;
@@ -181,7 +181,7 @@
             // formPayment
             // 
             this.formPayment.Location = new System.Drawing.Point(2, 222);
-            this.formPayment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.formPayment.Margin = new System.Windows.Forms.Padding(2);
             this.formPayment.Name = "formPayment";
             this.formPayment.Size = new System.Drawing.Size(145, 37);
             this.formPayment.TabIndex = 5;
@@ -193,7 +193,7 @@
             // getClientInfo
             // 
             this.getClientInfo.Location = new System.Drawing.Point(2, 263);
-            this.getClientInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.getClientInfo.Margin = new System.Windows.Forms.Padding(2);
             this.getClientInfo.Name = "getClientInfo";
             this.getClientInfo.Size = new System.Drawing.Size(145, 36);
             this.getClientInfo.TabIndex = 6;
@@ -204,23 +204,26 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(4, 33);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(308, 352);
+            this.dataGridView1.Size = new System.Drawing.Size(441, 352);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // clientType
             // 
             this.clientType.AccessibleRole = System.Windows.Forms.AccessibleRole.DropList;
             this.clientType.FormattingEnabled = true;
             this.clientType.Items.AddRange(new object[] {
-            "legal client",
-            "individual client"});
+            "юр. лицо",
+            "физ. лицо"});
             this.clientType.Location = new System.Drawing.Point(3, 5);
             this.clientType.Name = "clientType";
-            this.clientType.Size = new System.Drawing.Size(146, 21);
+            this.clientType.Size = new System.Drawing.Size(218, 21);
             this.clientType.TabIndex = 1;
+            this.clientType.Text = "Выберите тип клиента";
             this.clientType.SelectedIndexChanged += new System.EventHandler(this.clientType_SelectedIndexChanged);
             // 
             // name
@@ -229,9 +232,9 @@
             this.name.Items.AddRange(new object[] {
             "dsds",
             "sa"});
-            this.name.Location = new System.Drawing.Point(155, 5);
+            this.name.Location = new System.Drawing.Point(227, 6);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(157, 21);
+            this.name.Size = new System.Drawing.Size(218, 21);
             this.name.TabIndex = 0;
             this.name.SelectedIndexChanged += new System.EventHandler(this.name_SelectedIndexChanged);
             // 
@@ -239,9 +242,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 406);
+            this.ClientSize = new System.Drawing.Size(633, 415);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ShowAllClientsPayments";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Страховщик: выплаты клиента";

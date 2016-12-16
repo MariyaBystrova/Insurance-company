@@ -63,7 +63,7 @@ namespace InsuranceCompany
 
         private void showAllClientsInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClientInfo cw = new ShowAllClientInfo();
+            ShowAllClientInfoAndPolicies cw = new ShowAllClientInfoAndPolicies();
             cw.Show();
             this.Close();
         }
@@ -144,6 +144,11 @@ namespace InsuranceCompany
         //}
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShowAllPoliceCategories_Load(object sender, EventArgs e)
         {
 
         }

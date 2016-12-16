@@ -73,8 +73,7 @@ namespace InsuranceCompany
 
         private void showAllClientsInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClientInfo cw = new ShowAllClientInfo();
-            cw.Show();
+            ShowAllClientInfoAndPolicies cw = new ShowAllClientInfoAndPolicies();
             this.Close();
         }
 
@@ -174,20 +173,50 @@ namespace InsuranceCompany
 
         private void submitLegalPerson_Click(object sender, EventArgs e)
         {
-            LegalPerson legalPerson = new LegalPerson();
-            legalPerson.CompanyName = companyNameInput.Text;
-            legalPerson.UniqueNumber = taxUniqueNumberInput.Text;
-            legalPerson.DirectorName = directorNameInput.Text;
-            legalPerson.DirectorSecondName = directorSecondNameInput.Text;
-            legalPerson.DirectorSurname = directorSurnameInput.Text;
-            legalPerson.AccountantName = accountantNameInput.Text;
-            legalPerson.AccountantSecondName = accountantSecondNameInput.Text;
-            legalPerson.AccountantSurname = accountantSurnameInput.Text;
-            legalPerson.CompanyAddress = companyAddressInput.Text;
-            legalPerson.CompanyPhoneNumber = companyPhoneNumberInput.Text;
+            if (String.IsNullOrEmpty(companyNameInput.Text) || String.IsNullOrEmpty(taxUniqueNumberInput.Text) ||
+                String.IsNullOrEmpty(directorNameInput.Text) || String.IsNullOrEmpty(directorSecondNameInput.Text) ||
+                String.IsNullOrEmpty(directorSurnameInput.Text) || String.IsNullOrEmpty(accountantNameInput.Text) ||
+                String.IsNullOrEmpty(accountantSecondNameInput.Text) || String.IsNullOrEmpty(accountantSurnameInput.Text) ||
+                String.IsNullOrEmpty(companyAddressInput.Text) || String.IsNullOrEmpty(companyPhoneNumberInput.Text))
+            {
+                label1.Text = "Проверьте заполнение всех полей.";
+            }
+            else
+            {
+                LegalPerson legalPerson = new LegalPerson();
+                legalPerson.CompanyName = companyNameInput.Text;
+                legalPerson.UniqueNumber = taxUniqueNumberInput.Text;
+                legalPerson.DirectorName = directorNameInput.Text;
+                legalPerson.DirectorSecondName = directorSecondNameInput.Text;
+                legalPerson.DirectorSurname = directorSurnameInput.Text;
+                legalPerson.AccountantName = accountantNameInput.Text;
+                legalPerson.AccountantSecondName = accountantSecondNameInput.Text;
+                legalPerson.AccountantSurname = accountantSurnameInput.Text;
+                legalPerson.CompanyAddress = companyAddressInput.Text;
+                legalPerson.CompanyPhoneNumber = companyPhoneNumberInput.Text;
 
-            RegisterNewLegalPersonCommand command = new RegisterNewLegalPersonCommand();
-            bool result = command.registerNewLegalPerson(legalPerson);
+                RegisterNewLegalPersonCommand command = new RegisterNewLegalPersonCommand();
+                bool result = command.registerNewLegalPerson(legalPerson);
+                if (result == true)
+                {
+                    companyNameInput.Clear();
+                    taxUniqueNumberInput.Clear();
+                    directorNameInput.Clear();
+                    directorSecondNameInput.Clear();
+                    directorSurnameInput.Clear();
+                    accountantNameInput.Clear();
+                    accountantSecondNameInput.Clear();
+                    accountantSurnameInput.Clear();
+                    companyAddressInput.Clear();
+                    companyPhoneNumberInput.Clear();
+
+                    label1.Text = "Юр. клиент успешно зарегистрирован.";
+                }
+                if (result == false)
+                {
+                    label1.Text = "Не удалось зарегистрировать юр. клиента.";
+                }
+            }
 
         }
 
@@ -260,29 +289,121 @@ namespace InsuranceCompany
 
         private void submitIndividual_Click(object sender, EventArgs e)
         {
-            Individual individualPerson = new Individual();
-            individualPerson.Name = nameInput.Text;
-            individualPerson.SecondName = secondNameInput.Text;
-            individualPerson.Surname = surnameInput.Text;
-            individualPerson.BirthDate = dateOfBirthInput.Value;
-
-            if (male.Checked)
+            if (String.IsNullOrEmpty(nameInput.Text) || String.IsNullOrEmpty(secondNameInput.Text) ||
+               String.IsNullOrEmpty(surnameInput.Text) || String.IsNullOrEmpty(dateOfBirthInput.Text) ||
+               String.IsNullOrEmpty(photoPathInput.Text) || String.IsNullOrEmpty(drivingExperienceInput.Text) ||
+               String.IsNullOrEmpty(addressInput.Text) || String.IsNullOrEmpty(phoneNumberInput.Text))
             {
-                individualPerson.Sex = male.Text;
+                label2.Text = "Проверьте заполнение всех полей.";
             }
-            else { 
-                individualPerson.Sex = female.Text;
-            }
-            individualPerson.Photo = photoPathInput.Text;
-            individualPerson.DrivingExperience = (int)drivingExperienceInput.Value;
-            individualPerson.Address = addressInput.Text;
-            individualPerson.PhoneNumber = phoneNumberInput.Text;
+            else
+            {
+                Individual individualPerson = new Individual();
+                individualPerson.Name = nameInput.Text;
+                individualPerson.SecondName = secondNameInput.Text;
+                individualPerson.Surname = surnameInput.Text;
+                individualPerson.BirthDate = dateOfBirthInput.Value;
 
-            RegisterNewIndividualPersonCommand command = new RegisterNewIndividualPersonCommand();
-            command.registerIndividualPerson(individualPerson);
-            
-           
+                if (male.Checked)
+                {
+                    individualPerson.Sex = male.Text;
+                }
+                else
+                {
+                    individualPerson.Sex = female.Text;
+                }
+                individualPerson.Photo = photoPathInput.Text;
+                individualPerson.DrivingExperience = (int)drivingExperienceInput.Value;
+                individualPerson.Address = addressInput.Text;
+                individualPerson.PhoneNumber = phoneNumberInput.Text;
+
+                RegisterNewIndividualPersonCommand command = new RegisterNewIndividualPersonCommand();
+                bool result = command.registerIndividualPerson(individualPerson);
+
+                if (result == true)
+                {
+                    nameInput.Clear();
+                    secondNameInput.Clear();
+                    surnameInput.Clear();
+                    dateOfBirthInput.ResetText();
+                    photoPathInput.Clear();
+                    drivingExperienceInput.ResetText();
+                    addressInput.Clear();
+                    phoneNumberInput.Clear();
+
+                    label2.Text = "Физ. клиент успешно зарегистрирован.";
+                }
+                if (result == false)
+                {
+                    label2.Text = "Не удалось зарегистрировать физ. клиента.";
+                }
+            }
         }
+
+        private void groupBoxIndividual_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        //private void findPhotoButton_Click_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void nameInput_TextChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void secondNameInput_TextChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void surnameInput_TextChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void dateOfBirthInput_ValueChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void male_CheckedChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void female_CheckedChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void drivingExperienceInput_ValueChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void photoPathInput_TextChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void addressInput_TextChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void phoneNumberInput_TextChanged_1(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void submitIndividual_Click_1(object sender, EventArgs e)
+        //{
+
+        //}
 
     }
 }

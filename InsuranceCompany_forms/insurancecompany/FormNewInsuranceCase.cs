@@ -67,7 +67,7 @@ namespace InsuranceCompany
 
         private void showAllClientsInfo_Click(object sender, EventArgs e)
         {
-            ShowAllClientInfo cw = new ShowAllClientInfo();
+            ShowAllClientInfoAndPolicies cw = new ShowAllClientInfoAndPolicies();
             cw.Show();
             this.Close();
         }
@@ -124,32 +124,38 @@ namespace InsuranceCompany
 
         private void submit_Click(object sender, EventArgs e)
         {
-            InsuranceCase insuranceCase = new InsuranceCase();
-            insuranceCase.InsuranceCaseName = insuranceCaseNameInput.Text;
-            insuranceCase.PaymentProcent = paymentProcentInput.Value;
-           
-            
-            InsuranceCategory category = (InsuranceCategory)insurancePoliceDropDown.SelectedItem;
-            insuranceCase.InsuranceCategory = category;
-               
-           
-            
-            RegisterNewInsuranceCaseCommand command = new RegisterNewInsuranceCaseCommand();
-            bool result = command.registerNewInsuranceCase(insuranceCase);
-
-            if (result == true)
+            if (String.IsNullOrEmpty(insuranceCaseNameInput.Text) || paymentProcentInput.Value==null ||insurancePoliceDropDown.SelectedItem==null)
             {
-                insuranceCaseNameInput.Clear();
-                insurancePoliceDropDown.ResetText();
-                paymentProcentInput.ResetText();
-                resultLabel.Text = "Новый страховой случай успешно зарегистрирован.";
+                resultLabel.Text = "Проверьте заполнение всех полей.";
             }
-            if (result == false)
+            else
             {
-                resultLabel.Text = "Не удалось зарегистрировать новый страховой случай.";
-            }
-            
+                InsuranceCase insuranceCase = new InsuranceCase();
+                insuranceCase.InsuranceCaseName = insuranceCaseNameInput.Text;
+                insuranceCase.PaymentProcent = paymentProcentInput.Value;
 
+
+                InsuranceCategory category = (InsuranceCategory)insurancePoliceDropDown.SelectedItem;
+                insuranceCase.InsuranceCategory = category;
+
+
+
+                RegisterNewInsuranceCaseCommand command = new RegisterNewInsuranceCaseCommand();
+                bool result = command.registerNewInsuranceCase(insuranceCase);
+
+                if (result == true)
+                {
+                    insuranceCaseNameInput.Clear();
+                    insurancePoliceDropDown.ResetText();
+                    paymentProcentInput.ResetText();
+                    resultLabel.Text = "Новый страховой случай успешно зарегистрирован.";
+                }
+                if (result == false)
+                {
+                    resultLabel.Text = "Не удалось зарегистрировать новый страховой случай.";
+                }
+
+            }
         }
 
         private void paymentProcentInput_ValueChanged(object sender, EventArgs e)

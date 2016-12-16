@@ -39,13 +39,17 @@
             this.showAllClientPayments = new System.Windows.Forms.Button();
             this.formPayment = new System.Windows.Forms.Button();
             this.getClientInfo = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.listBox = new System.Windows.Forms.ListBox();
+            this.submit = new System.Windows.Forms.Button();
+            this.reject = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -60,10 +64,15 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.reject);
+            this.splitContainer1.Panel2.Controls.Add(this.submit);
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
+            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.listBox);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(485, 401);
-            this.splitContainer1.SplitterDistance = 159;
+            this.splitContainer1.Size = new System.Drawing.Size(602, 401);
+            this.splitContainer1.SplitterDistance = 157;
             this.splitContainer1.TabIndex = 11;
             // 
             // tableLayoutPanel1
@@ -107,7 +116,7 @@
             // registerNewInsuranceCase
             // 
             this.registerNewInsuranceCase.Location = new System.Drawing.Point(2, 2);
-            this.registerNewInsuranceCase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registerNewInsuranceCase.Margin = new System.Windows.Forms.Padding(2);
             this.registerNewInsuranceCase.Name = "registerNewInsuranceCase";
             this.registerNewInsuranceCase.Size = new System.Drawing.Size(145, 38);
             this.registerNewInsuranceCase.TabIndex = 0;
@@ -129,7 +138,7 @@
             // registerNewPoliceCategory
             // 
             this.registerNewPoliceCategory.Location = new System.Drawing.Point(2, 44);
-            this.registerNewPoliceCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registerNewPoliceCategory.Margin = new System.Windows.Forms.Padding(2);
             this.registerNewPoliceCategory.Name = "registerNewPoliceCategory";
             this.registerNewPoliceCategory.Size = new System.Drawing.Size(145, 38);
             this.registerNewPoliceCategory.TabIndex = 1;
@@ -141,7 +150,7 @@
             // showAllPoliceCategoriesAndCases
             // 
             this.showAllPoliceCategoriesAndCases.Location = new System.Drawing.Point(2, 175);
-            this.showAllPoliceCategoriesAndCases.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.showAllPoliceCategoriesAndCases.Margin = new System.Windows.Forms.Padding(2);
             this.showAllPoliceCategoriesAndCases.Name = "showAllPoliceCategoriesAndCases";
             this.showAllPoliceCategoriesAndCases.Size = new System.Drawing.Size(145, 48);
             this.showAllPoliceCategoriesAndCases.TabIndex = 4;
@@ -153,7 +162,7 @@
             // showAllClientsInfo
             // 
             this.showAllClientsInfo.Location = new System.Drawing.Point(2, 86);
-            this.showAllClientsInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.showAllClientsInfo.Margin = new System.Windows.Forms.Padding(2);
             this.showAllClientsInfo.Name = "showAllClientsInfo";
             this.showAllClientsInfo.Size = new System.Drawing.Size(145, 43);
             this.showAllClientsInfo.TabIndex = 2;
@@ -165,7 +174,7 @@
             // showAllClientPayments
             // 
             this.showAllClientPayments.Location = new System.Drawing.Point(2, 133);
-            this.showAllClientPayments.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.showAllClientPayments.Margin = new System.Windows.Forms.Padding(2);
             this.showAllClientPayments.Name = "showAllClientPayments";
             this.showAllClientPayments.Size = new System.Drawing.Size(145, 38);
             this.showAllClientPayments.TabIndex = 3;
@@ -177,7 +186,7 @@
             // formPayment
             // 
             this.formPayment.Location = new System.Drawing.Point(2, 227);
-            this.formPayment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.formPayment.Margin = new System.Windows.Forms.Padding(2);
             this.formPayment.Name = "formPayment";
             this.formPayment.Size = new System.Drawing.Size(145, 37);
             this.formPayment.TabIndex = 5;
@@ -189,7 +198,7 @@
             // getClientInfo
             // 
             this.getClientInfo.Location = new System.Drawing.Point(2, 268);
-            this.getClientInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.getClientInfo.Margin = new System.Windows.Forms.Padding(2);
             this.getClientInfo.Name = "getClientInfo";
             this.getClientInfo.Size = new System.Drawing.Size(145, 36);
             this.getClientInfo.TabIndex = 6;
@@ -198,31 +207,88 @@
             this.getClientInfo.UseVisualStyleBackColor = true;
             this.getClientInfo.Click += new System.EventHandler(this.getClientInfo_Click);
             // 
-            // dataGridView1
+            // label1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(315, 389);
-            this.dataGridView1.TabIndex = 0;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(14, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(343, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Все клиенты, оформившие обращение за выплатой";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(269, 363);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(157, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Показать подробно";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // listBox
+            // 
+            this.listBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listBox.FormattingEnabled = true;
+            this.listBox.ItemHeight = 16;
+            this.listBox.Location = new System.Drawing.Point(15, 44);
+            this.listBox.Name = "listBox";
+            this.listBox.Size = new System.Drawing.Size(411, 308);
+            this.listBox.TabIndex = 4;
+            this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
+            // 
+            // submit
+            // 
+            this.submit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.submit.Location = new System.Drawing.Point(15, 363);
+            this.submit.Name = "submit";
+            this.submit.Size = new System.Drawing.Size(94, 23);
+            this.submit.TabIndex = 7;
+            this.submit.Text = "Принять";
+            this.submit.UseVisualStyleBackColor = false;
+            this.submit.Click += new System.EventHandler(this.submit_Click);
+            // 
+            // reject
+            // 
+            this.reject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.reject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.reject.Location = new System.Drawing.Point(115, 363);
+            this.reject.Name = "reject";
+            this.reject.Size = new System.Drawing.Size(96, 23);
+            this.reject.TabIndex = 8;
+            this.reject.Text = "Отклонить";
+            this.reject.UseVisualStyleBackColor = false;
+            this.reject.Click += new System.EventHandler(this.reject_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label2.Location = new System.Drawing.Point(17, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 9;
             // 
             // FormPaymentAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 426);
+            this.ClientSize = new System.Drawing.Size(626, 426);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormPaymentAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Оформить выплату";
             this.Load += new System.EventHandler(this.FormPaymentAdmin_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -238,8 +304,13 @@
         private System.Windows.Forms.Button showAllClientPayments;
         private System.Windows.Forms.Button formPayment;
         private System.Windows.Forms.Button getClientInfo;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button registerPolice;
         private System.Windows.Forms.Button registerClientButton;
+        private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button reject;
+        private System.Windows.Forms.Button submit;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -74,8 +74,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.reisterNewInsuranseCaseBox);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(456, 409);
-            this.splitContainer1.SplitterDistance = 150;
+            this.splitContainer1.Size = new System.Drawing.Size(632, 409);
+            this.splitContainer1.SplitterDistance = 154;
             this.splitContainer1.TabIndex = 10;
             // 
             // tableLayoutPanel1
@@ -220,9 +220,9 @@
             this.reisterNewInsuranseCaseBox.Controls.Add(this.insuranceCaseNameInput);
             this.reisterNewInsuranseCaseBox.Controls.Add(this.paymentProcentInput);
             this.reisterNewInsuranseCaseBox.Controls.Add(this.paymentProcent);
-            this.reisterNewInsuranseCaseBox.Location = new System.Drawing.Point(7, 5);
+            this.reisterNewInsuranseCaseBox.Location = new System.Drawing.Point(75, 36);
             this.reisterNewInsuranseCaseBox.Name = "reisterNewInsuranseCaseBox";
-            this.reisterNewInsuranseCaseBox.Size = new System.Drawing.Size(287, 188);
+            this.reisterNewInsuranseCaseBox.Size = new System.Drawing.Size(326, 209);
             this.reisterNewInsuranseCaseBox.TabIndex = 10;
             this.reisterNewInsuranseCaseBox.TabStop = false;
             this.reisterNewInsuranseCaseBox.Text = "Регистрация нового страхового случая";
@@ -240,7 +240,7 @@
             // insurancePoliceDropDown
             // 
             this.insurancePoliceDropDown.FormattingEnabled = true;
-            this.insurancePoliceDropDown.Location = new System.Drawing.Point(129, 105);
+            this.insurancePoliceDropDown.Location = new System.Drawing.Point(158, 120);
             this.insurancePoliceDropDown.Name = "insurancePoliceDropDown";
             this.insurancePoliceDropDown.Size = new System.Drawing.Size(134, 21);
             this.insurancePoliceDropDown.TabIndex = 11;
@@ -249,7 +249,7 @@
             // insuranseCategoryName
             // 
             this.insuranseCategoryName.AutoSize = true;
-            this.insuranseCategoryName.Location = new System.Drawing.Point(15, 105);
+            this.insuranseCategoryName.Location = new System.Drawing.Point(44, 120);
             this.insuranseCategoryName.Name = "insuranseCategoryName";
             this.insuranseCategoryName.Size = new System.Drawing.Size(102, 13);
             this.insuranseCategoryName.TabIndex = 10;
@@ -258,7 +258,7 @@
             // insuranceCaseName
             // 
             this.insuranceCaseName.AutoSize = true;
-            this.insuranceCaseName.Location = new System.Drawing.Point(15, 46);
+            this.insuranceCaseName.Location = new System.Drawing.Point(44, 61);
             this.insuranceCaseName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.insuranceCaseName.Name = "insuranceCaseName";
             this.insuranceCaseName.Size = new System.Drawing.Size(100, 13);
@@ -268,7 +268,7 @@
             // 
             // submit
             // 
-            this.submit.Location = new System.Drawing.Point(148, 145);
+            this.submit.Location = new System.Drawing.Point(177, 160);
             this.submit.Margin = new System.Windows.Forms.Padding(2);
             this.submit.Name = "submit";
             this.submit.Size = new System.Drawing.Size(115, 22);
@@ -280,7 +280,7 @@
             // 
             // insuranceCaseNameInput
             // 
-            this.insuranceCaseNameInput.Location = new System.Drawing.Point(129, 42);
+            this.insuranceCaseNameInput.Location = new System.Drawing.Point(158, 57);
             this.insuranceCaseNameInput.Margin = new System.Windows.Forms.Padding(2);
             this.insuranceCaseNameInput.Name = "insuranceCaseNameInput";
             this.insuranceCaseNameInput.Size = new System.Drawing.Size(134, 20);
@@ -295,7 +295,7 @@
             0,
             0,
             65536});
-            this.paymentProcentInput.Location = new System.Drawing.Point(129, 74);
+            this.paymentProcentInput.Location = new System.Drawing.Point(158, 89);
             this.paymentProcentInput.Margin = new System.Windows.Forms.Padding(2);
             this.paymentProcentInput.Name = "paymentProcentInput";
             this.paymentProcentInput.Size = new System.Drawing.Size(134, 20);
@@ -306,7 +306,7 @@
             // paymentProcent
             // 
             this.paymentProcent.AutoSize = true;
-            this.paymentProcent.Location = new System.Drawing.Point(14, 76);
+            this.paymentProcent.Location = new System.Drawing.Point(43, 91);
             this.paymentProcent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.paymentProcent.Name = "paymentProcent";
             this.paymentProcent.Size = new System.Drawing.Size(101, 13);
@@ -322,9 +322,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 433);
+            this.ClientSize = new System.Drawing.Size(656, 433);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormNewInsuranceCase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

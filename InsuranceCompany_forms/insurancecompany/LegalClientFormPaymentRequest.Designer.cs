@@ -38,6 +38,7 @@
             this.formPaymentRequest = new System.Windows.Forms.Button();
             this.groupBoxFormPayment = new System.Windows.Forms.GroupBox();
             this.insuranseCaseInput = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -49,7 +50,7 @@
             // policeNumber
             // 
             this.policeNumber.AutoSize = true;
-            this.policeNumber.Location = new System.Drawing.Point(27, 36);
+            this.policeNumber.Location = new System.Drawing.Point(27, 55);
             this.policeNumber.Name = "policeNumber";
             this.policeNumber.Size = new System.Drawing.Size(98, 13);
             this.policeNumber.TabIndex = 6;
@@ -57,16 +58,17 @@
             // 
             // policeNumberInput
             // 
-            this.policeNumberInput.Location = new System.Drawing.Point(183, 36);
+            this.policeNumberInput.Location = new System.Drawing.Point(183, 55);
             this.policeNumberInput.Name = "policeNumberInput";
-            this.policeNumberInput.Size = new System.Drawing.Size(131, 20);
+            this.policeNumberInput.Size = new System.Drawing.Size(125, 20);
             this.policeNumberInput.TabIndex = 7;
             this.policeNumberInput.Tag = "policeNumber";
+            this.policeNumberInput.TextChanged += new System.EventHandler(this.policeNumberInput_TextChanged);
             // 
             // InsuranseCase
             // 
             this.InsuranseCase.AutoSize = true;
-            this.InsuranseCase.Location = new System.Drawing.Point(27, 75);
+            this.InsuranseCase.Location = new System.Drawing.Point(27, 94);
             this.InsuranseCase.Name = "InsuranseCase";
             this.InsuranseCase.Size = new System.Drawing.Size(100, 13);
             this.InsuranseCase.TabIndex = 8;
@@ -74,13 +76,14 @@
             // 
             // submitPaymentRequest
             // 
-            this.submitPaymentRequest.Location = new System.Drawing.Point(214, 126);
+            this.submitPaymentRequest.Location = new System.Drawing.Point(214, 145);
             this.submitPaymentRequest.Name = "submitPaymentRequest";
-            this.submitPaymentRequest.Size = new System.Drawing.Size(100, 32);
+            this.submitPaymentRequest.Size = new System.Drawing.Size(94, 27);
             this.submitPaymentRequest.TabIndex = 10;
             this.submitPaymentRequest.Tag = "submitPaymentRequest";
             this.submitPaymentRequest.Text = "Оформить";
             this.submitPaymentRequest.UseVisualStyleBackColor = true;
+            this.submitPaymentRequest.Click += new System.EventHandler(this.submitPaymentRequest_Click);
             // 
             // splitContainer1
             // 
@@ -96,8 +99,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBoxFormPayment);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(574, 417);
-            this.splitContainer1.SplitterDistance = 188;
+            this.splitContainer1.Size = new System.Drawing.Size(539, 338);
+            this.splitContainer1.SplitterDistance = 157;
             this.splitContainer1.TabIndex = 11;
             // 
             // tableLayoutPanel1
@@ -112,14 +115,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(181, 153);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(150, 96);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // getClientInfo
             // 
             this.getClientInfo.Location = new System.Drawing.Point(3, 3);
             this.getClientInfo.Name = "getClientInfo";
-            this.getClientInfo.Size = new System.Drawing.Size(175, 72);
+            this.getClientInfo.Size = new System.Drawing.Size(144, 45);
             this.getClientInfo.TabIndex = 0;
             this.getClientInfo.Tag = "getClientInfo";
             this.getClientInfo.Text = "Показать всю информацию по клиенту";
@@ -128,9 +131,9 @@
             // 
             // formPaymentRequest
             // 
-            this.formPaymentRequest.Location = new System.Drawing.Point(3, 81);
+            this.formPaymentRequest.Location = new System.Drawing.Point(3, 54);
             this.formPaymentRequest.Name = "formPaymentRequest";
-            this.formPaymentRequest.Size = new System.Drawing.Size(175, 68);
+            this.formPaymentRequest.Size = new System.Drawing.Size(144, 39);
             this.formPaymentRequest.TabIndex = 2;
             this.formPaymentRequest.Tag = "formPaymentRequest";
             this.formPaymentRequest.Text = "Оформить обращение за выплатой";
@@ -139,6 +142,7 @@
             // 
             // groupBoxFormPayment
             // 
+            this.groupBoxFormPayment.Controls.Add(this.label1);
             this.groupBoxFormPayment.Controls.Add(this.insuranseCaseInput);
             this.groupBoxFormPayment.Controls.Add(this.policeNumberInput);
             this.groupBoxFormPayment.Controls.Add(this.submitPaymentRequest);
@@ -154,16 +158,25 @@
             // insuranseCaseInput
             // 
             this.insuranseCaseInput.FormattingEnabled = true;
-            this.insuranseCaseInput.Location = new System.Drawing.Point(183, 75);
+            this.insuranseCaseInput.Location = new System.Drawing.Point(183, 94);
             this.insuranseCaseInput.Name = "insuranseCaseInput";
-            this.insuranseCaseInput.Size = new System.Drawing.Size(131, 21);
+            this.insuranseCaseInput.Size = new System.Drawing.Size(125, 21);
             this.insuranseCaseInput.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label1.Location = new System.Drawing.Point(30, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 12;
             // 
             // LegalClientFormPaymentRequest
             // 
-            this.ClientSize = new System.Drawing.Size(598, 441);
+            this.ClientSize = new System.Drawing.Size(563, 362);
             this.Controls.Add(this.splitContainer1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LegalClientFormPaymentRequest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Юр. лицо: оформление обращения за выплатой";
@@ -191,5 +204,6 @@
         private System.Windows.Forms.Button formPaymentRequest;
         private System.Windows.Forms.GroupBox groupBoxFormPayment;
         private System.Windows.Forms.ComboBox insuranseCaseInput;
+        private System.Windows.Forms.Label label1;
     }
 }
