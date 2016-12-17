@@ -124,7 +124,7 @@ namespace InsuranceCompany
 
         private void submit_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(insuranceCaseNameInput.Text) || paymentProcentInput.Value==null ||insurancePoliceDropDown.SelectedItem==null)
+            if (String.IsNullOrEmpty(insuranceCaseNameInput.Text) || paymentProcentInput.Value==0 ||insurancePoliceDropDown.SelectedItem==null)
             {
                 resultLabel.Text = "Проверьте заполнение всех полей.";
             }

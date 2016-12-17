@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace InsuranceCompany.insuranceCompany.DAO.impl
 {
-    //insert into insurers (first_name, second_name, surname, ssn, phone_number) values ('Игорь', 'Викторович', 'Борода', '121315', '+375296765567');
+   
     class InsurerDAO
     {
         private readonly static String conString = "server=localhost;database=insurance_company;uid=root;pwd=marusya;";

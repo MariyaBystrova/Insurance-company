@@ -10,7 +10,7 @@ namespace InsuranceCompany.insuranceCompany.command
 {
     class GetAllIndividualClients
     {
-        public List<Individual> getAllLegalPersonInfo()
+        public List<Individual> getAllIndividualInfo()
         {
             List<Individual> individualList = null;
             InsurerDAO insurerDAO = new InsurerDAO();

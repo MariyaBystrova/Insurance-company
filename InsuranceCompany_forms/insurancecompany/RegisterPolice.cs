@@ -135,7 +135,7 @@ namespace InsuranceCompany
 
                 //add all individual clients fsl to dropdown
                 GetAllIndividualClients command1 = new GetAllIndividualClients();
-                List<Individual> individualList = command1.getAllLegalPersonInfo();
+                List<Individual> individualList = command1.getAllIndividualInfo();
                 fslNameIndividualComboBox.Items.AddRange(individualList.ToArray());
 
                 //add all police categories

@@ -20,7 +20,7 @@ namespace InsuranceCompany
             InitializeComponent();
 
             GetAllIndividualClients command = new GetAllIndividualClients();
-            List<Individual> individualList = command.getAllLegalPersonInfo();
+            List<Individual> individualList = command.getAllIndividualInfo();
             name.Items.AddRange(individualList.ToArray());
         }
 
